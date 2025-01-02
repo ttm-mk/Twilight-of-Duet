@@ -26,10 +26,10 @@ ul {
 	
 }
 
-/*article#container {*/
-/*	border: 1px gray solid;*/
+article#container {
+	border: 0.5px #FEE1A4 solid;
 	
-/*}*/
+}
 
 aside {
 	margin: 30px 50px 100px;
@@ -43,12 +43,14 @@ aside {
 
 main {
 	float: left;
+	width: 900px;
 	height: 1000px;
 	
 }
 
 footer {
 	margin: 0px -10px -10px;
+	padding-bottom: 30px;
 	background-color: #FFFECB;
 	clear: left;
 	height: 100px;
