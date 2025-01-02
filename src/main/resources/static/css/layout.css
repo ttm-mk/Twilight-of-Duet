@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+header {
+	margin: -10px -10px 0px;
+	background-color: #FFF9F1;
+	height: 90px;
+	
+}
+
+/*article#container {*/
+/*	border: 1px gray solid;*/
+	
+/*}*/
+
+aside {
+	margin: 30px 50px 100px;
+	padding: 20px;
+	background-color: #FEE1A4;
+	float: left;
+	height: 500px;
+	width: 150px;
+	
+}
+
+main {
+	float: left;
+	height: 1000px;
+	
+}
+
+footer {
+	margin: 0px -10px -10px;
+	background-color: #FFFECB;
+	clear: left;
+	height: 100px;
+	
+}
