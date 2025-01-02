@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	
-	<head>
-		<meta charset="UTF-8">
-		<title>Insert title here</title>
-	</head>
-	<body>
-		<header id="header" th:fragment="layout-header">ヘッダー</header>
-	</body>
+<head>
+	<meta charset="UTF-8">
+	<link th:href="@{/css/layout.css}" rel="stylesheet" />
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<header id="header" th:fragment="layout-header">
+		
+		<ul class="menu">
+			
+			<li class="list">TOP</li>
+			<li class="list">キャラクター</li>
+			<li class="list">物語概要</li>
+			<li class="list">ストーリー</li>
+			<li class="list">ギャラリー</li>
+			<li class="list">セーブ/ロード</li>
+			<li class="list">メニュー</li>
+			<li class="list">お問い合わせ</li>
+			
+		</ul>
+		
+	</header>
+</body>
 	
 </html>
