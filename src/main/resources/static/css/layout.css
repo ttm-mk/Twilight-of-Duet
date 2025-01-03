@@ -43,7 +43,11 @@ aside {
 }
 
 
-/*main*/
+/*
+* main
+* キャラクターのカラー設定は直接CSS記述
+*/
+
 
 main {
 	float: left;
