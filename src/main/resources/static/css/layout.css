@@ -1,35 +1,37 @@
 @charset "UTF-8";
 
+
+/*header*/
+
 header {
 	margin: -10px -10px 0px;
 	background-color: #FFF9F1;
 	height: 90px;
 	overflow: hidden;
 	position: relative;
-	
 }
 
 ul {
 	list-style: none;
 	position: absolute;
 	bottom: 0;
-	
 }
 
 .menu {
 	display: flex;
-	
 }
 
 .list {
 	padding-left: 20px;
-	
 }
 
 article#container {
 	border: 0.5px #FEE1A4 solid;
-	
 }
+
+
+/*sidebar*/
+
 
 aside {
 	margin: 30px 50px 100px;
@@ -37,16 +39,26 @@ aside {
 	background-color: #FEE1A4;
 	float: left;
 	height: 500px;
-	width: 150px;
-	
+	width: 150px;	
 }
+
+
+/*main*/
 
 main {
 	float: left;
 	width: 900px;
-	height: 1000px;
-	
+	height: 1000px;	
 }
+
+.box {
+	margin:auto;
+	padding: 50px;
+	text-align: center;
+}
+
+
+/*footer*/
 
 footer {
 	margin: 0px -10px -10px;
@@ -54,5 +66,4 @@ footer {
 	background-color: #FFFECB;
 	clear: left;
 	height: 100px;
-	
 }
