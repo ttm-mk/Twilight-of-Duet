@@ -22,7 +22,7 @@ ul {
 }
 
 .list {
-	padding-left: 20px;
+	padding-left: 25px;
 }
 
 article#container {
@@ -50,7 +50,7 @@ aside {
 
 
 main {
-	margin: 20px 0px 70px;
+	margin: 20px 0px 80px;
 	float: left;
 	width: 900px;
 	height: 1000px;	
@@ -58,7 +58,7 @@ main {
 
 .frame {
 	margin: auto;
-	padding: 20px 0px;
+	padding: 10px 0px 50px;
 	width: 900px;
 	height: 1000px;
 }
