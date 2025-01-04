@@ -34,7 +34,7 @@ article#container {
 
 
 aside {
-	margin: 30px 50px 100px;
+	margin: 20px 50px 100px;
 	padding: 20px;
 	background-color: #FEE1A4;
 	float: left;
@@ -50,14 +50,24 @@ aside {
 
 
 main {
+	margin: 20px 0px 70px;
 	float: left;
 	width: 900px;
 	height: 1000px;	
 }
 
-.box {
-	margin:auto;
-	padding: 50px;
+.frame {
+	margin: auto;
+	padding: 20px 0px;
+	width: 900px;
+	height: 1000px;
+}
+
+.work {
+	margin: auto;
+	width: 850px;
+	height: 1000px;
+	background-color: #FFF9F1;
 	text-align: center;
 }
 
