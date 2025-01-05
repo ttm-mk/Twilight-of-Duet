@@ -26,4 +26,10 @@ public class CharactorController {
 	public String charactorSomaDisplay() {
 		return "charactor/kobayakawa_soma";
 	}
+	
+	@GetMapping("/charactor/SuoMiyuki")
+	public String charactorMiyukiDisplay() {
+		return "charactor/suo_miyuki";
+	}
+	
 }
