@@ -22,4 +22,8 @@ public class CharactorController {
 		return "charactor/sonoyama_takumi";
 	}
 
+	@GetMapping("/charactor/KobayakawaSoma")
+	public String charactorSomaDisplay() {
+		return "charactor/kobayakawa_soma";
+	}
 }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
-	th:replace="~{common/layout :: layout(~{::title}, ~{::body/content()})}">	
+	th:replace="~{common/layout :: layout(~{::title}, ~{::body/content()})}">
+	
 <head>
 	<meta charset="UTF-8">
 	<title>キャラクター紹介</title>
@@ -10,12 +11,12 @@
 	<aside th:replace="~{sidebar/sidebar_charactor :: sidebar-charactor}"></aside>
 
 	<main>
-		<div class="frame" style="background-color: purple;">
+		<div class="frame" style="background-color: blue;">
 			<div class="work">
 				
 				<div class="sentence" style="width: 400px;">
-					<h3>◇園山　巧美（そのやま　たくみ）◇</h3>
-					<p>巧美の説明が表示されている</p>
+					<h3>◇小早川　颯真（こばやかわ　そうま）◇</h3>
+					<p>颯真の説明が表示されている</p>
 					<p>
 						サイドバーのキャラクター名を選択することで<br>
 						表示されるキャラクターが変更する仕様
@@ -29,7 +30,6 @@
 		</div>
 		
 	</main>
-
 
 </body>
 
