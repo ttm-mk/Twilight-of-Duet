@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	th:replace="~{common/layout :: layout(~{::title}, ~{::body/content()})}">
+	
+<head>
+<meta charset="UTF-8">
+<title>キャラクター紹介</title>
+</head>
+
+<body>
+	<aside th:replace="~{sidebar/sidebar_charactor :: sidebar-charactor}"></aside>
+
+	<main>
+		<div class="frame" style="background-color: #BEDAF5;">
+			<div class="work">
+				
+				<div class="sentence" style="width: 400px;">
+					<h3>◇ヒロイン◇</h3>
+					<p>デフォルトでヒロインの説明が映ってる</p>
+					<p>
+						サイドバーのキャラクター名を選択することで<br>
+						表示されるキャラクターが変更する仕様
+					</p>
+					<p>キャラクター別で枠カラー変更されるまでできたらいいなという心地。文字幅は決めてない</p>
+					
+				</div>
+			
+				
+			</div>
+		</div>
+		
+	</main>
+
+</body>
+
+</html>
