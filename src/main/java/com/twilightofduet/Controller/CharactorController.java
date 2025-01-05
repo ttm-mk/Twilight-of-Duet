@@ -32,4 +32,14 @@ public class CharactorController {
 		return "charactor/suo_miyuki";
 	}
 	
+	@GetMapping("/charactor/SonoyamaTakuto")
+	public String charactorTakutoDisplay() {
+		return "charactor/sonoyama_takuto";
+	}
+	
+	@GetMapping("/charactor/AiraMiru")
+	public String charactorMiruDisplay() {
+		return "charactor/aira_miru";
+	}
+	
 }
