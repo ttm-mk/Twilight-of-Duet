@@ -13,8 +13,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class CharactorController {
 	
 	@GetMapping("/charactor")
-	public String charactorDisplay() {
-		return "charactor";
+	public String charactorTopDisplay() {
+		return "charactor/narumi_chiharu";
+	}
+	
+	@GetMapping("/charactor/SonoyamaTakumi")
+	public String charactorTakumiDisplay() {
+		return "charactor/sonoyama_takumi";
 	}
 
 }
