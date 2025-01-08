@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	th:replace="~{common/layout :: layout(~{::title}, ~{::body/content()})}">
+	
+<head>
+	<meta charset="UTF-8">
+	<title>ストーリー</title>
+</head>
+
+<body>
+	<aside th:replace="~{sidebar/sidebar_story :: sidebar-story}"></aside>
+
+		<main>
+			<div class="frame" style="background-color: #BEDAF5;">
+				<div class="work">
+					<p>操作説明</p>
+
+					<p id="text">画面をクリックしてください。</p>
+				    <div id="clickArea" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: transparent;"></div>
+		
+				    <script>
+				        const texts = [
+				            "枠内をクリックすることで、文章が進みます。",
+				            "いまのところ戻ることはできません。さきにすすむだけです。",
+				            "リロードすると最初に戻りますので、お気をつけください。",
+				            "疑問点がありましたら、お問い合わせからご連絡ください。",
+							"それではサイドバーから読みたいストーリーを選択しておたのしみください。"
+				        ];
+		
+				        let count = 0; // クリック回数をカウント
+		
+				        function changeText() {
+				            const textElement = document.getElementById('text');
+				            const clickAreaElement = document.getElementById('clickArea');
+				            
+				            // 配列内の文章を順番に表示
+				            textElement.textContent = texts[count];
+				            count++;
+				            
+				            // クリック数が配列の長さに達したらクリックエリアを無効化
+				            if (count >= texts.length) {
+				                clickAreaElement.style.pointerEvents = 'none'; // クリックイベントを無効化
+				            }
+				        }
+		
+				        // クリックエリアにクリックイベントを追加
+				        document.getElementById('clickArea').addEventListener('click', changeText);
+				    </script>
+					
+				</div>
+			</div>
+
+		</main>
+
+
+</body>
+</html>

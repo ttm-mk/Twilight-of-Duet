@@ -12,6 +12,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class StoryController {
 	
+	/**
+	 * ストーリートップ画面
+	 * @return
+	 */
+	@GetMapping("/story")
+	public String StoryTopDisplay() {
+		return "story/story.html";
+	}
+	
+	/**
+	 * キャラクターストーリー巧美1話
+	 * @return
+	 */
 	@GetMapping("/story/SonoyamaTakumi/1")
 	public String StoryTakumi1( ) {
 		return "story/sonoyama_takumi/story_takumi1";
