@@ -9,12 +9,26 @@
 <body>
 	<aside id="sidebar" th:fragment="sidebar-charactor">
 		<p>◆登場人物◆</p>
-		<p>ヒロイン</p>
-		<p>園山巧美</p>
-		<p>小早川颯真</p>
-		<p>須王御幸</p>
-		<p>園山巧斗</p>
-		<p>相良実瑠</p>
+		<ul class="sidebar-menu">
+			<li>
+				<a th:href="@{/charactor}">ヒロイン</a>
+			</li>
+			<li>
+				<a th:href="@{/charactor/SonoyamaTakumi}">園山巧美</a>
+			</li>
+			<li>
+				<a th:href="@{/charactor/KobayakawaSoma}">小早川颯真</a>
+			</li>
+			<li>
+				<a th:href="@{/charactor/SuoMiyuki}">須王御幸</a>
+			</li>
+			<li>
+				<a th:href="@{/charactor/SonoyamaTakuto}">園山巧斗</a>
+			</li>
+			<li>
+				<a th:href="@{/charactor/AiraMiru}">相良実瑠</a>
+			</li>
+		</ul>
 	</aside>
 
 </body>

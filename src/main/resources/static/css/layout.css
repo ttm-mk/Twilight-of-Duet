@@ -17,8 +17,15 @@ ul {
 	bottom: 0;
 }
 
+/*headerのmenu*/
 .menu {
 	display: flex;
+}
+
+/*sidebarのmenu*/
+.sidebar-menu {
+	position: unset;
+	padding: 0px;
 }
 
 .list {
