@@ -1,6 +1,21 @@
 @charset "UTF-8";
 
 
+/*all*/
+a {
+	color: dark;
+	text-decoration: none;
+}
+
+a:visited {
+	color: blue;
+}
+
+a:hover {
+	color: darkorange;
+}
+
+
 /*header*/
 
 header {
