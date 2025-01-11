@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout :: layout(~{::title}, ~{::body/content()})}">
+	
+<head>
+	<meta charset="UTF-8">
+	<title>ギャラリー</title>
+</head>
+
+<body>
+	<aside th:replace="~{sidebar/sidebar_gallery :: sidebar-gallery}"></aside>
+
+	<main>
+		<div class="frame" style="background-color: #BEDAF5;">
+			<div class="work">
+				
+				<div class="sentence" style="width: 400px;">
+					<h3>◇ストーリー◇</h3>
+					<p>見たらここに「一話」「二話」と増えていくよ</p>
+					
+					<h3>◇スチル◇</h3>
+					<p>画像を貼りたいね</p>
+				</div>
+				
+			</div>
+		</div>
+		
+	</main>
+
+</body>
+
+</html>
