@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout :: layout(~{::title}, ~{::body/content()})}">
+	
+<head>
+	<meta charset="UTF-8">
+	<title>ロード</title>
+</head>
+
+<body>
+	<aside th:replace="~{sidebar/sidebar_saveLoad :: sidebar-saveLoad}"></aside>
+
+	<main>
+		<div class="frame" style="background-color: #BEDAF5;">
+			<div class="work">
+				
+				<div class="sentence" style="width: 400px;">
+					<h3>◇ロード◇</h3>
+					<p>リストで2つくらい初期枠自動作成しよう</p>
+					
+					<p>要はセーブと同じ枠だけど処理が違うということだよね？</p>
+
+					
+				</div>
+				
+			</div>
+		</div>
+		
+	</main>
+
+</body>
+
+</html>
