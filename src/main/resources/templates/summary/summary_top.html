@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout :: layout(~{::title}, ~{::body/content()})}">
+	
+<head>
+	<meta charset="UTF-8">
+	<title>概要</title>
+</head>
+
+<body>
+	<aside th:replace="~{sidebar/sidebar_summary :: sidebar-summary}"></aside>
+
+	<main>
+		<div class="frame" style="background-color: #BEDAF5;">
+			<div class="work">
+				
+				<div class="sentence" style="width: 400px;">
+					<h3>◇あらすじ◇</h3>
+					<p>あらすじをここにうりゃーっとかく</p>
+					<p>操作説明とかもべつ枠でちゃんと作らないとね……</p>
+				</div>
+				
+			</div>
+		</div>
+		
+	</main>
+
+</body>
+
+</html>

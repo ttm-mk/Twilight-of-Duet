@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<aside id="sidebar" th:fragment="sidebar-summary">
+		<p>◆概要◆</p>
+		<ul class="sidebar-menu">
+			<li>
+				<a th:href="@{/summary}">あらすじ</a>
+			</li>
+			<li>
+				<a>操作方法</a>
+			</li>
+			<li>
+				<a>ギャラリーについて</a>
+			</li>
+			<li>
+				<a>リセットについて</a>
+			</li>
+
+		</ul>
+	</aside>
+
+</body>
+
+</html>
