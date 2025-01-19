@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout :: layout(~{::title}, ~{::body/content()})}">
+	
+<head>
+	<meta charset="UTF-8">
+	<title>お問い合わせ</title>
+</head>
+
+<body>
+	<aside th:replace="~{sidebar/sidebar_inquiry :: sidebar-inquiry}"></aside>
+
+	<main>
+		<div class="frame" style="background-color: #BEDAF5;">
+			<div class="work">
+				
+				<div class="sentence" style="width: 400px;">
+					<h3>◇お問い合わせ◇</h3>
+					<p>お問い合わせフォームをこちらに</p>
+					<p>そうなるとフォーム内容を受け取る管理者側のところを作らないといけないじゃんね……</p>
+					
+				</div>
+			
+				
+			</div>
+		</div>
+		
+	</main>
+
+</body>
+
+</html>
