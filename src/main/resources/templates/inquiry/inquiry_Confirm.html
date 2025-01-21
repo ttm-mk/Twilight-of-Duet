@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout :: layout(~{::title}, ~{::body/content()})}">
+	
+<head>
+	<meta charset="UTF-8">
+	<title>内容確認</title>
+</head>
+
+<body>
+	<aside th:replace="~{sidebar/sidebar_inquiry :: sidebar-inquiry}"></aside>
+
+	<main>
+		<div class="frame" style="background-color: #BEDAF5;">
+			<div class="work">
+				
+				<div class="sentence" style="width: 400px;">
+					<h3>◇内容確認◇</h3>
+
+					<p>名前</p>
+					<div th:text="${InquiryUserName}"></div>
+					<p>内容</p>
+					<div th:text="${InquiryText}"></div>
+					<p>こちらでよろしいでしょうか。</p>
+					<form  method="post" th:action="@{/inquiry/submit}">
+						<input type="hidden" name="${InquiryUserName}"/>
+						<input type="hidden" name="${InquiryText"/>
+						<input type="submit" value="送信"/>	
+					</form>
+					
+				</div>
+			
+				
+			</div>
+		</div>
+		
+	</main>
+
+</body>
+
+</html>
