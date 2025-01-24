@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout :: layout(~{::title}, ~{::body/content()})}">
+	
+<head>
+	<meta charset="UTF-8">
+	<title>ユーザー情報</title>
+</head>
+
+<body>
+	<aside th:replace="~{sidebar/sidebar_user :: sidebar-user}"></aside>
+
+	<main>
+		<div class="frame" style="background-color: #BEDAF5;">
+			<div class="work">
+				
+				<div class="sentence" style="width: 400px;">
+					
+					<!--内容送信後に出てくるメッセージ-->
+					<div th:if="${message}">
+						<p th:text="${message}"></p>
+					</div>
+					
+					<h3>◇ユーザー情報◇</h3>
+					
+					<div class="user-information">
+						<p>【ユーザー名】</p>
+						<div>ここに取得したユーザー名表示</div>
+						<p>【ヒロイン名】</p>
+						<div>ここに取得したヒロイン名表示</div>
+						<p>【ヒロインのあだ名】</p>
+						<div>ここに取得したヒロインのあだ名表示</div>
+						<p>
+							<a>編集のリンク</a>
+						</p>
+					</form>
+					
+				</div>
+			
+				
+			</div>
+		</div>
+		
+	</main>
+
+</body>
+
+</html>
