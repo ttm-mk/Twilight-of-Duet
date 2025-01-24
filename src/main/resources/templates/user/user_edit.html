@@ -4,7 +4,7 @@
 	
 <head>
 	<meta charset="UTF-8">
-	<title>ユーザー情報</title>
+	<title>ユーザー情報編集</title>
 </head>
 
 <body>
@@ -16,17 +16,26 @@
 				
 				<div class="sentence" style="width: 400px;">
 					
-					<h3>◇ユーザー情報◇</h3>
-					
-					<div class="user-information">
-						<p>【ユーザー名】</p>
-						<div>ここに取得したユーザー名表示</div>
-						<p>【ヒロイン名】</p>
-						<div>ここに取得したヒロイン名表示</div>
-						<p>【ヒロインのあだ名】</p>
-						<div>ここに取得したヒロインのあだ名表示</div>
-
+					<!--内容送信後に出てくるメッセージ-->
+					<div th:if="${message}">
+						<p th:text="${message}"></p>
 					</div>
+					
+					<h3>◇ユーザー情報編集◇</h3>
+					
+					<form method="get" th:action="@{/user/edit}">
+						<p>【ユーザー名】</p>
+						<input type="text"/>
+						<p>【パスワード】</p>
+						<input type="text"/>
+						<p>【ヒロイン名】</p>
+						<input type="text"/>
+						<p>【ヒロインのあだ名】</p>
+						<input type="text"/>
+						<p>
+							<input type="submit" value="編集"/>
+						</p>
+					</form>
 					
 				</div>
 			

@@ -20,5 +20,25 @@ public class UserController {
 	public String userDisplay() {
 		return "/user/user_information";
 	}
+	
+	/**
+	 * ユーザー情報編集
+	 * @return
+	 */
+	@GetMapping("/user/edit")
+	public String userEditDisplay() {
+		return "/user/user_edit";
+	}
+	
+//	/**
+//	 * 
+//	 * @param redirectAttributes
+//	 * @return
+//	 */
+//	@PostMapping("/user/edit/complete")
+//	public String userEditCompleteDisplay(@ModelAttribute RedirectAttributes redirectAttributes) {
+//		redirectAttributes.addFlashAttribute("message", "編集しました。");
+//		return "redirect:/user/edit";
+//	}
 
 }
