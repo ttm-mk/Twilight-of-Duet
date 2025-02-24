@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout :: layout(~{::title}, ~{::body/content()})}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>新規登録</title>
+</head>
+
+<body>
+	<aside th:replace="~{sidebar/sidebar_user :: sidebar-user}"></aside>
+	
+	<main>
+		<div class="frame" style="background-color: #BEDAF5;">
+			<div class="work">
+				
+				<div class="sentence" style="width: 400px;">
+					
+					<h3>◇新規登録◇</h3>
+					
+					<form method="post" th:action="@{/}">
+						<p>【ユーザー名】</p>
+						<input type="text" name="userName" placeholder="ログイン用ユーザー名"/>
+						<p>【パスワード】</p>
+						<input type="text" name="userPassword" placeholder="ログイン用パスワード"/>
+						<p>
+							<input type="submit" value="新規登録"/>
+						</p>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+			
+	</main>
+
+</body>
+</html>

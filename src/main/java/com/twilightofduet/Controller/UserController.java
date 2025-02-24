@@ -13,6 +13,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class UserController {
 	
 	/**
+	 * ログイン画面表示
+	 * @return
+	 */
+	@GetMapping("/login")
+	public String userLogin() {
+		return "/user/login";
+	}
+	
+	/**
+	 * ユーザー新規登録画面表示
+	 * @return
+	 */
+	@GetMapping("/new")
+	public String userNew() {
+		return "/user/new";
+	}
+	
+	/**
 	 * ユーザー情報/トップ画面表示
 	 * @return
 	 */

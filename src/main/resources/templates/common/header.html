@@ -29,9 +29,22 @@
 			<li class="list">
 				<a th:href="@{/save}">セーブ/ロード</a>
 			</li>
-			<li class="list">
-				<a th:href="@{/user}">ユーザー</a>
-			</li>
+			
+<!--			ログインしてない場合-->
+			<div th:if = "${session.userId} == null">
+				<li class="list">
+					<a th:href="@{/login}">ユーザー</a>
+				</li>
+			</div>
+			
+<!--			ログインしている場合-->
+			<div th:unless = "${session.userId} == null">
+				<li th:else class="list">
+					<a th:href="@{/user}">ユーザー</a>
+				</li>
+				
+			</div>
+				
 			<li class="list">
 				<a th:href="@{/inquiry}">お問い合わせ</a>
 			</li>

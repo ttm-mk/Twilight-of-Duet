@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout :: layout(~{::title}, ~{::body/content()})}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>ログイン</title>
+</head>
+
+<body>
+	<aside th:replace="~{sidebar/sidebar_user :: sidebar-user}"></aside>
+	
+	<main>
+		<div class="frame" style="background-color: #BEDAF5;">
+			<div class="work">
+				
+				<div class="sentence" style="width: 400px;">
+					
+					<h3>◇ログイン◇</h3>
+					
+					<form method="post" th:action="@{/}">
+						<p>【ユーザー名】</p>
+						<input type="text" name="userName" placeholder="ユーザー名をいれてね"/>
+						<p>【パスワード】</p>
+						<input type="text" name="userPassword" placeholder="パスワードをいれてね"/>
+						<p>
+							<input type="submit" value="ログイン"/>
+						</p>
+						
+					</form>
+					<div>
+						※登録がまだの方はこちら！※<br>
+						<a th:href = "@{/new}" style="color:blue">新規登録</a>
+					</div>
+				</div>
+				
+			
+				
+			</div>
+		</div>
+			
+	</main>
+
+</body>
+</html>
