@@ -1,9 +1,7 @@
-package com.twilightofduet.Repository;
+package com.twilightofduet.Story;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import com.twilightofduet.Entity.StoryEntity;
 
 /**
  * Storyリポジトリ
