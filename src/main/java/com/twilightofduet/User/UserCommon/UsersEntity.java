@@ -1,4 +1,4 @@
-package com.twilightofduet.User;
+package com.twilightofduet.User.UserCommon;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

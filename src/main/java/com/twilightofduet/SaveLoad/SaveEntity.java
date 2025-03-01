@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 
 import com.twilightofduet.Likeability.LikeabilityEntity;
 import com.twilightofduet.Story.StoryEntity;
-import com.twilightofduet.User.UsersEntity;
+import com.twilightofduet.User.UserCommon.UsersEntity;
 
 /**
  * Saveエンティティ

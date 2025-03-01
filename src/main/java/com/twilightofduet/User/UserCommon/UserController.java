@@ -1,4 +1,4 @@
-package com.twilightofduet.User;
+package com.twilightofduet.User.UserCommon;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
