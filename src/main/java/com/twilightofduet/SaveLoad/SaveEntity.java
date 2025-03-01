@@ -1,4 +1,4 @@
-package com.twilightofduet.Entity;
+package com.twilightofduet.SaveLoad;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,6 +9,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+
+import com.twilightofduet.Likeability.LikeabilityEntity;
+import com.twilightofduet.Story.StoryEntity;
+import com.twilightofduet.User.UsersEntity;
 
 /**
  * Saveエンティティ
