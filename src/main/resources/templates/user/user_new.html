@@ -4,7 +4,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>ログイン</title>
+	<title>新規登録</title>
 </head>
 
 <body>
@@ -16,26 +16,19 @@
 				
 				<div class="sentence" style="width: 400px;">
 					
-					<h3>◇ログイン◇</h3>
+					<h3>◇新規登録◇</h3>
 					
-					<form method="post" th:action="@{/}">
+					<form method="post" th:action="@{/top}">
 						<p>【ユーザー名】</p>
-						<input type="text" name="userName" placeholder="ユーザー名をいれてね"/>
+						<input type="text" name="userName" placeholder="ログイン用ユーザー名"/>
 						<p>【パスワード】</p>
-						<input type="text" name="userPassword" placeholder="パスワードをいれてね"/>
+						<input type="text" name="userPassword" placeholder="ログイン用パスワード"/>
 						<p>
-							<input type="submit" value="ログイン"/>
+							<input type="submit" value="新規登録"/>
 						</p>
 						
 					</form>
-					<div>
-						※登録がまだの方はこちら！※<br>
-						<a th:href = "@{/new}" style="color:blue">新規登録</a>
-					</div>
 				</div>
-				
-			
-				
 			</div>
 		</div>
 			

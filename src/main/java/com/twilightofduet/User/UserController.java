@@ -18,7 +18,7 @@ public class UserController {
 	 */
 	@GetMapping("/login")
 	public String userLogin() {
-		return "/user/login";
+		return "/user/user_login";
 	}
 	
 	/**
@@ -27,7 +27,7 @@ public class UserController {
 	 */
 	@GetMapping("/new")
 	public String userNew() {
-		return "/user/new";
+		return "/user/user_new";
 	}
 	
 	/**
