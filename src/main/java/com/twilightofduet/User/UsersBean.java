@@ -1,4 +1,4 @@
-package com.twilightofduet.Bean;
+package com.twilightofduet.User;
 
 import java.io.Serializable;
 
