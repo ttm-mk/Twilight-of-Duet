@@ -1,4 +1,4 @@
-package com.twilightofduet.Entity;
+package com.twilightofduet.Likeability;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
