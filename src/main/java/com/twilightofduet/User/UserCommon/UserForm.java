@@ -1,7 +1,7 @@
 package com.twilightofduet.User.UserCommon;
 
 /*
- * InquiryForm
+ * UserForm
  * 作成者 tsutsumi miki
  * 編集日 2025/3/1 tsutsumi miki
  */
