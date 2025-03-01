@@ -1,4 +1,4 @@
-package com.twilightofduet.Form;
+package com.twilightofduet.Inquiry;
 
 /*
  * InquiryForm
