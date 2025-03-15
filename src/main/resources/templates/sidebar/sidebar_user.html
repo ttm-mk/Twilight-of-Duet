@@ -9,21 +9,33 @@
 <body>
 	<aside id="sidebar" th:fragment="sidebar-user">
 		<p>◆メニュー◆</p>
-		<ul class="sidebar-menu">
-			<li>
-				<a th:href="@{/user}">ユーザー情報</a>
-			</li>
-			<li>
-				<a th:href="@{/user/edit}">ユーザー編集</a>
-			</li>
-			<li>
-				<a>リセット</a>
-			</li>
-			<li>
-				<a>退会</a>
-			</li>
-
-		</ul>
+<!--		ログインしてない場合-->
+			<div th:if = "${session.userId} == null">
+				<ul class="sidebar-menu">
+					<li>
+						<a th:href="@{/login}">ログイン</a>
+					</li>
+				</ul>
+			</div>
+			
+<!--		ログインしている場合-->
+			<div th:unless = "${session.userId} == null">
+				<ul class="sidebar-menu">
+					<li>
+						<a th:href="@{/user}">ユーザー情報</a>
+					</li>
+					<li>
+						<a th:href="@{/user/edit}">ユーザー編集</a>
+					</li>
+					<li>
+						<a>リセット</a>
+					</li>
+					<li>
+						<a>退会</a>
+					</li>
+		
+				</ul>
+			</div>
 	</aside>
 
 </body>
