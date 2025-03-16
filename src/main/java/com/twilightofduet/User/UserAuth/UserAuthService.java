@@ -25,7 +25,7 @@ public class UserAuthService {
 	public UserDTO userNewCreate(UserForm userForm) {
 		//ユーザー情報の登録
 		UsersEntity user = new UsersEntity();
-		BeanUtils.copyProperties(userForm, user);
+		BeanUtils.copyProperties(userForm, user, "user_id");
 		user = userRepository.save(user);
 		
 		// UserDTOにユーザー情報を格納
