@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.twilightofduet.Likeability.LikeabilityEntity;
 import com.twilightofduet.Likeability.LikeabilityService;
+import com.twilightofduet.Story.StoryEntity;
+import com.twilightofduet.Story.StoryService;
 import com.twilightofduet.User.UserCommon.UserDTO;
 import com.twilightofduet.User.UserCommon.UserForm;
 import com.twilightofduet.User.UserCommon.UsersEntity;
@@ -22,9 +24,9 @@ import com.twilightofduet.User.UserCommon.UsersRepository;
 public class UserAuthService {
 	@Autowired
 	UsersRepository userRepository;
-	
-	@Autowired
 	private LikeabilityService likeabilityService;
+	private StoryService storyService;
+	
 	
 	@PostMapping("/relogin")
 	public UserDTO userNewCreate(UserForm userForm) {
@@ -38,7 +40,9 @@ public class UserAuthService {
 		user = userRepository.save(user);
 		
 		// ストーリーPKの取得
-		
+		StoryEntity storyEntity = storyService.storyCreate();
+		user.setStoryId(storyEntity);
+		user = userRepository.save(user);
 		
 		// ギャラリーPKの取得
 		
