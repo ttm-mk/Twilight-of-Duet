@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.twilightofduet.Gallery.GalleryEntity;
+import com.twilightofduet.Gallery.GalleryService;
 import com.twilightofduet.Likeability.LikeabilityEntity;
 import com.twilightofduet.Likeability.LikeabilityService;
 import com.twilightofduet.Story.StoryEntity;
@@ -26,6 +28,7 @@ public class UserAuthService {
 	UsersRepository userRepository;
 	private LikeabilityService likeabilityService;
 	private StoryService storyService;
+	private GalleryService galleryService;
 	
 	
 	@PostMapping("/relogin")
@@ -34,18 +37,20 @@ public class UserAuthService {
 		UsersEntity user = new UsersEntity();
 		BeanUtils.copyProperties(userForm, user, "user_id");
 		
-		// 好感度PKの取得
+		// 好感度FKの取得
 		LikeabilityEntity likeabilityEntity = likeabilityService.likeabilityCreate();
 		user.setLikeabilityId(likeabilityEntity);
 		user = userRepository.save(user);
 		
-		// ストーリーPKの取得
+		// ストーリーFKの取得
 		StoryEntity storyEntity = storyService.storyCreate();
 		user.setStoryId(storyEntity);
 		user = userRepository.save(user);
 		
-		// ギャラリーPKの取得
-		
+		// ギャラリーFKの取得
+		GalleryEntity galleryEntity = galleryService.galleryCreate();
+		user.setGalleryId(galleryEntity);
+		user = userRepository.save(user);
 		
 		
 		// UserDTOにユーザー情報を格納
