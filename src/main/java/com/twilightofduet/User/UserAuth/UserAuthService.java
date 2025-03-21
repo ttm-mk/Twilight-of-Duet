@@ -5,11 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.twilightofduet.Gallery.GalleryEntity;
 import com.twilightofduet.Gallery.GalleryService;
-import com.twilightofduet.Likeability.LikeabilityEntity;
 import com.twilightofduet.Likeability.LikeabilityService;
-import com.twilightofduet.Story.StoryEntity;
 import com.twilightofduet.Story.StoryService;
 import com.twilightofduet.User.UserCommon.UserDTO;
 import com.twilightofduet.User.UserCommon.UserForm;
@@ -19,15 +16,18 @@ import com.twilightofduet.User.UserCommon.UsersRepository;
 /*
  * UserAuthService
  * 作成者 tsutsumi miki
- * 編集日 2025/3/15 tsutsumi miki
+ * 編集日 2025/3/21 tsutsumi miki
  */
 
 @Service
 public class UserAuthService {
 	@Autowired
 	UsersRepository userRepository;
+	@Autowired
 	private LikeabilityService likeabilityService;
+	@Autowired
 	private StoryService storyService;
+	@Autowired
 	private GalleryService galleryService;
 	
 	
@@ -38,18 +38,15 @@ public class UserAuthService {
 		BeanUtils.copyProperties(userForm, user, "user_id");
 		
 		// 好感度FKの取得
-		LikeabilityEntity likeabilityEntity = likeabilityService.likeabilityCreate();
-		user.setLikeabilityId(likeabilityEntity);
-		user = userRepository.save(user);
+		user.setLikeabilityId(likeabilityService.likeabilityCreate());
 		
 		// ストーリーFKの取得
-		StoryEntity storyEntity = storyService.storyCreate();
-		user.setStoryId(storyEntity);
-		user = userRepository.save(user);
+		user.setStoryId(storyService.storyCreate());
 		
 		// ギャラリーFKの取得
-		GalleryEntity galleryEntity = galleryService.galleryCreate();
-		user.setGalleryId(galleryEntity);
+		user.setGalleryId(galleryService.galleryCreate());
+		
+		// User保存
 		user = userRepository.save(user);
 		
 		

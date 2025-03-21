@@ -18,6 +18,7 @@ public class StoryService {
 	public StoryEntity storyCreate() {
 		
 		StoryEntity storyEntity = new StoryEntity();
+		storyEntity.setMainStory(0);
 		storyEntity.setTakumiStory(0); 
 		storyEntity.setSomaStory(0); 
 		storyEntity.setMiyukiStory(0); 
