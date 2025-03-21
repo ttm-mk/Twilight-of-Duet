@@ -4,14 +4,34 @@ package com.twilightofduet.User.UserCommon;
 /*
  * UserDTO
  * 作成者 tsutsumi miki
- * 編集日 2025/3/15 tsutsumi miki
+ * 編集日 2025/3/21 tsutsumi miki
  */
 
 public class UserDTO {
+	// ユーザーID
+	private Integer userID;
 	//ユーザー名
 	private String userName;
 	//ユーザーパスワード
 	private String userPassword;
+
+	/**
+	 * ユーザーIDのゲッター
+	 * 
+	 * @return
+	 */
+	public Integer getUserID() {
+		return userID;
+	}
+
+	/**
+	 * ユーザーIDのセッター
+	 * 
+	 * @param userID
+	 */
+	public void setUserID(Integer userID) {
+		this.userID = userID;
+	}
 
 	/**
 	 * ユーザー名のゲッター
@@ -48,7 +68,6 @@ public class UserDTO {
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
-	
 	
 
 }

@@ -10,6 +10,7 @@ import com.twilightofduet.Likeability.LikeabilityService;
 import com.twilightofduet.Story.StoryService;
 import com.twilightofduet.User.UserCommon.UserDTO;
 import com.twilightofduet.User.UserCommon.UserForm;
+import com.twilightofduet.User.UserCommon.UserServiceCheck;
 import com.twilightofduet.User.UserCommon.UsersEntity;
 import com.twilightofduet.User.UserCommon.UsersRepository;
 
@@ -29,10 +30,18 @@ public class UserAuthService {
 	private StoryService storyService;
 	@Autowired
 	private GalleryService galleryService;
+	@Autowired
+	UserServiceCheck userServiceCheck;
 	
-	
+	/**
+	 * User新規登録機能
+	 * 
+	 * @param userForm 画面で取得したUser情報
+	 * @return　userDTO　ユーザー情報を返す用の箱
+	 */
 	@PostMapping("/relogin")
 	public UserDTO userNewCreate(UserForm userForm) {
+		
 		//ユーザー情報の登録
 		UsersEntity user = new UsersEntity();
 		BeanUtils.copyProperties(userForm, user, "user_id");
@@ -52,6 +61,7 @@ public class UserAuthService {
 		
 		// UserDTOにユーザー情報を格納
 		UserDTO userDTO = new UserDTO();
+		userDTO.setUserID(user.getUserId());
 		userDTO.setUserName(user.getUserName());
 		userDTO.setUserPassword(user.getUserPassword());
 		

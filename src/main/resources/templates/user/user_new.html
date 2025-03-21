@@ -18,6 +18,10 @@
 					
 					<h3>◇新規登録◇</h3>
 					
+					<div th:if="${error}" class="error">
+						<p th:text="${error}"></p>
+					</div>
+					
 					<form method="post" th:action="@{/new/confirm}">
 						<p>【ユーザー名】</p>
 						<input type="text" name="userName" placeholder="ログイン用ユーザー名"/>
