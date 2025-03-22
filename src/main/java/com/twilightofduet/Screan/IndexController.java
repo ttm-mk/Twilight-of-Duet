@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class IndexController {
 	
-	@GetMapping("/top")
+	@GetMapping("/")
 	public String topDisplay() {
 		return "top";
 	}

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.twilightofduet.Common.LoginForm;
 import com.twilightofduet.Gallery.GalleryService;
 import com.twilightofduet.Likeability.LikeabilityService;
 import com.twilightofduet.Story.StoryService;
@@ -69,6 +70,18 @@ public class UserAuthService {
 		
 		return userDTO;
 		
+	}
+	
+	public Boolean userLoginCheck(LoginForm loginForm) {
+		
+		if(userRepository.findByUserNameAndUserPassword(loginForm.getUserName(), loginForm.getUserPassword()) == null) {
+			
+			return false;
+			
+		}else {
+			
+			return true;
+		}
 	}
 
 }

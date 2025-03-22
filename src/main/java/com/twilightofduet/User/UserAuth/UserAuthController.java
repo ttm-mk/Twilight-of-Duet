@@ -1,5 +1,7 @@
 package com.twilightofduet.User.UserAuth;
 
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.twilightofduet.Common.LoginForm;
 import com.twilightofduet.User.UserCommon.UserDTO;
 import com.twilightofduet.User.UserCommon.UserForm;
 import com.twilightofduet.User.UserCommon.UserServiceCheck;
@@ -79,6 +82,19 @@ public class UserAuthController {
 		
 		return "redirect:/login";
 		
+		
+	}
+	
+	@PostMapping("/top")
+	public String userLogin(LoginForm loginForm, HttpSession session) {
+		
+		if(userAuthService.userLoginCheck(loginForm)) {
+			
+			session.setAttribute("userName", loginForm.getUserName());
+			
+		}
+		
+		return "redirect:/";
 		
 	}
 
