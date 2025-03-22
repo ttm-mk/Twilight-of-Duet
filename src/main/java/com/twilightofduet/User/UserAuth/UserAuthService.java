@@ -17,7 +17,7 @@ import com.twilightofduet.User.UserCommon.UsersRepository;
 /*
  * UserAuthService
  * 作成者 tsutsumi miki
- * 編集日 2025/3/21 tsutsumi miki
+ * 編集日 2025/3/22 tsutsumi miki
  */
 
 @Service
@@ -42,9 +42,11 @@ public class UserAuthService {
 	@PostMapping("/relogin")
 	public UserDTO userNewCreate(UserForm userForm) {
 		
-		//ユーザー情報の登録
+		//ユーザー情報をEntityにコピーと必要情報の格納
 		UsersEntity user = new UsersEntity();
 		BeanUtils.copyProperties(userForm, user, "user_id");
+		user.setHeroineName("鳴海千晴");
+		user.setHeroineNickname("ちい");
 		
 		// 好感度FKの取得
 		user.setLikeabilityId(likeabilityService.likeabilityCreate());
