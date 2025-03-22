@@ -2,11 +2,12 @@ package com.twilightofduet.User.UserCommon;
 
 import jakarta.servlet.http.HttpSession;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.twilightofduet.User.UserAuth.UserAuthService;
 
 /*
  * InquiryController
@@ -19,6 +20,8 @@ public class UserController {
 	
 	@Autowired
 	UsersRepository userRepository;
+	@Autowired
+	UserAuthService userAuthService;
 	
 	/**
 	 * ログイン画面表示
@@ -47,13 +50,10 @@ public class UserController {
 	 */
 	@GetMapping("/user")
 	public String userDisplay(HttpSession session, Model model) {
-		// セッションUserIdからユーザー情報の取得
-		UsersEntity userEntity =  new UsersEntity();
-		userEntity = userRepository.findByUserId((Integer) session.getAttribute("userId"));
-		
-		// EntityからBeanに格納
+		// Bean作成しセッション情報を取得して格納する
 		UsersBean userBean = new UsersBean();
-		BeanUtils.copyProperties(userEntity, userBean);
+		userBean = userAuthService.getUserSessionInformation(session);
+		// モデルにBeanからコピーして格納
 		model.addAttribute("user", userBean);
 		
 		return "/user/user_information";

@@ -15,6 +15,7 @@ import com.twilightofduet.User.UserCommon.UserDTO;
 import com.twilightofduet.User.UserCommon.UserForm;
 import com.twilightofduet.User.UserCommon.UserServiceCheck;
 import com.twilightofduet.User.UserCommon.UsersBean;
+import com.twilightofduet.User.UserCommon.UsersRepository;
 
 /*
  * UserAuthController
@@ -26,6 +27,8 @@ import com.twilightofduet.User.UserCommon.UsersBean;
 public class UserAuthController {
 	@Autowired
 	UserServiceCheck userServiceCheck;
+	@Autowired
+	UsersRepository userRepository;
 	
 	private UserAuthService userAuthService;
 
@@ -125,5 +128,6 @@ public class UserAuthController {
 		return "redirect:/";
 		
 	}
+
 
 }

@@ -2,6 +2,8 @@ package com.twilightofduet.User.UserAuth;
 
 import java.util.Optional;
 
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,7 @@ import com.twilightofduet.Story.StoryService;
 import com.twilightofduet.User.UserCommon.UserDTO;
 import com.twilightofduet.User.UserCommon.UserForm;
 import com.twilightofduet.User.UserCommon.UserServiceCheck;
+import com.twilightofduet.User.UserCommon.UsersBean;
 import com.twilightofduet.User.UserCommon.UsersEntity;
 import com.twilightofduet.User.UserCommon.UsersRepository;
 
@@ -75,21 +78,48 @@ public class UserAuthService {
 	}
 	
 	
-	
+	/**
+	 * ログイン情報からユーザー情報捜索機能
+	 * 
+	 * @param loginForm　ログインフォーム
+	 * @return　true:捜索したユーザーID、false:0
+	 */
 	public Integer doGetUserId(LoginForm loginForm) {
-		
+		// ユーザー方法が存在するか検索
 		Optional<UsersEntity> userEntity = userRepository.findByUserNameAndUserPassword(loginForm.getUserName(), loginForm.getUserPassword());
 		
+		// 存在するかどうかの確認
 		if(userEntity.isPresent()) {
+			// 存在した場合
 			Integer userId = userEntity.get().getUserId();
 			return userId;
 		
 		} else {
-			
+			// 存在しなかった場合
 			Integer userId = 0;
 			return userId;
 			
 		}
+	}
+	
+	/**
+	 * セッション情報の取得メソッド
+	 * 
+	 * @param session　セッション情報
+	 * @return　userBean
+	 */
+	public UsersBean getUserSessionInformation(HttpSession session) {
+		
+		// セッションUserIdからユーザー情報の取得
+		UsersEntity userEntity =  new UsersEntity();
+		userEntity = userRepository.findByUserId((Integer) session.getAttribute("userId"));
+		
+		// EntityからBeanに格納
+		UsersBean userBean = new UsersBean();
+		BeanUtils.copyProperties(userEntity, userBean);
+		
+		return userBean;
+		
 	}
 
 }
