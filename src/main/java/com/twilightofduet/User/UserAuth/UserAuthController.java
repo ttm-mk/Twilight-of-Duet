@@ -85,28 +85,41 @@ public class UserAuthController {
 		
 	}
 	
-	
+	/**
+	 * ユーザーログイン機能
+	 * 
+	 * @param loginForm　ログインフォーム情報
+	 * @param session　セッション情報
+	 * @param redirectAttributes　リダイレクト用
+	 * @return　true:トップ画面、false:ログイン画面
+	 */
 	@PostMapping("/top")
 	public String userLogin(LoginForm loginForm, HttpSession session, RedirectAttributes redirectAttributes) {
 		// ユーザーIDの取得
 		Integer userId = userAuthService.doGetUserId(loginForm);
-		
+		// 取得したユーザーIDの確認：0の場合ログイン画面に戻す
 		if(userId == 0) {
 			redirectAttributes.addFlashAttribute("error", "ログイン情報が正しくありません。");
 			
 			return "redirect:/login";
 			
 		}
-		
+		// ユーザーID取得成功した場合、セッション情報格納
 		session.setAttribute("userId", userId);
 		
 		return "redirect:/";
 		
 	}
 	
+	/**
+	 * ログアウト機能
+	 * 
+	 * @param session　セッション情報
+	 * @return　トップ画面
+	 */
 	@GetMapping("/logout")
 	public String userLogout(HttpSession session) {
-		
+		// セッション情報の破棄
 		session.invalidate();
 		
 		return "redirect:/";

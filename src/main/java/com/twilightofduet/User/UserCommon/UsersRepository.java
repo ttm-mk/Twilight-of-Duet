@@ -17,7 +17,7 @@ public interface UsersRepository extends JpaRepository<UsersEntity, Integer> {
 	
 	// ユーザー名とパスワードの同じ組み合わせが存在しないかチェック用
 	Optional<UsersEntity> findByUserNameAndUserPassword(String userName, String userPassword);
-//	// ログイン用
-//	List<UsersEntity> findByUserId(String userName, String userPassword);
+	// ユーザー情報取得用
+	UsersEntity findByUserId(Integer userId);
 
 }
