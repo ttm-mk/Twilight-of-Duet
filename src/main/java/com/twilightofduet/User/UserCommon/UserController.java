@@ -64,7 +64,13 @@ public class UserController {
 	 * @return　ユーザー情報編集画面
 	 */
 	@GetMapping("/user/edit")
-	public String userEditDisplay() {
+	public String userEditDisplay(HttpSession session, Model model) {
+		// Bean作成しセッション情報を取得して格納する
+		UsersBean userBean = new UsersBean();
+		userBean = userAuthService.getUserSessionInformation(session);
+		// モデルにBeanからコピーして格納
+		model.addAttribute("user", userBean);
+		
 		return "/user/user_edit";
 	}
 	

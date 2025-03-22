@@ -23,15 +23,15 @@
 					
 					<h3>◇ユーザー情報編集◇</h3>
 					
-					<form method="get" th:action="@{/user/edit}">
+					<form method="post" th:action="@{/user/edit}" th:object="${user}">
 						<p>【ユーザー名】</p>
-						<input type="text"/>
+						<input type="text" name="userName" th:field="*{userName}" />
 						<p>【パスワード】</p>
-						<input type="text"/>
+						<input type="text" name="userPassword" th:field="*{userPassword}"/>
 						<p>【ヒロイン名】</p>
-						<input type="text"/>
+						<input type="text" name="heroineName" th:field="*{heroineName}"/>
 						<p>【ヒロインのあだ名】</p>
-						<input type="text"/>
+						<input type="text" name="heroineNicname" th:field="*{heroineNickname}"/>
 						<p>
 							<input type="submit" value="編集"/>
 						</p>
