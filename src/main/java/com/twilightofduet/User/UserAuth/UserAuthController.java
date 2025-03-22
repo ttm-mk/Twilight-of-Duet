@@ -85,14 +85,29 @@ public class UserAuthController {
 		
 	}
 	
+	
 	@PostMapping("/top")
-	public String userLogin(LoginForm loginForm, HttpSession session) {
+	public String userLogin(LoginForm loginForm, HttpSession session, RedirectAttributes redirectAttributes) {
+		// ユーザーIDの取得
+		Integer userId = userAuthService.doGetUserId(loginForm);
 		
-		if(userAuthService.userLoginCheck(loginForm)) {
+		if(userId == 0) {
+			redirectAttributes.addFlashAttribute("error", "ログイン情報が正しくありません。");
 			
-			session.setAttribute("userName", loginForm.getUserName());
+			return "redirect:/login";
 			
 		}
+		
+		session.setAttribute("userId", userId);
+		
+		return "redirect:/";
+		
+	}
+	
+	@GetMapping("/logout")
+	public String userLogout(HttpSession session) {
+		
+		session.invalidate();
 		
 		return "redirect:/";
 		

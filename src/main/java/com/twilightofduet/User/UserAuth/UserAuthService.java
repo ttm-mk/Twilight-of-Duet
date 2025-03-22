@@ -1,5 +1,7 @@
 package com.twilightofduet.User.UserAuth;
 
+import java.util.Optional;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -72,15 +74,21 @@ public class UserAuthService {
 		
 	}
 	
-	public Boolean userLoginCheck(LoginForm loginForm) {
+	
+	
+	public Integer doGetUserId(LoginForm loginForm) {
 		
-		if(userRepository.findByUserNameAndUserPassword(loginForm.getUserName(), loginForm.getUserPassword()) == null) {
+		Optional<UsersEntity> userEntity = userRepository.findByUserNameAndUserPassword(loginForm.getUserName(), loginForm.getUserPassword());
+		
+		if(userEntity.isPresent()) {
+			Integer userId = userEntity.get().getUserId();
+			return userId;
+		
+		} else {
 			
-			return false;
+			Integer userId = 0;
+			return userId;
 			
-		}else {
-			
-			return true;
 		}
 	}
 
