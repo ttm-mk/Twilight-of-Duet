@@ -1,4 +1,4 @@
-package com.twilightofduet.User.UserCommon;
+package com.twilightofduet.User.UserInformation;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -8,20 +8,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.twilightofduet.User.UserAuth.UserAuthService;
+import com.twilightofduet.User.UserCommon.UserForm;
+import com.twilightofduet.User.UserCommon.UsersBean;
+import com.twilightofduet.User.UserCommon.UsersRepository;
 
 /*
- * InquiryController
+ * UserInformationController
  * 作成者 tsutsumi miki
- * 編集日 2025/３/22 tsutsumi miki
+ * 編集日 2025/3/24 tsutsumi miki
  */
 
 @Controller
-public class UserController {
+public class UserInformationController {
 	
 	@Autowired
 	UsersRepository userRepository;
 	@Autowired
 	UserAuthService userAuthService;
+	@Autowired
+	UserInformationService userInformationService;
 	
 	/**
 	 * ログイン画面表示
@@ -60,7 +65,7 @@ public class UserController {
 	}
 	
 	/**
-	 * ユーザー情報編集
+	 * ユーザー情報編集画面
 	 * @return　ユーザー情報編集画面
 	 */
 	@GetMapping("/user/edit")
@@ -73,6 +78,30 @@ public class UserController {
 		
 		return "/user/user_edit";
 	}
+	
+	/**
+	 * ユーザー情報編集処理
+	 * 
+	 * @param userForm　ユーザーフォーム
+	 * @param model　モデル
+	 * @param session　セッション情報
+	 * @return　ユーザー情報編集画面
+	 */
+	@GetMapping("user/edit/complete")
+	public String userEditComplete(UserForm userForm, Model model, HttpSession session) {
+		
+		UsersBean userBean = new UsersBean();
+		// UserInformationEditメソッドに処理を回して結果をBeanに格納
+		userBean = userInformationService.userInformationEdit(userForm, model, session);
+		// Beanの情報を画面に渡す
+		model.addAttribute("user", userBean);
+		// 編集メッセージを画面に渡す
+		model.addAttribute("message", "編集しました。");
+		
+		return "/user/user_edit";
+		
+	}
+	
 	
 //	/**
 //	 * 

@@ -23,7 +23,7 @@
 					
 					<h3>◇ユーザー情報編集◇</h3>
 					
-					<form method="post" th:action="@{/user/edit}" th:object="${user}">
+					<form method="get" th:action="@{/user/edit/complete}" th:object="${user}">
 						<p>【ユーザー名】</p>
 						<input type="text" name="userName" th:field="*{userName}" />
 						<p>【パスワード】</p>
