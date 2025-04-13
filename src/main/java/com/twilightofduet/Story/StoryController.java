@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 /**
  *  StoryController
  * 作成者 tsutsumi miki
- * 編集日 2025/1/8 tsutsumi miki
+ * 編集日 2025/4/13 tsutsumi miki
  */
 
 @Controller
@@ -27,7 +27,7 @@ public class StoryController {
 	 */
 	@GetMapping("/story/SonoyamaTakumi/1")
 	public String StoryTakumi1( ) {
-		return "story/sonoyama_takumi/story_takumi1";
+		return "story/charactor/sonoyama_takumi/story_pases/story_takumi1.html";
 	}
 
 }

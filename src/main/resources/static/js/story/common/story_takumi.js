@@ -1,5 +1,6 @@
 /**
  * サイドバー：巧美制御
+ * 更新日：2025/4/13
  */
 
 	console.log('JSファイルが読み込まれてます！');
@@ -18,8 +19,8 @@
 	
 	    // リンク作成
 	    const link1 = document.createElement('a');
-	    link1.href = '/story/charactor/sonoyama_takumi/story_pases/story_takumi1'; // 遷移先のパス
-	    link1.textContent = '▶ 園山巧美　1話';
+	    link1.href = '/TwilightOfDuet/story/SonoyamaTakumi/1'; // 遷移先のパス(Controllerで設定したパス)
+	    link1.textContent = '▶ 1話';
 	    link1.style.display = 'block';
 	    link1.style.margin = '5px 0';
 	
@@ -30,10 +31,8 @@
 //	    link2.style.margin = '5px 0';
 	
 	    pathLinksTakumi.appendChild(link1);
-//	    pathLinks.appendChild(link2);
+//	    pathLinksTakumi.appendChild(link2);
 	
-	    // クリックイベント無効化
-	    clickAreaTakumi.style.pointerEvents = 'none';
 	  }
 //	}
 	
