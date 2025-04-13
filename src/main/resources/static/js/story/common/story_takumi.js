@@ -34,7 +34,7 @@
 	
 	    // クリックイベント無効化
 	    clickAreaTakumi.style.pointerEvents = 'none';
-//	  }
+	  }
 //	}
 	
 	document.addEventListener('DOMContentLoaded', function () {
