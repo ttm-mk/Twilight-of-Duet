@@ -4,6 +4,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	
+	<style>
+		#clickArea_takumi {
+		  cursor: pointer;
+		  background-color: rgba(255, 0, 0, 0.3) !important;
+		  padding: 30px !important;
+	      border: 2px dashed red !important;
+	      cursor: pointer !important;
+		}
+	</style>
 </head>
 
 <body>
@@ -14,8 +24,10 @@
 
 		<ul class="sidebar-menu">
 			<li>◆キャラクター◆</li>
-			<li>ヒロイン</li>
-			<li>園山巧美</li>
+			<li id="clickArea_takumi">
+				園山巧美
+				<div id="pathLinks_takumi" style="display: none; margin-top: 10px;"></div>
+			</li>
 			<li>小早川颯真</li>
 			<li>須王御幸</li>
 			<li>園山巧斗</li>
@@ -24,6 +36,7 @@
 		</ul>
 	</aside>
 
+	<script src="/story/charactor/sonoyama_takumi/js/common/story_takumi.js"></script>
 </body>
 
 </html>
