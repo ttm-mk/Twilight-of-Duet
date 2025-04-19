@@ -12,7 +12,7 @@
 
 	<main>
 		<div class="frame" style="background-color: mediumpurple;">
-			<div class="work" id="clickArea" style="width: 850px; height: 1000px;">
+			<div class="work" id="clickArea_takumi1" style="width: 850px; height: 1000px;">
 				
 
 			<p id="textTakumi1">園山巧美　1話</p>
@@ -23,7 +23,12 @@
 
 	</main>
 
-	<script src="/story/charactor/sonoyamatakumi/js/story_takumi1.js"></script>
+<!--	JSファイル読み込み-->
+<!--	メイン-->
+	<script th:src="@{/js/story/charactor/sonoyamatakumi/story_takumi1.js}"></script>
+<!--	サイドバー-->
+	<script th:src="@{/js/story/common/story_main.js}"></script>
+	<script th:src="@{/js/story/common/story_takumi.js}"></script>
 	
 </body>
 

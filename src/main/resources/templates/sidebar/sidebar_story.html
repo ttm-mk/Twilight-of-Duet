@@ -10,7 +10,11 @@
 	<aside id="sidebar" th:fragment="sidebar-story">
 		
 <!--		クラスつけてtest-alignつけなきゃ-->
-		<p>◆メイン◆</p>
+		<p id="clickArea_main" style="cursor: pointer;">
+			◆メイン◆
+			<div id="pathLinks_main" style="display: none; margin-top: 10px;"></div>
+
+		</p>
 
 		<ul class="sidebar-menu">
 			<li>◆キャラクター◆</li>

@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
 	th:replace="~{common/layout :: layout(~{::title}, ~{::body/content()})}">
-	
+
 <head>
 	<meta charset="UTF-8">
-	<title>ストーリー</title>
-
+	<title>メイン　1話</title>
 </head>
 
 <body>
@@ -13,21 +12,28 @@
 
 	<main>
 		<div class="frame" style="background-color: #BEDAF5;">
-			<div class="work" id="clickArea">
-				<p>操作説明</p>
-
-			    <div class="image">ここに画像をおきたい</div>
-				<p id="text" class="text">画面をクリックしてください。</p>
-	
+			<div class="work" id="clickArea_main1" style="width: 850px; height: 1000px;">
+				
+				<div class="work" id="clickArea_main1">
+					<p>メイン　1話</p>
+		
+				    <div class="image">ここに画像をおきたい</div>
+					<p id="textMain1" class="text">メインストーリー　第一話</p>
+					
+				</div>
+				
 			</div>
 		</div>
 
 	</main>
-	
+
 <!--	JSファイル読み込み-->
-    <script th:src="@{/js/story/common/story.js}"></script>
+<!--	メイン-->
+	<script th:src="@{/js/story/charactor/main/story_main1.js}"></script>
+<!--	サイドバー-->
 	<script th:src="@{/js/story/common/story_main.js}"></script>
 	<script th:src="@{/js/story/common/story_takumi.js}"></script>
-
+	
 </body>
+
 </html>
