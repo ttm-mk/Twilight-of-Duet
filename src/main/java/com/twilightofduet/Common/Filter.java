@@ -29,7 +29,8 @@ public class Filter extends HttpFilter {
 		// 今リクエスト中のURL情報の取得
 		String requestURL = request.getRequestURI();
 		// リクエストURLが条件にあっているか確認
-		if(requestURL.startsWith("/TwilightOfDuet/user") || requestURL.startsWith("/TwilightOfDuet/save")) {
+		if(requestURL.startsWith("/TwilightOfDuet/user") || requestURL.startsWith("/TwilightOfDuet/save")
+				|| requestURL.startsWith("/TwilightOfDuet/story")) {
 			// あっていた場合
 			// セッションIDの取得
 			HttpSession session = request.getSession();
