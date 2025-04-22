@@ -63,5 +63,18 @@ public class UserInformationService {
         // ユーザーが見つかればヒロイン名を返す
         return userEntity != null ? userEntity.getHeroineName() : null;
     }
+    
+	/**
+     * ユーザーIDに基づいてヒロインのあだ名を取得
+     * @param userId ユーザーID
+     * @return ヒロイン名
+     */
+    public String getHeroineNicknameById(Integer userId) {
+        // ユーザー情報を取得
+        UsersEntity userEntity = userRepository.findByUserId(userId);
+        
+        // ユーザーが見つかればヒロイン名を返す
+        return userEntity != null ? userEntity.getHeroineNickname() : null;
+    }
 
 }

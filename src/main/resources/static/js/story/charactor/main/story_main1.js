@@ -9,20 +9,25 @@ const userId = /*[[${userId}]]*/ 1;
 let count = 0;
 let texts = [];
 
-// ヒロイン名を取得してテキストを生成
-fetch(`http://localhost:2102/TwilightOfDuet/api/users/heroine`)
-  .then(response => response.text()) // ← JSONじゃなくtextでOK（名前だけだし）
-  .then(heroineName => {
-    if (!heroineName) heroineName = "鳴海千晴"; // 名前が取れなかったときのデフォルト
+// 名前とあだ名を両方取得
+Promise.all([
+  fetch(`http://localhost:2102/TwilightOfDuet/api/users/heroine`).then(res => res.text()),
+  fetch(`http://localhost:2102/TwilightOfDuet/api/users/heroine-nickname`).then(res => res.text())
+])
+
+.then(([heroineName, heroineNickname]) => {
+  // 値がなければデフォルトを使う
+  if (!heroineName) heroineName = "鳴海千晴";
+  if (!heroineNickname) heroineNickname = "ちい";
 
     // ヒロイン名を差し込んだテキスト配列を作る
     texts = [
 		"メインストーリー　1話",
-		"？？？：ちい",
+		`？？？：${heroineNickname}`,
 	    "呼ばれて顔を見上げると、見慣れた顔が視界に入った。",
 	    `${heroineName}：みいくん`,
 	    "”みいくん”と呼んだ彼は、『園山巧美』。私の幼馴染で同級生。",
-		"巧美：緊張してる？ちい、楽しみにしてたもんね",
+		`巧美：緊張してる？${heroineNickname}、楽しみにしてたもんね`,
 		"何を隠そう、今日は待ちに待った選択科目『音楽』の授業初日。",
 		"初めて入る音楽科棟の講堂は、普通科よりステージが大きく客席が狭い造りになっている。",
 		"講堂内の生徒の数は、その収容人数よりはるかに少なかった。",

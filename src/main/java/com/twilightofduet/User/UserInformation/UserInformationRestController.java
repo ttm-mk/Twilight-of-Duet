@@ -18,12 +18,6 @@ import com.twilightofduet.User.UserCommon.UsersRepository;
 @RequestMapping("/api")
 public class UserInformationRestController {
 	
-//	private final UserInformationService userInformationService;
-//
-//    public UserInformationRestController(UserInformationService userInformationService) {
-//        this.userInformationService = userInformationService;
-//    }
-	
 	@Autowired
     UsersRepository userRepository;
 	@Autowired
@@ -44,6 +38,24 @@ public class UserInformationRestController {
             return ResponseEntity.ok(heroineName);
         } else {
             return ResponseEntity.notFound().build();  // ヒロイン名が見つからない場合は404
+        }
+    }
+    
+    /**
+     * ユーザーのヒロインのあだ名を取得するAPI
+     * @param userId ユーザーID
+     * @return ユーザー名
+     */
+    @GetMapping("/users/heroine-nickname")
+    public ResponseEntity<String> getHeroineNickname(HttpSession session) {
+        // ユーザーIDに基づいてヒロイン名を取得
+        String heroineNickname = userInformationService.getHeroineNicknameById((Integer)session.getAttribute("userId"));
+
+        // ヒロイン名が存在すれば返す
+        if (heroineNickname != null) {
+            return ResponseEntity.ok(heroineNickname);
+        } else {
+            return ResponseEntity.notFound().build();  // あだ名が見つからない場合は404
         }
     }
 
