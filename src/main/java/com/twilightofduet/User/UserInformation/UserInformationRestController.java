@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.twilightofduet.User.UserCommon.UsersRepository;
 
 /**
- * 
+ * UsersInformationRestController
+ * 作成者 tsutsumi miki
+ * 編集日 2025/4/23 tsutsumi miki
  */
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/users")
 public class UserInformationRestController {
 	
 	@Autowired
@@ -28,7 +30,7 @@ public class UserInformationRestController {
      * @param userId ユーザーID
      * @return ユーザー名
      */
-    @GetMapping("/users/heroine")
+    @GetMapping("/heroine")
     public ResponseEntity<String> getHeroineName(HttpSession session) {
         // ユーザーIDに基づいてヒロイン名を取得
         String heroineName = userInformationService.getHeroineNameById((Integer)session.getAttribute("userId"));
@@ -46,7 +48,7 @@ public class UserInformationRestController {
      * @param userId ユーザーID
      * @return ユーザー名
      */
-    @GetMapping("/users/heroine-nickname")
+    @GetMapping("/heroine-nickname")
     public ResponseEntity<String> getHeroineNickname(HttpSession session) {
         // ユーザーIDに基づいてヒロイン名を取得
         String heroineNickname = userInformationService.getHeroineNicknameById((Integer)session.getAttribute("userId"));
@@ -58,5 +60,6 @@ public class UserInformationRestController {
             return ResponseEntity.notFound().build();  // あだ名が見つからない場合は404
         }
     }
+    
 
 }
