@@ -4,15 +4,19 @@
  */
 
 const userId = /*[[${userId}]]*/ 1;
+//const storyMain = /*[[${storyMain}]]*/ 1;
 
 // クリックカウント用
 let count = 0;
 let texts = [];
 
-// 名前とあだ名を両方取得
+// 名前、あだ名、StoryId、MainStoryIntの取得
 Promise.all([
   fetch(`http://localhost:2102/TwilightOfDuet/api/users/heroine`).then(res => res.text()),
   fetch(`http://localhost:2102/TwilightOfDuet/api/users/heroine-nickname`).then(res => res.text())
+//  fetch(`http://localhost:2102/TwilightOfDuet/api/story/story-id`).then(res => res.text()),
+//  fetch(`http://localhost:2102/TwilightOfDuet/api/story/story-main`).then(res => res.text())
+
 ])
 
 .then(([heroineName, heroineNickname]) => {
@@ -46,7 +50,7 @@ Promise.all([
 		"八鳥：奏花高等学校学長が、他の学科の生徒同士の不愛を授業でも取り入れたいという意向から、選択科目に音楽を追加することにしたんですよね",
 		"八鳥：このクラスは選択科目『音楽』の第一期生ということですねえ",
 		"生徒一同：・・・・・・・・。",
-		"――—―――ばんっ！",
+		"――――――ばんっ！",
 		"八鳥：では、時間も惜しいので簡単に説明しますね",
 		"八鳥：選択科目は9月から3月までの学期跨ぎの授業です。"
     ];
@@ -85,7 +89,7 @@ Promise.all([
 		"八鳥：奏花高等学校学長が、他の学科の生徒同士の不愛を授業でも取り入れたいという意向から、選択科目に音楽を追加することにしたんですよね",
 		"八鳥：このクラスは選択科目『音楽』の第一期生ということですねえ",
 		"生徒一同：・・・・・・・・。",
-		"――—―――ばんっ！",
+		"――――――ばんっ！",
 		"八鳥：では、時間も惜しいので簡単に説明しますね",
 		"八鳥：選択科目は9月から3月までの学期跨ぎの授業です。"
     ];
@@ -94,6 +98,20 @@ Promise.all([
     document.getElementById('clickArea_main1').addEventListener('click', changeText);
 	
   });
+
+  // メインストーリーカラムに数値の値を返す
+  fetch('http://localhost:2102/TwilightOfDuet/api/story/main/complete', {
+  	
+  	method: 'POST',
+  	headers: {
+  		'Content-Type':'application/json'
+  	},
+  	body: JSON.stringify({"mainStory": 1})
+
+  	
+  })
+  .then(response => response.json())
+  .then(data => console.log("サーバ応答:", data));
 
 
 // テキスト切り替え処理
@@ -104,8 +122,10 @@ function changeText() {
   count++;
   if (count < texts.length) {
     textElement.textContent = texts[count];
+	
   } else {
     clickAreaElement.style.pointerEvents = 'none'; // 全部終わったら無効化
+	
   }
 }
 

@@ -1,7 +1,13 @@
 package com.twilightofduet.Story;
 
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.twilightofduet.User.UserCommon.UsersEntity;
+import com.twilightofduet.User.UserCommon.UsersRepository;
 
 /*
  * StoryService
@@ -14,6 +20,8 @@ public class StoryService {
 	
 	@Autowired
 	StoryRepository storyRepository;
+	@Autowired
+	UsersRepository userRepository;
 	
 	public StoryEntity storyCreate() {
 		
@@ -30,5 +38,23 @@ public class StoryService {
 
 		
 	}
+	
+    @PostMapping("/story/main/save/complete")
+    public Integer saveStoryMain(StoryDTO storyDTO, HttpSession session){
+    	
+      UsersEntity userEntity = userRepository.findByUserId((Integer)session.getAttribute("userId"));
+      StoryEntity storyEntity = userEntity.getStoryId();
+      storyEntity.setMainStory(storyDTO.getMainStory());
+      storyRepository.save(storyEntity);
+      
+      if(storyEntity.getMainStory() == storyDTO.getMainStory()){
+    	  return storyEntity.getMainStory();
+    	  
+      } else {
+    	  return null;
+      }
+      
+      
+    }
 
 }

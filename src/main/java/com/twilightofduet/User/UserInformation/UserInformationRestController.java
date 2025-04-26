@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.twilightofduet.User.UserCommon.UsersRepository;
 
 /**
- * UsersInformationRestController
+ * UserInformationRestController
  * 作成者 tsutsumi miki
  * 編集日 2025/4/23 tsutsumi miki
  */
