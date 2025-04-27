@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,25 +48,25 @@ public class StoryRestController {
 //        }
 //    }
     
-//    /**
-//     * メインストーリー数値を取得するAPI
-//     * @param session
-//     * @return　メインストーリー数値
-//     */
-//    @GetMapping("/story-main")
-//    public ResponseEntity<Integer> getMainStoryInt(HttpSession session) {
-//        // ユーザーIDからUserEntityを取得、MainStoryIntの取得
-//        UsersEntity userEntity = userRepository.findByUserId((Integer)session.getAttribute("userId"));
-//        StoryEntity storyEntity = userEntity.getStoryId();
-//        Integer mainStory = (Integer)storyEntity.getMainStory();
-//        
-//        // メインストーリー数値が存在すれば返す
-//        if (mainStory != null) {
-//            return ResponseEntity.ok(mainStory);
-//        } else {
-//            return ResponseEntity.notFound().build();  // メインストーリー数値が見つからない場合は404
-//        }
-//    }
+    /**
+     * メインストーリー数値を取得するAPI
+     * @param session
+     * @return　メインストーリー数値
+     */
+    @GetMapping("/story-main")
+    public ResponseEntity<Integer> getMainStoryInt(HttpSession session) {
+        // ユーザーIDからUserEntityを取得、MainStoryIntの取得
+        UsersEntity userEntity = userRepository.findByUserId((Integer)session.getAttribute("userId"));
+        StoryEntity storyEntity = userEntity.getStoryId();
+        Integer mainStory = (Integer)storyEntity.getMainStory();
+        
+        // メインストーリー数値が存在すれば返す
+        if (mainStory != null) {
+            return ResponseEntity.ok(mainStory);
+        } else {
+            return ResponseEntity.notFound().build();  // メインストーリー数値が見つからない場合は404
+        }
+    }
 	/**
 	 * StoryDTOの数値が期待値以上⇒保存⇒ResponseEntityに返す
 	 * 

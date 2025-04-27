@@ -8,11 +8,10 @@
 	document.addEventListener('DOMContentLoaded', function () {
 	  console.log('DOM読み込み完了！');
 	});
-		
+
 	
 	function selectStoryMain() {
 	  const pathLinksMain = document.getElementById('pathLinks_main');
-	  const clickAreaMain = document.getElementById('clickArea_main');
 
 	    pathLinksMain.style.display = 'block';
 	    pathLinksMain.innerHTML = ''; // リセット
@@ -24,19 +23,24 @@
 	    link1.style.display = 'block';
 	    link1.style.margin = '5px 0';
 	
-//	    const link2 = document.createElement('a');
-//	    link2.href = '/TwilightOfDuet/story/main/2';
-//	    link2.textContent = '▶ 2話';
-//	    link2.style.display = 'block';
-//	    link2.style.margin = '5px 0';
+	    const link2 = document.createElement('a');
+	    link2.href = '/TwilightOfDuet/story/main/2';
+	    link2.textContent = '▶ 2話';
+	    link2.style.display = 'block';
+	    link2.style.margin = '5px 0';
 	
 	    pathLinksMain.appendChild(link1);
-//	    pathLinksTakumi.appendChild(link2);
+		if(mainStory > 0) pathLinksMain.appendChild(link2);
 	
 	  }
-//	}
 	
-	document.addEventListener('DOMContentLoaded', function () {
-		document.getElementById('clickArea_main').addEventListener('click', selectStoryMain);
-	});
+  	document.addEventListener('DOMContentLoaded', function () {
+      fetch('http://localhost:2102/TwilightOfDuet/api/story/story-main')
+        .then(res => res.text())
+        .then(data => {
+          mainStory = parseInt(data, 10);	// 10新数で返してとっているらしい
+          document.getElementById('clickArea_main').addEventListener('click', selectStoryMain);
+        });
+    });
+
 	

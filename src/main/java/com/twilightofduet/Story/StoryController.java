@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.twilightofduet.User.UserAuth.UserAuthService;
 import com.twilightofduet.User.UserCommon.UsersBean;
+import com.twilightofduet.User.UserCommon.UsersEntity;
+import com.twilightofduet.User.UserCommon.UsersRepository;
 
 /**
  *  StoryController
@@ -21,13 +23,20 @@ public class StoryController {
 	
 	@Autowired
 	UserAuthService userAuthService;
+	@Autowired
+	UsersRepository userRepository;
 	
 	/**
 	 * ストーリートップ画面
 	 * @return
 	 */
 	@GetMapping("/story")
-	public String StoryTopDisplay() {
+	public String StoryTopDisplay(HttpSession session, Model model) {
+		// Bean作成しセッション情報を取得して格納する
+		UsersBean userBean = userAuthService.getUserSessionInformation(session);	    
+	    UsersEntity userEntity = userRepository.findByUserId(userBean.getUserId());
+	    StoryEntity storyEntity = userEntity.getStoryId();
+	    model.addAttribute("mainStory", storyEntity.getMainStory());
 		return "story/story.html";
 	}
 	
@@ -41,8 +50,32 @@ public class StoryController {
 		UsersBean userBean = userAuthService.getUserSessionInformation(session);
 		// ユーザーIDをモデルに追加
 	    model.addAttribute("userId", userBean.getUserId());
+	    
+	    UsersEntity userEntity = userRepository.findByUserId(userBean.getUserId());
+	    StoryEntity storyEntity = userEntity.getStoryId();
+	    model.addAttribute("mainStory", storyEntity.getMainStory());
+
 		
 		return "story/charactor/main/story_main1.html";
+	}
+	
+	/**
+	 * メインストーリー1話
+	 * @return
+	 */
+	@GetMapping("/story/main/2")
+	public String StoryMain2(HttpSession session, Model model) {
+		// Bean作成しセッション情報を取得して格納する
+		UsersBean userBean = userAuthService.getUserSessionInformation(session);
+		// ユーザーIDをモデルに追加
+	    model.addAttribute("userId", userBean.getUserId());
+	    
+	    //StoryBeanつくらないとJSに渡せないことがわかったのでまた後日…TODO
+	    UsersEntity userEntity = userRepository.findByUserId(userBean.getUserId());
+	    StoryEntity storyEntity = userEntity.getStoryId();
+	    model.addAttribute("mainStory", storyEntity.getMainStory());
+		
+		return "story/charactor/main/story_main2.html";
 	}
 	
 	/**

@@ -4,7 +4,6 @@
  */
 
 const userId = /*[[${userId}]]*/ 1;
-//const storyMain = /*[[${storyMain}]]*/ 1;
 
 // クリックカウント用
 let count = 0;
@@ -14,8 +13,6 @@ let texts = [];
 Promise.all([
   fetch(`http://localhost:2102/TwilightOfDuet/api/users/heroine`).then(res => res.text()),
   fetch(`http://localhost:2102/TwilightOfDuet/api/users/heroine-nickname`).then(res => res.text())
-//  fetch(`http://localhost:2102/TwilightOfDuet/api/story/story-id`).then(res => res.text()),
-//  fetch(`http://localhost:2102/TwilightOfDuet/api/story/story-main`).then(res => res.text())
 
 ])
 

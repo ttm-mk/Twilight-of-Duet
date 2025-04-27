@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	th:replace="~{common/layout :: layout(~{::title}, ~{::body/content()})}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>メイン　2話</title>
+</head>
+
+<body>
+	<aside th:replace="~{sidebar/sidebar_story :: sidebar-story}"></aside>
+
+	<main>
+		<div class="frame" style="background-color: #BEDAF5;">
+			<div class="work" id="clickArea_main1" style="width: 850px; height: 1000px;">
+				
+				<div class="work" id="clickArea_main1">
+					<p>メイン　2話</p>
+		
+				    <div class="image">ここに画像をおきたい</div>
+					<p id="textMain1" class="text"></p>
+					
+				</div>
+				
+			</div>
+		</div>
+
+	</main>
+
+<!--	JSファイル読み込み-->
+<!--	メイン-->
+<!--	<script th:src="@{/js/story/charactor/main/story_main2.js}"></script>-->
+<!--	サイドバー-->
+	<script th:src="@{/js/story/common/story_main.js}"></script>
+	<script th:src="@{/js/story/common/story_takumi.js}"></script>
+<!--	JSファイルにユーザーIDを取得させる記述-->
+<!--	<script>const userId = /*[[${userId}]]*/ 1;</script>-->
+	
+</body>
+
+</html>
