@@ -12,15 +12,15 @@
 
 	<main>
 		<div class="frame" style="background-color: #BEDAF5;">
-			<div class="work" id="clickArea_main1" style="width: 850px; height: 1000px;">
+			<div class="work" id="clickArea_main2" style="width: 850px; height: 1000px;">
 				
-				<div class="work" id="clickArea_main1">
+<!--				<div class="work" id="clickArea_main2">-->
 					<p>メイン　2話</p>
 		
 				    <div class="image">ここに画像をおきたい</div>
-					<p id="textMain1" class="text"></p>
+					<p id="textMain2" class="text"></p>
 					
-				</div>
+<!--				</div>-->
 				
 			</div>
 		</div>
@@ -29,12 +29,14 @@
 
 <!--	JSファイル読み込み-->
 <!--	メイン-->
-<!--	<script th:src="@{/js/story/charactor/main/story_main2.js}"></script>-->
+	<script th:src="@{/js/story/charactor/main/story_main2.js}"></script>
 <!--	サイドバー-->
 	<script th:src="@{/js/story/common/story_main.js}"></script>
 	<script th:src="@{/js/story/common/story_takumi.js}"></script>
-<!--	JSファイルにユーザーIDを取得させる記述-->
-<!--	<script>const userId = /*[[${userId}]]*/ 1;</script>-->
+<!--	ストーリー数値の取得-->
+	<script th:inline="javascript">
+	  const storyMain = /*[[${mainStory}]]*/ 0;
+	</script>
 	
 </body>
 

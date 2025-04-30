@@ -50,7 +50,7 @@ public class StoryController {
 		UsersBean userBean = userAuthService.getUserSessionInformation(session);
 		// ユーザーIDをモデルに追加
 	    model.addAttribute("userId", userBean.getUserId());
-	    
+	    // サイドバーにStory数値を返す記述
 	    UsersEntity userEntity = userRepository.findByUserId(userBean.getUserId());
 	    StoryEntity storyEntity = userEntity.getStoryId();
 	    model.addAttribute("mainStory", storyEntity.getMainStory());
@@ -60,7 +60,7 @@ public class StoryController {
 	}
 	
 	/**
-	 * メインストーリー1話
+	 * メインストーリー2話
 	 * @return
 	 */
 	@GetMapping("/story/main/2")
@@ -70,7 +70,7 @@ public class StoryController {
 		// ユーザーIDをモデルに追加
 	    model.addAttribute("userId", userBean.getUserId());
 	    
-	    //StoryBeanつくらないとJSに渡せないことがわかったのでまた後日…TODO
+	    // サイドバーにStory数値を返す記述
 	    UsersEntity userEntity = userRepository.findByUserId(userBean.getUserId());
 	    StoryEntity storyEntity = userEntity.getStoryId();
 	    model.addAttribute("mainStory", storyEntity.getMainStory());

@@ -24,11 +24,12 @@
 
 	</main>
 	
-<!--	JSファイル読み込み-->
+<!--	メイン読み込み-->
     <script th:src="@{/js/story/common/story.js}"></script>
+<!--	サイドバー読み込み-->
 	<script th:src="@{/js/story/common/story_main.js}"></script>
 	<script th:src="@{/js/story/common/story_takumi.js}"></script>
-	
+<!--	ストーリー数値の取得-->
 	<script th:inline="javascript">
 	  const storyMain = /*[[${mainStory}]]*/ 0;
 	</script>
