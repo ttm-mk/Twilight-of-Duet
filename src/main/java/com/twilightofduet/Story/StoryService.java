@@ -39,20 +39,30 @@ public class StoryService {
 		
 	}
 	
+	/**
+	 * メインストーリー数値を保存する処理
+	 * 
+	 * @param storyDTO　ストーリーSTO
+	 * @param session　セッション情報
+	 * @return　メインストーリーの数値　または　NULL
+	 */
     @PostMapping("/story/main/save/complete")
     public Integer saveStoryMain(StoryDTO storyDTO, HttpSession session){
+    	// セッション情報からユーザー情報取得
+    	UsersEntity userEntity = userRepository.findByUserId((Integer)session.getAttribute("userId"));
+    	// ユーザー情報からストーリーID取得
+    	StoryEntity storyEntity = userEntity.getStoryId();
+    	// ストーリーSTOのメインストーリー数値をセット
+    	storyEntity.setMainStory(storyDTO.getMainStory());
+    	// メインストーリー数値の保存
+    	storyRepository.save(storyEntity);
     	
-      UsersEntity userEntity = userRepository.findByUserId((Integer)session.getAttribute("userId"));
-      StoryEntity storyEntity = userEntity.getStoryId();
-      storyEntity.setMainStory(storyDTO.getMainStory());
-      storyRepository.save(storyEntity);
-      
-      if(storyEntity.getMainStory() == storyDTO.getMainStory()){
-    	  return storyEntity.getMainStory();
-    	  
-      } else {
-    	  return null;
-      }
+    	if(storyEntity.getMainStory() == storyDTO.getMainStory()){
+    		return storyEntity.getMainStory();
+	    	  
+	     } else {
+	    	 return null;
+	     }
       
       
     }

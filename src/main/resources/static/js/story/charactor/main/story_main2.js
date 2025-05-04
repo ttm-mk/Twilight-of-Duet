@@ -4,7 +4,6 @@
  * 更新日：2025/4/29
  */
 
-const userId = /*[[${userId}]]*/ 1;
 
 // クリックカウント用
 let count = 0;
@@ -127,7 +126,7 @@ function showChoices(choices) {
 		choiceText.style.display = "block"; // 改行させるためにブロック扱いにするらしい
 		choiceText.style.cursor = "pointer"; // ユーザーにクリックできると伝える
 		choiceText.onclick = () => {
-			// キャラクターの指定と好感度
+			// キャラクターの指定と好感度処理
 			const character = choice.character
 			if (character) {
 			    affection[character] += choice.affection;
