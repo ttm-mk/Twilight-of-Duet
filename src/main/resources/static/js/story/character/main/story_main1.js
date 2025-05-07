@@ -96,20 +96,6 @@ Promise.all([
 	
   });
 
-// メインストーリーカラムに数値の値を返す
-fetch('http://localhost:2102/TwilightOfDuet/api/story/main/complete', {
-  	
-	method: 'POST',
-	headers: {
-		'Content-Type':'application/json'
-	},
-	body: JSON.stringify({
-		"mainStory": 1
-	})
-
- })
-.then(response => response.json())
-.then(data => console.log("サーバ応答:", data));
 
 
 // テキスト切り替え処理
@@ -123,6 +109,21 @@ function changeText() {
 	
   } else {
     clickAreaElement.style.pointerEvents = 'none'; // 全部終わったら無効化
+	
+	// メインストーリーカラムに数値の値を返す
+	fetch('http://localhost:2102/TwilightOfDuet/api/story/main/complete', {
+	  	
+		method: 'POST',
+		headers: {
+			'Content-Type':'application/json'
+		},
+		body: JSON.stringify({
+			"mainStory": 1
+		})
+
+	 })
+	.then(response => response.json())
+	.then(data => console.log("サーバ応答:", data));
 	
   }
 }

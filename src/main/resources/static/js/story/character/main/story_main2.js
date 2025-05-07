@@ -1,7 +1,7 @@
 /**
  * ストーリー：メイン2
  * 制御
- * 更新日：2025/5/7
+ * 更新日：2025/5/8
  */
 
 
@@ -75,31 +75,6 @@ Promise.all([
 	
  });
 
-  // メインストーリーカラムに数値の値を返す
-  fetch('http://localhost:2102/TwilightOfDuet/api/story/main/complete', {
-  	
-  	method: 'POST',
-  	headers: {
-  		'Content-Type':'application/json'
-  	},
-  	body: JSON.stringify({
-			"mainStory": 2
-		})
-  })
-  .then(async response => {
-    if (response.ok) {
-      const data = await response.json();
-      console.log("サーバ応答:", data);
-	  
-    } else {
-      console.warn("レスポンスがエラー:", response.statusText);
-	  
-    }
-  })
-  
-  
-
-
 
 // 表示制御
 function advenceText(){
@@ -118,9 +93,66 @@ function advenceText(){
 		
 	}
 	
+	// 最後まで行った後の処理
+	// TODO：ここはおいおい別functionで整理。好感度とストーリー別個の処理記載して
+	// 　　　aysncで順番と、その順番を決めるfunction書くこと。とりあえず後回しで。
 	if(count >= texts.length){
 		clickAreaElement.style.pointerEvents = "none";
 		
+		// まず好感度送信 → それが成功したらストーリー送信
+		fetch('http://localhost:2102/TwilightOfDuet/api/likeability/add', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				"takumiLikeability": affection["巧美"],
+				"somaLikeability": affection["颯真"],
+				"miyukiLikeability": affection["御幸"],
+				"takutoLikeability": affection["巧斗"],
+				"miruLikeability": affection["実瑠"],
+				"storyNumber": 2,
+				"storyType": "main"
+				
+			})
+		})
+		// async:順序を決める処理を記載↓↓↓好感度⇒ストーリー
+		.then(async likeabilityResponse => {
+			if (likeabilityResponse.ok) {
+				console.log("好感度送信完了");
+
+				// 好感度が保存された後にストーリーの値を返す処理のようだ
+				return fetch('http://localhost:2102/TwilightOfDuet/api/story/main/complete', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						"mainStory": 2
+					})
+				});
+				
+			} else {
+				console.warn("好感度送信失敗");
+				throw new Error("好感度送信失敗");
+				
+			}
+		})
+		// 上が成功したら次はここの処理になる
+		.then(async storyResponse => {
+			if (storyResponse && storyResponse.ok) {
+				// await:完了するまで待たせる（順番は最初にlikeabilityResponseのためそれが完了し次第）
+				const data = await storyResponse.json();
+				console.log("ストーリー送信完了:", data);
+				
+			} else {
+				console.warn("ストーリー送信失敗");
+			}
+		})
+		.catch(error => {
+			console.error("送信エラー:", error);
+			
+		});
 	}
 }
 
@@ -148,33 +180,6 @@ function showChoices(choices) {
 			const clickAreaElement = document.getElementById('clickArea_main2');
 			count++; // 次に進める
 			
-			// 好感度カラムに数値を返す
-			fetch('http://localhost:2102/TwilightOfDuet/api/likeability/add', {
-				
-				method: 'POST',
-				headers: {
-					'Content-Type':'application/json'
-				},
-				body: JSON.stringify({
-					"takumiLikeability": affection["巧美"],
-					"somaLikeability": affection["颯真"],
-					"miyukiLikeability": affection["御幸"],
-					"takutoLikeability": affection["巧斗"],
-					"miruLikeability": affection["実瑠"],
-				"storyNumber": 2,
-				"storyType": "main"
-				})
-			})
-			.then(async response => {
-			    if (response.ok) {
-			      const data = await response.json();
-			      console.log("サーバ応答:", data);
-				
-			    } else {
-			      console.warn("レスポンスがエラー:", response.statusText);
-				
-			    }
-			})
 			clickAreaElement.addEventListener('click', advenceText, { once: true }); // 1回だけ有効
 		};
 		

@@ -73,13 +73,13 @@ public class LikeabilityService {
 		Integer mainStoryNumber = (Integer)storyEntity.getMainStory();
 		
 		// TODO:ユーザーのストーリーIDがJSから取得したストーリーIDより小さい場合に保存して数値を返す
-//		if(storyDTO.getMainStory() > mainStoryNumber) {
+		if(likeabilityRequestDTO.getStoryNumber() > mainStoryNumber) {
 			likeabilityRepository.save(likeabilityEntity);
 			return number = 1;
 			
-//		} else { 
-//			return null;
-//		}
+		} else { 
+			return null;
+		}
 		
 	}
 
