@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
-	th:replace="~{common/layout :: layout(~{::title}, ~{::body/content()})}">	
+	th:replace="~{common/layout :: layout(~{::title}, ~{::body/content()})}">
+
 <head>
 	<meta charset="UTF-8">
-	<title>キャラクター：園山巧美</title>
+	<title>キャラクター：園山巧斗</title>
 </head>
 
 <body>
-	<aside th:replace="~{sidebar/sidebar_charactor :: sidebar-charactor}"></aside>
+	<aside th:replace="~{sidebar/sidebar_character :: sidebar-character}"></aside>
 
 	<main>
-		<div class="frame" style="background-color: mediumpurple;">
+		<div class="frame" style="background-color: purple;">
 			<div class="work">
 				
 				<div class="sentence" style="width: 400px;">
-					<h3>◇園山　巧美（そのやま　たくみ）◇</h3>
-					<p>巧美の説明が表示されている</p>
+					<h3>◇園山　巧斗（そのやま　たくと）◇</h3>
+					<p>巧斗の説明が表示されている</p>
 					<p>
 						サイドバーのキャラクター名を選択することで<br>
 						表示されるキャラクターが変更する仕様
@@ -29,7 +30,6 @@
 		</div>
 		
 	</main>
-
 
 </body>
 
