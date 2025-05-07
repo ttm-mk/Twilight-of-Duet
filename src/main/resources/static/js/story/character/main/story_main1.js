@@ -96,19 +96,20 @@ Promise.all([
 	
   });
 
-  // メインストーリーカラムに数値の値を返す
-  fetch('http://localhost:2102/TwilightOfDuet/api/story/main/complete', {
+// メインストーリーカラムに数値の値を返す
+fetch('http://localhost:2102/TwilightOfDuet/api/story/main/complete', {
   	
-  	method: 'POST',
-  	headers: {
-  		'Content-Type':'application/json'
-  	},
-  	body: JSON.stringify({"mainStory": 1})
+	method: 'POST',
+	headers: {
+		'Content-Type':'application/json'
+	},
+	body: JSON.stringify({
+		"mainStory": 1
+	})
 
-  	
-  })
-  .then(response => response.json())
-  .then(data => console.log("サーバ応答:", data));
+ })
+.then(response => response.json())
+.then(data => console.log("サーバ応答:", data));
 
 
 // テキスト切り替え処理

@@ -98,7 +98,7 @@ public class StoryRestController {
     	UsersEntity userEntity = userRepository.findByUserId((Integer)session.getAttribute("userId"));
     	StoryEntity storyEntity = userEntity.getStoryId();
     	
-    	if(storyDTO.getMainStory() >= storyEntity.getMainStory()) {
+    	if(storyDTO.getMainStory() > storyEntity.getMainStory()) {
     		return true;
     		
     	} else {

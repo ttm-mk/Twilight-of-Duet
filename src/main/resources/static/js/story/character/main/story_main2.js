@@ -1,7 +1,7 @@
 /**
  * ストーリー：メイン2
  * 制御
- * 更新日：2025/4/29
+ * 更新日：2025/5/7
  */
 
 
@@ -41,13 +41,13 @@ Promise.all([
 				{ text: "▶好感度をあげる",
 				  affection: 10,
 				  extraText: "好感度が上がったよ！",
-				  charactor: "巧美"
+				  character: "巧美"
 				},
 				
 				{ text: "▶好感度をさげる",
 				  affection: -5,
 			 	  extraText: "好感度が下がったよ！",
-				  charactor: "巧美"
+				  character: "巧美"
 			  	}
 			]
 		},
@@ -61,9 +61,9 @@ Promise.all([
 
     // イベント設定（この中でやってもいい）
     document.getElementById('clickArea_main2').addEventListener('click', advenceText);
-  })
-  .catch(error => {
-    console.error("名前の取得失敗:", error);
+ })
+ .catch(error => {
+	console.error("名前の取得失敗:", error);
 	
     // 失敗したときも同じようにデフォルトで動かす
     texts = [
@@ -73,22 +73,31 @@ Promise.all([
     document.getElementById('textMain2').textContent = texts[0];
     document.getElementById('clickArea_main2').addEventListener('click', advenceText);
 	
-  });
+ });
 
-  // TODO：値を入れたので値を返して更新する処理を追記する必要あり（こことController）
-//  // メインストーリーカラムに数値の値を返す
-//  fetch('http://localhost:2102/TwilightOfDuet/api/story/main/complete', {
-//  	
-//  	method: 'POST',
-//  	headers: {
-//  		'Content-Type':'application/json'
-//  	},
-//  	body: JSON.stringify({"mainStory": 2})
-//
-//  	
-//  })
-//  .then(response => response.json())
-//  .then(data => console.log("サーバ応答:", data));
+  // メインストーリーカラムに数値の値を返す
+  fetch('http://localhost:2102/TwilightOfDuet/api/story/main/complete', {
+  	
+  	method: 'POST',
+  	headers: {
+  		'Content-Type':'application/json'
+  	},
+  	body: JSON.stringify({
+			"mainStory": 2
+		})
+  })
+  .then(async response => {
+    if (response.ok) {
+      const data = await response.json();
+      console.log("サーバ応答:", data);
+	  
+    } else {
+      console.warn("レスポンスがエラー:", response.statusText);
+	  
+    }
+  })
+  
+  
 
 
 
@@ -138,6 +147,34 @@ function showChoices(choices) {
 			// 次のクリックで進むように一時停止
 			const clickAreaElement = document.getElementById('clickArea_main2');
 			count++; // 次に進める
+			
+			// 好感度カラムに数値を返す
+			fetch('http://localhost:2102/TwilightOfDuet/api/likeability/add', {
+				
+				method: 'POST',
+				headers: {
+					'Content-Type':'application/json'
+				},
+				body: JSON.stringify({
+					"takumiLikeability": affection["巧美"],
+					"somaLikeability": affection["颯真"],
+					"miyukiLikeability": affection["御幸"],
+					"takutoLikeability": affection["巧斗"],
+					"miruLikeability": affection["実瑠"],
+				"storyNumber": 2,
+				"storyType": "main"
+				})
+			})
+			.then(async response => {
+			    if (response.ok) {
+			      const data = await response.json();
+			      console.log("サーバ応答:", data);
+				
+			    } else {
+			      console.warn("レスポンスがエラー:", response.statusText);
+				
+			    }
+			})
 			clickAreaElement.addEventListener('click', advenceText, { once: true }); // 1回だけ有効
 		};
 		

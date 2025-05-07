@@ -56,7 +56,7 @@ public class StoryController {
 	    model.addAttribute("mainStory", storyEntity.getMainStory());
 
 		
-		return "story/charactor/main/story_main1.html";
+		return "story/character/main/story_main1.html";
 	}
 	
 	/**
@@ -75,7 +75,7 @@ public class StoryController {
 	    StoryEntity storyEntity = userEntity.getStoryId();
 	    model.addAttribute("mainStory", storyEntity.getMainStory());
 		
-		return "story/charactor/main/story_main2.html";
+		return "story/character/main/story_main2.html";
 	}
 	
 	/**
@@ -84,7 +84,7 @@ public class StoryController {
 	 */
 	@GetMapping("/story/SonoyamaTakumi/1")
 	public String StoryTakumi1( ) {
-		return "story/charactor/sonoyama_takumi/story_takumi1.html";
+		return "story/character/sonoyama_takumi/story_takumi1.html";
 	}
 
 }
