@@ -1,5 +1,7 @@
 package com.twilightofduet.SaveLoad.SaveFunction;
 
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,11 +36,11 @@ public class SaveEntity {
 	
 	/* 作成日時 */
 	@Column
-	private Integer createdDate;
+	private Date createdDate;
 	
 	/* 更新日時 */
 	@Column
-	private Integer updatedDate;
+	private Date updatedDate;
 	
 	/* ユーザーIDの外部キー */
 	@ManyToOne
@@ -82,7 +84,7 @@ public class SaveEntity {
 	 * 作成日時のゲッター
 	 * @return
 	 */
-	public Integer getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 
@@ -90,7 +92,7 @@ public class SaveEntity {
 	 * 作成日時のセッター
 	 * @param createdDate
 	 */
-	public void setCreatedDate(Integer createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
 
@@ -98,7 +100,7 @@ public class SaveEntity {
 	 * 更新日時のゲッター
 	 * @return
 	 */
-	public Integer getUpdatedDate() {
+	public Date getUpdatedDate() {
 		return updatedDate;
 	}
 
@@ -106,7 +108,7 @@ public class SaveEntity {
 	 * 更新日時のセッター
 	 * @param updatedDate
 	 */
-	public void setUpdatedDate(Integer updatedDate) {
+	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
 	}
 
