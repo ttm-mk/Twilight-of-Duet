@@ -1,4 +1,4 @@
-package com.twilightofduet.SaveLoad;
+package com.twilightofduet.SaveLoad.SaveFunction;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +14,8 @@ public class SaveLoadController {
 	
 	@GetMapping("/save")
 	public String saveDisplay() {
+		// ここでユーザーIDが一緒であるデータを表示できるようにしないといけないね
+		// もしユーザーIDがもつスロットナンバーがない場合の表示とかを記載しないといけないのかな
 		return "/saveLoad/save";
 	}
 	
@@ -21,6 +23,5 @@ public class SaveLoadController {
 	public String loadDisplay() {
 		return "/saveLoad/load";
 	}
-
 
 }

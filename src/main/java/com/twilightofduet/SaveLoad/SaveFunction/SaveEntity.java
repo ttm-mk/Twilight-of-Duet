@@ -1,4 +1,4 @@
-package com.twilightofduet.SaveLoad;
+package com.twilightofduet.SaveLoad.SaveFunction;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
