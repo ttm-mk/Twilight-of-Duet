@@ -5,20 +5,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-
-import com.twilightofduet.Gallery.GalleryEntity;
-import com.twilightofduet.Likeability.LikeabilityEntity;
-import com.twilightofduet.Story.StoryEntity;
 
 
 /**
  * Usersエンティティ
  * 作成者 tsutsumi miki
- * 編集日 2025/2/22 tsutsumi miki
+ * 編集日 2025/5/11 tsutsumi miki
  */
 
 @Entity
@@ -47,22 +41,6 @@ public class UsersEntity {
 	@Column
 	private String heroineNickname;
 	
-	/* ストーリーID外部キー */
-	@OneToOne
-	@JoinColumn(name = "story_id")
-	private StoryEntity storyId;
-	
-	/* ギャラリーID外部キー */
-	@OneToOne
-	@JoinColumn(name = "gallery_id")
-	private GalleryEntity galleryId;
-	
-	/* 好感度ID外部キー */
-	@OneToOne
-	@JoinColumn(name = "likeability_id")
-	private LikeabilityEntity likeabilityId;
-	
-
 	/**
 	 * ユーザーIDのゲッター
 	 * @return
@@ -142,54 +120,5 @@ public class UsersEntity {
 	public void setHeroineNickname(String heroineNickname) {
 		this.heroineNickname = heroineNickname;
 	}
-
-	/**
-	 * ストーリーIDの外部キーのゲッター
-	 * @return
-	 */
-	public StoryEntity getStoryId() {
-		return storyId;
-	}
-
-	/**
-	 * ストーリーIDの外部キーのセッター
-	 * @param storyId
-	 */
-	public void setStoryId(StoryEntity storyId) {
-		this.storyId = storyId;
-	}
-
-	/**
-	 * ギャラリーIDの外部キーのゲッター
-	 * @return
-	 */
-	public GalleryEntity getGalleryId() {
-		return galleryId;
-	}
-
-	/**
-	 * ギャラリーIDの外部キーのセッター
-	 * @param galleryId
-	 */
-	public void setGalleryId(GalleryEntity galleryId) {
-		this.galleryId = galleryId;
-	}
-
-	/**
-	 * 好感度IDの外部キーのゲッター
-	 * @return
-	 */
-	public LikeabilityEntity getLikeabilityId() {
-		return likeabilityId;
-	}
-
-	/**
-	 * 好感度IDの外部キーのセッター
-	 * @param likeabilityId
-	 */
-	public void setLikeabilityId(LikeabilityEntity likeabilityId) {
-		this.likeabilityId = likeabilityId;
-	}
-	
 	
 }
