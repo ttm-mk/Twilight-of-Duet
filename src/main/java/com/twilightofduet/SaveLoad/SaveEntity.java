@@ -10,14 +10,12 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
-import com.twilightofduet.Likeability.LikeabilityEntity;
-import com.twilightofduet.Story.StoryEntity;
 import com.twilightofduet.User.UserCommon.UsersEntity;
 
 /**
  * Saveエンティティ
  * 作成者 tsutsumi miki
- * 編集日 2025/2/22 tsutsumi miki
+ * 編集日 2025/5/10 tsutsumi miki
  */
 
 @Entity
@@ -41,16 +39,6 @@ public class SaveEntity {
 	/* 更新日時 */
 	@Column
 	private Integer updatedDate;
-	
-	/* ストーリーIDの外部キー */
-	@ManyToOne
-	@JoinColumn(name = "story_id")
-	private StoryEntity storyId;
-	
-	/* 好感度IDの外部キー */
-	@ManyToOne
-	@JoinColumn(name = "likeability_id")
-	private LikeabilityEntity likeabilityId;
 	
 	/* ユーザーIDの外部キー */
 	@ManyToOne
@@ -120,38 +108,6 @@ public class SaveEntity {
 	 */
 	public void setUpdatedDate(Integer updatedDate) {
 		this.updatedDate = updatedDate;
-	}
-
-	/**
-	 * ストーリーIDの外部キーのゲッター
-	 * @return
-	 */
-	public StoryEntity getStoryId() {
-		return storyId;
-	}
-
-	/**
-	 * ストーリーIDの外部キーのセッター
-	 * @param storyId
-	 */
-	public void setStoryId(StoryEntity storyId) {
-		this.storyId = storyId;
-	}
-
-	/**
-	 * 好感度IDの外部キーのゲッター
-	 * @return
-	 */
-	public LikeabilityEntity getLikeabilityId() {
-		return likeabilityId;
-	}
-
-	/**
-	 * 好感度IDの外部キーのセッター
-	 * @param likeabilityId
-	 */
-	public void setLikeabilityId(LikeabilityEntity likeabilityId) {
-		this.likeabilityId = likeabilityId;
 	}
 
 	/**
