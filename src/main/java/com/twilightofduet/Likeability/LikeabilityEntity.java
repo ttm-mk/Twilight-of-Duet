@@ -5,13 +5,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+
+import com.twilightofduet.Character.RomanceCharacterEntity;
 
 /**
  * 好感度エンティティ
  * 作成者 tsutsumi miki
- * 編集日 2025/2/22 tsutsumi miki
+ * 編集日 2025/5/10 tsutsumi miki
  */
 
 @Entity
@@ -24,29 +28,18 @@ public class LikeabilityEntity {
 	@SequenceGenerator(name = "seq_likeability_gen", sequenceName = "seq_likeability", allocationSize = 1)
 	private Integer likeabilityId;
 	
-	/* 巧美の好感度 */
+	/* 好感度 */
 	@Column
-	private Integer takumiLikeability;
-	
-	/* 颯真の好感度 */
-	@Column
-	private Integer somaLikeability;
-	
-	/* 御幸の好感度 */
-	@Column
-	private Integer miyukiLikeability;
-	
-	/* 巧斗の好感度 */
-	@Column
-	private Integer takutoLikeability;
-	
-	/* 実瑠の好感度 */
-	@Column
-	private Integer miruLikeability;
+	private Integer characterLikeability;
 	
 	/* 攻略対象 */
 	@Column
 	private Integer targetNumber;
+	
+	/* キャラクターIDの外部キー */
+	@ManyToOne
+	@JoinColumn(name="romance_character_id")
+	private RomanceCharacterEntity romanceCharacterId;
 
 	
 	/**
@@ -66,87 +59,23 @@ public class LikeabilityEntity {
 	}
 
 	/**
-	 *巧美の好感度のゲッター
+	 * 好感度のゲッター
 	 * @return
 	 */
-	public Integer getTakumiLikeability() {
-		return takumiLikeability;
+	public Integer getCharacterLikeability() {
+		return characterLikeability;
 	}
 
 	/**
-	 * 巧美の好感度のセッター
-	 * @param takumiLikeability
+	 * 好感度のセッター
+	 * @param characterLikeability
 	 */
-	public void setTakumiLikeability(Integer takumiLikeability) {
-		this.takumiLikeability = takumiLikeability;
-	}
-
-	/*
-	 *颯真の好感度のゲッター 
-	 * @return
-	 */
-	public Integer getSomaLikeability() {
-		return somaLikeability;
+	public void setCharacterLikeability(Integer characterLikeability) {
+		this.characterLikeability = characterLikeability;
 	}
 
 	/**
-	 * 颯真の好感度のセッター
-	 * @param somaLikeability
-	 */
-	public void setSomaLikeability(Integer somaLikeability) {
-		this.somaLikeability = somaLikeability;
-	}
-
-	/**
-	 * 御幸の好感度のゲッター
-	 * @return
-	 */
-	public Integer getMiyukiLikeability() {
-		return miyukiLikeability;
-	}
-
-	/**
-	 * 御幸の好感度のセッター
-	 * @param miyukiLikeability
-	 */
-	public void setMiyukiLikeability(Integer miyukiLikeability) {
-		this.miyukiLikeability = miyukiLikeability;
-	}
-
-	/**
-	 * 巧斗の好感度のゲッター
-	 * @return
-	 */
-	public Integer getTakutoLikeability() {
-		return takutoLikeability;
-	}
-
-	/**
-	 * 巧斗の好感度のセッター
-	 * @param takutoLikeability
-	 */
-	public void setTakutoLikeability(Integer takutoLikeability) {
-		this.takutoLikeability = takutoLikeability;
-	}
-
-	/**
-	 * 実瑠の好感度のゲッター
-	 * @return
-	 */
-	public Integer getMiruLikeability() {
-		return miruLikeability;
-	}
-
-	/**
-	 * 実瑠の好感度のセッター
-	 * @param miruLikeability
-	 */
-	public void setMiruLikeability(Integer miruLikeability) {
-		this.miruLikeability = miruLikeability;
-	}
-
-	/**
-	 * 攻略対象のゲッター
+	 * 最終攻略対象のゲッター
 	 * @return
 	 */
 	public Integer getTargetNumber() {
@@ -154,13 +83,28 @@ public class LikeabilityEntity {
 	}
 
 	/**
-	 * 攻略対象のセッター
+	 * 最終攻略対象のセッター
 	 * @param targetNumber
 	 */
 	public void setTargetNumber(Integer targetNumber) {
 		this.targetNumber = targetNumber;
 	}
-	
-	
 
+	/**
+	 * キャラクターIDの外部キーのゲッター
+	 * @return
+	 */
+	public RomanceCharacterEntity getRomanceCharacterId() {
+		return romanceCharacterId;
+	}
+
+	/**
+	 * キャラクターIDの外部キーのセッター
+	 * @param romanceCharacterId
+	 */
+	public void setRomanceCharacterId(RomanceCharacterEntity romanceCharacterId) {
+		this.romanceCharacterId = romanceCharacterId;
+	}
+
+	
 }
