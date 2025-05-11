@@ -5,13 +5,18 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+
+import com.twilightofduet.Character.RomanceCharacterEntity;
+import com.twilightofduet.User.UserCommon.UsersEntity;
 
 /**
  * Storyエンティティ
  * 作成者 tsutsumi miki
- * 編集日 2025/2/22 tsutsumi miki
+ * 編集日 2025/5/10 tsutsumi miki
  */
 
 @Entity
@@ -24,29 +29,19 @@ public class StoryEntity {
 	@SequenceGenerator(name = "seq_story_gen", sequenceName = "seq_story", allocationSize = 1)
 	private Integer storyId;
 	
-	/* メインストーリー */
+	/* チャプター番号 */
 	@Column
-	private Integer mainStory;
+	private Integer chapterNumber;
 
-	/* 巧美ストーリー */
-	@Column
-	private Integer takumiStory;
+	/* ユーザーIDの外部キー */
+	@OneToOne
+	@JoinColumn(name="user_id")
+	private UsersEntity userId;
 	
-	/* 颯真ストーリー */
-	@Column
-	private Integer somaStory;
-	
-	/* 御幸ストーリー */
-	@Column
-	private Integer miyukiStory;
-	
-	/* 巧斗ストーリー */
-	@Column
-	private Integer takutoStory;
-	
-	/* 実瑠ストーリー */
-	@Column
-	private Integer miruStory;
+	/* キャラクターIDの外部キー */
+	@OneToOne
+	@JoinColumn(name="romance_character_id")
+	private RomanceCharacterEntity romanceCharacterId;
 
 	/**
 	 * ストーリーIDのゲッター
@@ -65,99 +60,51 @@ public class StoryEntity {
 	}
 
 	/**
-	 * メインストーリーのゲッター
+	 * チャプター番号のゲッター
 	 * @return
 	 */
-	public Integer getMainStory() {
-		return mainStory;
+	public Integer getChapterNumber() {
+		return chapterNumber;
 	}
 
 	/**
-	 * メインストーリーのセッター
-	 * @param mainStory
+	 * チャプター番号のセッター
+	 * @param chapterNumber
 	 */
-	public void setMainStory(Integer mainStory) {
-		this.mainStory = mainStory;
+	public void setChapterNumber(Integer chapterNumber) {
+		this.chapterNumber = chapterNumber;
 	}
 
 	/**
-	 * 巧美ストーリーのゲッター
+	 * ユーザーID外部キーのゲッター
 	 * @return
 	 */
-	public Integer getTakumiStory() {
-		return takumiStory;
+	public UsersEntity getUserId() {
+		return userId;
 	}
 
 	/**
-	 * 巧美ストーリーのセッター
-	 * @param takumiStory
+	 * ユーザーID外部キーのセッター
+	 * @param userId
 	 */
-	public void setTakumiStory(Integer takumiStory) {
-		this.takumiStory = takumiStory;
+	public void setUserId(UsersEntity userId) {
+		this.userId = userId;
 	}
 
 	/**
-	 * 颯真ストーリーのゲッター
+	 * キャラクターID外部キーのゲッター
 	 * @return
 	 */
-	public Integer getSomaStory() {
-		return somaStory;
+	public RomanceCharacterEntity getRomanceCharacterId() {
+		return romanceCharacterId;
 	}
 
 	/**
-	 * 颯真ストーリーのセッター
-	 * @param somaStory
+	 * キャラクターID外部キーのセッター
+	 * @param romanceCharacterId
 	 */
-	public void setSomaStory(Integer somaStory) {
-		this.somaStory = somaStory;
+	public void setRomanceCharacterId(RomanceCharacterEntity romanceCharacterId) {
+		this.romanceCharacterId = romanceCharacterId;
 	}
 
-	/**
-	 * 御幸ストーリーのゲッター
-	 * @return
-	 */
-	public Integer getMiyukiStory() {
-		return miyukiStory;
-	}
-
-	/**
-	 * 御幸ストーリーのセッター
-	 * @param miyukiStory
-	 */
-	public void setMiyukiStory(Integer miyukiStory) {
-		this.miyukiStory = miyukiStory;
-	}
-
-	/**
-	 * 巧斗ストーリーのゲッター
-	 * @return
-	 */
-	public Integer getTakutoStory() {
-		return takutoStory;
-	}
-
-	/**
-	 * 巧斗ストーリーのセッター
-	 * @param takutoStory
-	 */
-	public void setTakutoStory(Integer takutoStory) {
-		this.takutoStory = takutoStory;
-	}
-
-	/**
-	 * 実瑠ストーリーのゲッター
-	 * @return
-	 */
-	public Integer getMiruStory() {
-		return miruStory;
-	}
-
-	/**
-	 * 実瑠ストーリーのセッター
-	 * @param miruStory
-	 */
-	public void setMiruStory(Integer miruStory) {
-		this.miruStory = miruStory;
-	}
-	
 }
