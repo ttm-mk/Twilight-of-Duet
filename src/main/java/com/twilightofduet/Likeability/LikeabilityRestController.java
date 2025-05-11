@@ -24,7 +24,6 @@ public class LikeabilityRestController {
 	
 	/**
 	 * JSから好感度を取得し、saveLikeabilityに値を渡して戻り値を受け取る
-	 * TODO:どうやらJSから受け取れてないようなのでそこチェック！
 	 * 
 	 * @param likeabilityDTO　好感度DTO
 	 * @param storyDTO　ストーリーDTO
