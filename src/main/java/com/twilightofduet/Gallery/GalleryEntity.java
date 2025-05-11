@@ -5,13 +5,18 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+
+import com.twilightofduet.Character.RomanceCharacterEntity;
+import com.twilightofduet.User.UserCommon.UsersEntity;
 
 /**
  * Galleryエンティティ
  * 作成者 tsutsumi miki
- * 編集日 2025/2/22 tsutsumi miki
+ * 編集日 2025/5/10 tsutsumi miki
  */
 
 @Entity
@@ -24,53 +29,25 @@ public class GalleryEntity {
 	@SequenceGenerator(name = "seq_gallery_gen", sequenceName = "seq_gallery", allocationSize = 1)
 	private Integer galleryId;
 	
-	/* メインストーリー */
+	/* ストーリーナンバー */
+	// 呼んだストーリーの話数のこと
 	@Column
-	private Integer mainStory;
+	private Integer storyNumber;
 	
-	/* 巧美ストーリー */
+	/* スチルナンバー */
+	// 見たスチルの番号のこと
 	@Column
-	private Integer takumiStory;
+	private Integer stillNumber;
 	
-	/* 颯真ストーリー */
-	@Column
-	private Integer somaStory;
+	/* ユーザーIDの外部キー */
+	@OneToOne
+	@JoinColumn(name="user_id")
+	private UsersEntity userId;
 	
-	/* 御幸ストーリー */
-	@Column
-	private Integer miyukiStory;
-	
-	/* 巧斗ストーリー */
-	@Column
-	private Integer takutoStory;
-	
-	/* 実瑠ストーリー */
-	@Column
-	private Integer miruStory;
-	
-	/* メインスチル */
-	@Column
-	private Integer mainStill;
-	
-	/* 巧美スチル */
-	@Column
-	private Integer takumiStill;
-	
-	/* 颯真スチル */
-	@Column
-	private Integer somaStill;
-	
-	/* 御幸スチル */
-	@Column
-	private Integer miyukiStill;
-	
-	/* 巧斗スチル */
-	@Column
-	private Integer takutoStill;
-	
-	/* 実瑠スチル */
-	@Column
-	private Integer miruStill;
+	/* キャラクターIDの外部キー */
+	@OneToOne
+	@JoinColumn(name="romance_character_id")
+	private RomanceCharacterEntity romanceCharacterId;
 	
 	/**
 	 * ギャラリーIDのゲッター
@@ -89,195 +66,67 @@ public class GalleryEntity {
 	}
 
 	/**
-	 * メインストーリーカラムのゲッター
+	 * ストーリーナンバーのゲッター
 	 * @return
 	 */
-	public Integer getMainStory() {
-		return mainStory;
+	public Integer getStoryNumber() {
+		return storyNumber;
 	}
 
 	/**
-	 * メインストーリーカラムのセッター
-	 * @param mainStory
+	 * ストーリーナンバーのセッター
+	 * @param storyNumber
 	 */
-	public void setMainStory(Integer mainStory) {
-		this.mainStory = mainStory;
+	public void setStoryNumber(Integer storyNumber) {
+		this.storyNumber = storyNumber;
 	}
 
 	/**
-	 * 巧美ストーリーカラムのゲッター
+	 * スチルナンバーのゲッター
 	 * @return
 	 */
-	public Integer getTakumiStory() {
-		return takumiStory;
+	public Integer getStillNumber() {
+		return stillNumber;
 	}
 
 	/**
-	 * 巧美ストーリーカラムのセッター
-	 * @param takumiStory
+	 * スチルナンバーのセッター
+	 * @param stillNumber
 	 */
-	public void setTakumiStory(Integer takumiStory) {
-		this.takumiStory = takumiStory;
+	public void setStillNumber(Integer stillNumber) {
+		this.stillNumber = stillNumber;
 	}
 
 	/**
-	 * 颯真ストーリーカラムのゲッター
+	 * ユーザーID外部キーのゲッター
 	 * @return
 	 */
-	public Integer getSomaStory() {
-		return somaStory;
+	public UsersEntity getUserId() {
+		return userId;
 	}
 
 	/**
-	 * 颯真ストーリーカラムのセッター
-	 * @param somaStory
+	 * ユーザーID外部キーのセッター
+	 * @param userId
 	 */
-	public void setSomaStory(Integer somaStory) {
-		this.somaStory = somaStory;
+	public void setUserId(UsersEntity userId) {
+		this.userId = userId;
 	}
 
 	/**
-	 * 御幸ストーリーカラムのゲッター
+	 * キャラクターID外部キーのゲッター
 	 * @return
 	 */
-	public Integer getMiyukiStory() {
-		return miyukiStory;
+	public RomanceCharacterEntity getRomanceCharacterId() {
+		return romanceCharacterId;
 	}
 
 	/**
-	 * 御幸ストーリーカラムのセッター
-	 * @param miyukiStory
+	 * キャラクターID外部キーのセッター
+	 * @param romanceCharacterId
 	 */
-	public void setMiyukiStory(Integer miyukiStory) {
-		this.miyukiStory = miyukiStory;
-	}
-
-	/**
-	 * 巧斗ストーリーカラムのゲッター
-	 * @return
-	 */
-	public Integer getTakutoStory() {
-		return takutoStory;
-	}
-
-	/**
-	 * 巧斗ストーリーカラムのセッター
-	 * @param takutoStory
-	 */
-	public void setTakutoStory(Integer takutoStory) {
-		this.takutoStory = takutoStory;
-	}
-
-	/**
-	 * 実瑠ストーリーカラムのゲッター
-	 * @return
-	 */
-	public Integer getMiruStory() {
-		return miruStory;
-	}
-
-	/**
-	 * 実瑠ストーリーカラムのセッター
-	 * @param miruStory
-	 */
-	public void setMiruStory(Integer miruStory) {
-		this.miruStory = miruStory;
-	}
-
-	/**
-	 * メインスチルカラムのゲッター
-	 * @return
-	 */
-	public Integer getMainStill() {
-		return mainStill;
-	}
-
-	/**
-	 * メインスチルカラムのセッター
-	 * @param mainStill
-	 */
-	public void setMainStill(Integer mainStill) {
-		this.mainStill = mainStill;
-	}
-
-	/**
-	 * 巧美スチルカラムのゲッター
-	 * @return
-	 */
-	public Integer getTakumiStill() {
-		return takumiStill;
-	}
-
-	/**
-	 * 巧美スチルカラムのセッター
-	 * @param takumiStill
-	 */
-	public void setTakumiStill(Integer takumiStill) {
-		this.takumiStill = takumiStill;
-	}
-
-	/**
-	 * 颯真スチルカラムのゲッター
-	 * @return
-	 */
-	public Integer getSomaStill() {
-		return somaStill;
-	}
-
-	/**
-	 * 颯真スチルカラムのセッター
-	 * @param somaStill
-	 */
-	public void setSomaStill(Integer somaStill) {
-		this.somaStill = somaStill;
-	}
-
-	/**
-	 * 御幸スチルカラムのゲッター
-	 * @return
-	 */
-	public Integer getMiyukiStill() {
-		return miyukiStill;
-	}
-
-	/**
-	 * 御幸スチルカラムのセッター
-	 * @param miyukiStill
-	 */
-	public void setMiyukiStill(Integer miyukiStill) {
-		this.miyukiStill = miyukiStill;
-	}
-
-	/**
-	 * 巧斗スチルカラムのゲッター
-	 * @return
-	 */
-	public Integer getTakutoStill() {
-		return takutoStill;
-	}
-
-	/**
-	 * 巧斗スチルカラムのセッター
-	 * @param takutoStill
-	 */
-	public void setTakutoStill(Integer takutoStill) {
-		this.takutoStill = takutoStill;
-	}
-
-	/**
-	 * 実瑠スチルカラムのゲッター
-	 * @return
-	 */
-	public Integer getMiruStill() {
-		return miruStill;
-	}
-
-	/**
-	 * 実瑠スチルカラムのセッター
-	 * @param miruStill
-	 */
-	public void setMiruStill(Integer miruStill) {
-		this.miruStill = miruStill;
+	public void setRomanceCharacterId(RomanceCharacterEntity romanceCharacterId) {
+		this.romanceCharacterId = romanceCharacterId;
 	}
 	
 	
