@@ -11,5 +11,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RomanceCharacterRepository extends JpaRepository<RomanceCharacterEntity, Integer> {
+	
+	RomanceCharacterEntity findByRomanceCharacterId(String characterName);
 
 }

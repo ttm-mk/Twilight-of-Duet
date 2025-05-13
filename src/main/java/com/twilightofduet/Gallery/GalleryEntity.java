@@ -49,6 +49,21 @@ public class GalleryEntity {
 	@JoinColumn(name="romance_character_id")
 	private RomanceCharacterEntity romanceCharacterId;
 	
+	
+	// コンストラクタ（引数なし）
+	public GalleryEntity() {
+		
+	}
+	
+	// コンストラクタ（引数なし）
+	public GalleryEntity(Integer storyNumber, Integer stillNumber, UsersEntity userId, RomanceCharacterEntity romanceCharacterId) {
+		this.setStoryNumber(storyNumber);
+		this.setStillNumber(stillNumber);
+		this.setUserId(userId);
+		this.setRomanceCharacterId(romanceCharacterId);
+	}
+	
+	
 	/**
 	 * ギャラリーIDのゲッター
 	 * @return
