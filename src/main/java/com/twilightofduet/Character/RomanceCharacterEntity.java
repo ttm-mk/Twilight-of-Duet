@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 /**
  * RomanceCharacterエンティティ
  * 作成者 tsutsumi miki
- * 編集日 2025/5/11 tsutsumi miki
+ * 編集日 2025/5/13 tsutsumi miki
  */
 
 @Entity
@@ -27,6 +27,16 @@ public class RomanceCharacterEntity {
 	// キャラクター名
 	@Column
 	private String characterName;
+	
+	// コンストラクタ（引数なし）
+	public RomanceCharacterEntity() {
+		
+	}
+	
+	// コンストラクタ（引数あり）
+	public RomanceCharacterEntity(String name) {
+		this.setCharacterName(name);
+	}
 
 	/**
 	 * キャラクターIDのゲッター
