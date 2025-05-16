@@ -12,6 +12,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RomanceCharacterRepository extends JpaRepository<RomanceCharacterEntity, Integer> {
 	
+	/**
+	 *  キャラクター名からキャラクターIDを検索して返す
+	 * @param characterName
+	 * @return
+	 */
 	RomanceCharacterEntity findByRomanceCharacterId(String characterName);
 
 }

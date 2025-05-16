@@ -21,6 +21,9 @@ public class MasterDataLoader implements CommandLineRunner {
 		this.romanceCharacterRepository = romanceCharacterRepository;
 	}
 	
+	/**
+	 * アプリ起動時に各キャラクターレコード作成する
+	 */
 	@Override
 	public void run(String... args) {
 		if (romanceCharacterRepository.count() == 0) {
