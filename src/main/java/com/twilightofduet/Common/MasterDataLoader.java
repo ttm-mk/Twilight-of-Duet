@@ -15,6 +15,7 @@ import com.twilightofduet.Character.RomanceCharacterRepository;
 
 @Component
 public class MasterDataLoader implements CommandLineRunner {
+	
 	private final RomanceCharacterRepository romanceCharacterRepository;
 	
 	public MasterDataLoader(RomanceCharacterRepository romanceCharacterRepository) {

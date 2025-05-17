@@ -42,6 +42,19 @@ public class StoryEntity {
 	@OneToOne
 	@JoinColumn(name="romance_character_id")
 	private RomanceCharacterEntity romanceCharacterId;
+	
+	/**
+	 * 引数ありのコンストラクタ
+	 * 
+	 * @param romanceCharacterId
+	 * @param userId
+	 * @param chapterNumber
+	 */
+	public StoryEntity(RomanceCharacterEntity romanceCharacterId, UsersEntity userId, Integer chapterNumber) {
+		this.romanceCharacterId = romanceCharacterId;
+		this.userId = userId;
+		this.chapterNumber = chapterNumber;
+	}
 
 	/**
 	 * ストーリーIDのゲッター
