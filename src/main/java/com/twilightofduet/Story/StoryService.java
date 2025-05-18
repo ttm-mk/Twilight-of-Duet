@@ -14,7 +14,7 @@ import com.twilightofduet.User.UserCommon.UsersRepository;
 /*
  * StoryService
  * 作成者 tsutsumi miki
- * 編集日 2025/5/4 tsutsumi miki
+ * 編集日 2025/5/17 tsutsumi miki
  */
 
 @Service
@@ -34,13 +34,24 @@ public class StoryService {
 	 * @return
 	 */
 	public String storyCreate(UsersEntity user) {
-		// メインはメインストーリー
-		storyRepository.save(new StoryEntity(characterRepository.findByRomanceCharacterId("メイン"), user, 0));
-		storyRepository.save(new StoryEntity(characterRepository.findByRomanceCharacterId("園山巧美"), user, 0));
-		storyRepository.save(new StoryEntity(characterRepository.findByRomanceCharacterId("小早川颯真"), user, 0));
-		storyRepository.save(new StoryEntity(characterRepository.findByRomanceCharacterId("須王御幸"), user, 0));
-		storyRepository.save(new StoryEntity(characterRepository.findByRomanceCharacterId("園山巧斗"), user, 0));
-		storyRepository.save(new StoryEntity(characterRepository.findByRomanceCharacterId("相良実瑠"), user, 0));
+		
+		if(user == null || user.getUserId() == null){ 
+			throw new RuntimeException("ユーザー名が空なのでストーリーレコードを作成できません。");
+			
+		}
+		
+		try {
+			// メインはメインストーリー
+			storyRepository.save(new StoryEntity(characterRepository.findByRomanceCharacterId("メイン"), user, 0));
+			storyRepository.save(new StoryEntity(characterRepository.findByRomanceCharacterId("園山巧美"), user, 0));
+			storyRepository.save(new StoryEntity(characterRepository.findByRomanceCharacterId("小早川颯真"), user, 0));
+			storyRepository.save(new StoryEntity(characterRepository.findByRomanceCharacterId("須王御幸"), user, 0));
+			storyRepository.save(new StoryEntity(characterRepository.findByRomanceCharacterId("園山巧斗"), user, 0));
+			storyRepository.save(new StoryEntity(characterRepository.findByRomanceCharacterId("相良実瑠"), user, 0));
+			
+		} catch(Exception e) {
+			throw new RuntimeException("ストーリーレコードの作成は失敗しました。", e);
+		}
 		
 		return "ok";
 		

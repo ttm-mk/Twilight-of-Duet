@@ -3,6 +3,7 @@ package com.twilightofduet.User.UserAuth;
 import java.util.Optional;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.transaction.Transactional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,7 @@ public class UserAuthService {
 	 * @param userForm 画面で取得したUser情報
 	 * @return　userDTO　ユーザー情報を返す用の箱
 	 */
+	@Transactional
 	@PostMapping("/relogin")
 	public UserDTO userNewCreate(UserForm userForm) {
 		
@@ -56,7 +58,7 @@ public class UserAuthService {
 		// User保存
 		user = userRepository.save(user);
 		
-		if(user!=null) {
+		if(user!= null) {
 			
 			// 好感度作成
 			likeabilityService.likeabilityCreate(user);
