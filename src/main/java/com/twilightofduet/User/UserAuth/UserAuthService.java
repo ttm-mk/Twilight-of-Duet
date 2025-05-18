@@ -23,7 +23,7 @@ import com.twilightofduet.User.UserCommon.UsersRepository;
 /*
  * UserAuthService
  * 作成者 tsutsumi miki
- * 編集日 2025/3/22 tsutsumi miki
+ * 編集日 2025/5/18 tsutsumi miki
  */
 
 @Service
@@ -53,18 +53,21 @@ public class UserAuthService {
 		BeanUtils.copyProperties(userForm, user, "user_id");
 		user.setHeroineName("鳴海千晴");
 		user.setHeroineNickname("ちい");
-		
-		// 好感度FKの取得
-		user.setLikeabilityId(likeabilityService.likeabilityCreate());
-		
-		// ストーリーFKの取得
-		user.setStoryId(storyService.storyCreate());
-		
-		// ギャラリーFKの取得
-		user.setGalleryId(galleryService.galleryCreate());
-		
 		// User保存
 		user = userRepository.save(user);
+		
+		if(user!=null) {
+			
+			// 好感度作成
+			likeabilityService.likeabilityCreate(user);
+			
+			// ストーリー作成
+			storyService.storyCreate(user);
+			
+			// ギャラリー作成
+			galleryService.galleryCreate(user);
+			
+		}
 		
 		
 		// UserDTOにユーザー情報を格納
