@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.twilightofduet.User.UserCommon.UsersEntity;
+import com.twilightofduet.Character.RomanceCharacterEntity;
+import com.twilightofduet.Character.RomanceCharacterRepository;
 import com.twilightofduet.User.UserCommon.UsersRepository;
 
 /**
  * StoryRestController
  * 作成者 tsutsumi miki
- * 編集日 2025/4/27 tsutsumi miki
+ * 編集日 2025/5/21 tsutsumi miki
  */
 
 @RestController
@@ -27,26 +28,10 @@ public class StoryRestController {
 	UsersRepository userRepository;
 	@Autowired
 	StoryService storyService;
-	
-//    /**
-//     * StoryID取得するAPI
-//     * @param session
-//     * @return storyId
-//     */
-//    @GetMapping("/story-id")
-//    public ResponseEntity<Integer> getStoryIid(HttpSession session) {
-//        // ユーザーIDからUserEntityを取得、StoryIDの取得
-//        UsersEntity userEntity = userRepository.findByUserId((Integer)session.getAttribute("userId"));
-//        StoryEntity storyEntity = userEntity.getStoryId();
-//        Integer storyId = (Integer)storyEntity.getStoryId();
-//
-//        // ストーリーIDが存在すれば返す
-//        if (storyId != null) {
-//            return ResponseEntity.ok(storyId);
-//        } else {
-//            return ResponseEntity.notFound().build();  // ストーリーIDが見つからない場合は404
-//        }
-//    }
+	@Autowired
+	RomanceCharacterRepository characterRepository;
+	@Autowired
+	StoryRepository storyRepository;
     
     /**
      * メインストーリー数値を取得するAPI
@@ -56,9 +41,10 @@ public class StoryRestController {
     @GetMapping("/story-main")
     public ResponseEntity<Integer> getMainStoryInt(HttpSession session) {
         // ユーザーIDからUserEntityを取得、MainStoryIntの取得
-        UsersEntity userEntity = userRepository.findByUserId((Integer)session.getAttribute("userId"));
-        StoryEntity storyEntity = userEntity.getStoryId();
-        Integer mainStory = (Integer)storyEntity.getMainStory();
+        RomanceCharacterEntity characterEntity = characterRepository.findByRomanceCharacterId("メイン");
+        Integer characterId = characterEntity.getRomanceCharacterId();
+        StoryEntity storyEntity = storyRepository.findByStoryId((Integer)session.getAttribute("userId"), characterId);
+        Integer mainStory = (Integer)storyEntity.getChapterNumber();
         
         // メインストーリー数値が存在すれば返す
         if (mainStory != null) {
@@ -67,6 +53,7 @@ public class StoryRestController {
             return ResponseEntity.notFound().build();  // メインストーリー数値が見つからない場合は404
         }
     }
+    
 	/**
 	 * StoryDTOの数値が期待値以上⇒保存⇒ResponseEntityに返す
 	 * 
@@ -95,10 +82,13 @@ public class StoryRestController {
      * @return　Boolean
      */
     public boolean storyNumberConditionCheck(StoryDTO storyDTO, HttpSession session) {
-    	UsersEntity userEntity = userRepository.findByUserId((Integer)session.getAttribute("userId"));
-    	StoryEntity storyEntity = userEntity.getStoryId();
+        // ユーザーIDからUserEntityを取得、MainStoryIntの取得
+        RomanceCharacterEntity characterEntity = characterRepository.findByRomanceCharacterId("メイン");
+        Integer characterId = characterEntity.getRomanceCharacterId();
+        StoryEntity storyEntity = storyRepository.findByStoryId((Integer)session.getAttribute("userId"), characterId);
+        Integer mainStory = (Integer)storyEntity.getChapterNumber();
     	
-    	if(storyDTO.getMainStory() > storyEntity.getMainStory()) {
+    	if(storyDTO.getMainStory() > mainStory) {
     		return true;
     		
     	} else {
