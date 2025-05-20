@@ -11,5 +11,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LikeabilityRepository extends JpaRepository<LikeabilityEntity, Integer>{
+	
+	LikeabilityEntity findByLikeabilityId(Integer userId, Integer romanceCharacterId);
 
 }

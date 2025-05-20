@@ -7,15 +7,17 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 import com.twilightofduet.Character.RomanceCharacterEntity;
+import com.twilightofduet.User.UserCommon.UsersEntity;
 
 /**
  * 好感度エンティティ
  * 作成者 tsutsumi miki
- * 編集日 2025/5/10 tsutsumi miki
+ * 編集日 2025/5/18 tsutsumi miki
  */
 
 @Entity
@@ -36,10 +38,33 @@ public class LikeabilityEntity {
 	@Column
 	private Integer targetNumber;
 	
+	/* ユーザーIDの外部キー */
+	@OneToOne
+	@JoinColumn(name="user_id")
+	private UsersEntity userId;
+
 	/* キャラクターIDの外部キー */
 	@ManyToOne
 	@JoinColumn(name="romance_character_id")
 	private RomanceCharacterEntity romanceCharacterId;
+	
+	/**
+	 * 引数ありのコンストラクタ
+	 * 
+	 * @param characterLikeability
+	 * @param targetNumber
+	 * @param userId
+	 * @param romanceCharacterId
+	 */
+	public LikeabilityEntity(RomanceCharacterEntity romanceCharacterId, UsersEntity userId, 
+			Integer characterLikeability, Integer targetNumber) {
+		
+		this.romanceCharacterId = romanceCharacterId;
+		this.userId = userId;
+		this.characterLikeability = characterLikeability;
+		this.targetNumber = targetNumber;
+		
+	}
 
 	
 	/**
@@ -90,6 +115,22 @@ public class LikeabilityEntity {
 		this.targetNumber = targetNumber;
 	}
 
+	/**
+	 * ユーザーID外部キーのセッター
+	 * @return
+	 */
+	public UsersEntity getUserId() {
+		return userId;
+	}
+
+	/**
+	 * ユーザーID外部キーのセッター
+	 * @param userId
+	 */
+	public void setUserId(UsersEntity userId) {
+		this.userId = userId;
+	}
+	
 	/**
 	 * キャラクターIDの外部キーのゲッター
 	 * @return
