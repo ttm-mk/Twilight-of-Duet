@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.twilightofduet.Character.RomanceCharacterEntity;
 import com.twilightofduet.Character.RomanceCharacterRepository;
+import com.twilightofduet.User.UserCommon.UsersBean;
 import com.twilightofduet.User.UserCommon.UsersEntity;
 import com.twilightofduet.User.UserCommon.UsersRepository;
 
@@ -55,6 +56,14 @@ public class StoryService {
 		
 		return "ok";
 		
+	}
+	
+	public StoryEntity findMainStoryEntity(UsersBean user) {
+    	RomanceCharacterEntity characterEntity = characterRepository.findByRomanceCharacterId("メイン");
+	    StoryEntity storyEntity = storyRepository.findByStoryId(user.getUserId(), characterEntity.getRomanceCharacterId());
+	    
+	    return storyEntity;
+
 	}
 	
 	/**

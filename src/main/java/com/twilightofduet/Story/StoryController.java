@@ -9,13 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.twilightofduet.User.UserAuth.UserAuthService;
 import com.twilightofduet.User.UserCommon.UsersBean;
-import com.twilightofduet.User.UserCommon.UsersEntity;
 import com.twilightofduet.User.UserCommon.UsersRepository;
 
 /**
  *  StoryController
  * 作成者 tsutsumi miki
- * 編集日 2025/4/20 tsutsumi miki
+ * 編集日 2025/5/17 tsutsumi miki
  */
 
 @Controller
@@ -27,6 +26,8 @@ public class StoryController {
 	UsersRepository userRepository;
 	@Autowired
 	StoryRepository storyRepository;
+	@Autowired
+	StoryService storyService;
 	
 	/**
 	 * ストーリートップ画面
@@ -41,9 +42,9 @@ public class StoryController {
 	    // UserIDとCharacterIdからストーリーIDの取得と格納
 	    // TODO:ここ、各キャラクターのIDとチャプター番号取得してJSに渡さないといけないから色々変えないと。
 	    // StoryServiceに各キャラクター格納したEntityを返すメソッド作らないといけない。
-	    StoryEntity storyEntity = storyRepository.findByStoryId(userBean.getUserId(), 0); //仮で0入れているけど実際はキャラクターID
 	    // キャラクターのチャプター番号取得してモデルに格納
-	    model.addAttribute("chapterNumber", storyEntity.getChapterNumber());
+	    StoryEntity mainStoryEntity = storyService.findMainStoryEntity(userBean);
+	    model.addAttribute("mainStory", mainStoryEntity.getChapterNumber());
 	    
 		return "story/story.html";
 	}
@@ -59,9 +60,8 @@ public class StoryController {
 		// ユーザーIDをモデルに追加
 	    model.addAttribute("userId", userBean.getUserId());
 	    // サイドバーにStory数値を返す記述
-	    UsersEntity userEntity = userRepository.findByUserId(userBean.getUserId());
-	    StoryEntity storyEntity = userEntity.getStoryId();
-	    model.addAttribute("mainStory", storyEntity.getMainStory());
+	    StoryEntity mainStoryEntity = storyService.findMainStoryEntity(userBean);
+	    model.addAttribute("mainStory", mainStoryEntity.getChapterNumber());
 
 		
 		return "story/character/main/story_main1.html";
@@ -79,10 +79,9 @@ public class StoryController {
 	    model.addAttribute("userId", userBean.getUserId());
 	    
 	    // サイドバーにStory数値を返す記述
-	    UsersEntity userEntity = userRepository.findByUserId(userBean.getUserId());
-	    StoryEntity storyEntity = userEntity.getStoryId();
-	    model.addAttribute("mainStory", storyEntity.getMainStory());
-		
+	    StoryEntity mainStoryEntity = storyService.findMainStoryEntity(userBean);
+	    model.addAttribute("mainStory", mainStoryEntity.getChapterNumber());
+	    
 		return "story/character/main/story_main2.html";
 	}
 	
