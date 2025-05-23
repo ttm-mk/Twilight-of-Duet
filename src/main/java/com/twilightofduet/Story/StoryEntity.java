@@ -16,7 +16,7 @@ import com.twilightofduet.User.UserCommon.UsersEntity;
 /**
  * Storyエンティティ
  * 作成者 tsutsumi miki
- * 編集日 2025/5/17 tsutsumi miki
+ * 編集日 2025/5/23 tsutsumi miki
  */
 
 @Entity
@@ -42,6 +42,13 @@ public class StoryEntity {
 	@OneToOne
 	@JoinColumn(name="romance_character_id")
 	private RomanceCharacterEntity romanceCharacterId;
+	
+	/**
+	 * 引数なしのコンストラクタ
+	 */
+	public StoryEntity() {
+		
+	}
 	
 	/**
 	 * 引数ありのコンストラクタ
