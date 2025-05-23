@@ -9,7 +9,7 @@ import com.twilightofduet.Character.RomanceCharacterRepository;
 /*
  * MasterDataLoader
  * 作成者 tsutsumi miki
- * 編集日 2025/5/13 tsutsumi miki
+ * 編集日 2025/5/23 tsutsumi miki
  */
 
 
@@ -27,7 +27,10 @@ public class MasterDataLoader implements CommandLineRunner {
 	 */
 	@Override
 	public void run(String... args) {
+		System.out.println("MasterDataLoader: run() called");
+
 		if (romanceCharacterRepository.count() == 0) {
+			romanceCharacterRepository.save(new RomanceCharacterEntity("メイン"));
 			romanceCharacterRepository.save(new RomanceCharacterEntity("園山巧美"));
 			romanceCharacterRepository.save(new RomanceCharacterEntity("小早川颯真"));
 			romanceCharacterRepository.save(new RomanceCharacterEntity("須王御幸"));
