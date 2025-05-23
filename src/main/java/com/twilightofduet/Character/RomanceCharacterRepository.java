@@ -17,6 +17,6 @@ public interface RomanceCharacterRepository extends JpaRepository<RomanceCharact
 	 * @param characterName
 	 * @return
 	 */
-	RomanceCharacterEntity findByRomanceCharacterId(String characterName);
+	RomanceCharacterEntity findByCharacterName(String characterName);
 
 }
