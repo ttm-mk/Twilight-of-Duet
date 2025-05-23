@@ -46,14 +46,14 @@ public class StoryEntity {
 	/**
 	 * 引数ありのコンストラクタ
 	 * 
-	 * @param romanceCharacterId
-	 * @param userId
 	 * @param chapterNumber
+	 * @param userId
+	 * @param romanceCharacterId
 	 */
-	public StoryEntity(RomanceCharacterEntity romanceCharacterId, UsersEntity userId, Integer chapterNumber) {
-		this.romanceCharacterId = romanceCharacterId;
-		this.userId = userId;
+	public StoryEntity(Integer chapterNumber, UsersEntity userId, RomanceCharacterEntity romanceCharacterId) {
 		this.chapterNumber = chapterNumber;
+		this.userId = userId;
+		this.romanceCharacterId = romanceCharacterId;
 	}
 
 	/**
