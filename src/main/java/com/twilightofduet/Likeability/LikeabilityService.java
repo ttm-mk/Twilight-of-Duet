@@ -16,7 +16,7 @@ import com.twilightofduet.User.UserCommon.UsersRepository;
 /*
  * LikeabilityService
  * 作成者 tsutsumi miki
- * 編集日 2025/5/21 tsutsumi miki
+ * 編集日 2025/5/23 tsutsumi miki
  */
 
 @Service
@@ -44,11 +44,11 @@ public class LikeabilityService {
 		}
 		
 		try{
-			likeabilityRepository.save(new LikeabilityEntity(characterRepository.findByCharacterName("園山巧美"), user, 0, 0));
-			likeabilityRepository.save(new LikeabilityEntity(characterRepository.findByCharacterName("小早川颯真"), user, 0, 0));
-			likeabilityRepository.save(new LikeabilityEntity(characterRepository.findByCharacterName("須王御幸"), user, 0, 0));
-			likeabilityRepository.save(new LikeabilityEntity(characterRepository.findByCharacterName("園山巧斗"), user, 0, 0));
-			likeabilityRepository.save(new LikeabilityEntity(characterRepository.findByCharacterName("相良実瑠"), user, 0, 0));
+			likeabilityRepository.save(new LikeabilityEntity(0, 0, user, characterRepository.findByCharacterName("園山巧美")));
+			likeabilityRepository.save(new LikeabilityEntity(0, 0, user, characterRepository.findByCharacterName("小早川颯真")));
+			likeabilityRepository.save(new LikeabilityEntity(0, 0, user, characterRepository.findByCharacterName("須王御幸")));
+			likeabilityRepository.save(new LikeabilityEntity(0, 0, user, characterRepository.findByCharacterName("園山巧斗")));
+			likeabilityRepository.save(new LikeabilityEntity(0, 0, user, characterRepository.findByCharacterName("相良実瑠")));
 			
 		} catch(Exception e) {
 			throw new RuntimeException("好感度レコード作成に失敗しました", e);

@@ -17,7 +17,7 @@ import com.twilightofduet.User.UserCommon.UsersEntity;
 /**
  * 好感度エンティティ
  * 作成者 tsutsumi miki
- * 編集日 2025/5/18 tsutsumi miki
+ * 編集日 2025/5/23 tsutsumi miki
  */
 
 @Entity
@@ -56,13 +56,13 @@ public class LikeabilityEntity {
 	 * @param userId
 	 * @param romanceCharacterId
 	 */
-	public LikeabilityEntity(RomanceCharacterEntity romanceCharacterId, UsersEntity userId, 
-			Integer characterLikeability, Integer targetNumber) {
+	public LikeabilityEntity(Integer characterLikeability,
+			Integer targetNumber,UsersEntity userId, RomanceCharacterEntity romanceCharacterId) {
 		
-		this.romanceCharacterId = romanceCharacterId;
-		this.userId = userId;
 		this.characterLikeability = characterLikeability;
 		this.targetNumber = targetNumber;
+		this.userId = userId;
+		this.romanceCharacterId = romanceCharacterId;
 		
 	}
 
