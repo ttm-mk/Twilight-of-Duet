@@ -49,6 +49,13 @@ public class LikeabilityEntity {
 	private RomanceCharacterEntity romanceCharacterId;
 	
 	/**
+	 * 引数なしのコンストラクタ
+	 */
+	public LikeabilityEntity() {
+		
+	}
+	
+	/**
 	 * 引数ありのコンストラクタ
 	 * 
 	 * @param characterLikeability
