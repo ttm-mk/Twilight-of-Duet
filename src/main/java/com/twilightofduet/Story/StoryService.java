@@ -15,7 +15,7 @@ import com.twilightofduet.User.UserCommon.UsersRepository;
 /*
  * StoryService
  * 作成者 tsutsumi miki
- * 編集日 2025/5/17 tsutsumi miki
+ * 編集日 2025/5/22 tsutsumi miki
  */
 
 @Service
@@ -43,12 +43,12 @@ public class StoryService {
 		
 		try {
 			// メインはメインストーリー
-			storyRepository.save(new StoryEntity(characterRepository.findByRomanceCharacterId("メイン"), user, 0));
-			storyRepository.save(new StoryEntity(characterRepository.findByRomanceCharacterId("園山巧美"), user, 0));
-			storyRepository.save(new StoryEntity(characterRepository.findByRomanceCharacterId("小早川颯真"), user, 0));
-			storyRepository.save(new StoryEntity(characterRepository.findByRomanceCharacterId("須王御幸"), user, 0));
-			storyRepository.save(new StoryEntity(characterRepository.findByRomanceCharacterId("園山巧斗"), user, 0));
-			storyRepository.save(new StoryEntity(characterRepository.findByRomanceCharacterId("相良実瑠"), user, 0));
+			storyRepository.save(new StoryEntity(characterRepository.findByCharacterName("メイン"), user, 0));
+			storyRepository.save(new StoryEntity(characterRepository.findByCharacterName("園山巧美"), user, 0));
+			storyRepository.save(new StoryEntity(characterRepository.findByCharacterName("小早川颯真"), user, 0));
+			storyRepository.save(new StoryEntity(characterRepository.findByCharacterName("須王御幸"), user, 0));
+			storyRepository.save(new StoryEntity(characterRepository.findByCharacterName("園山巧斗"), user, 0));
+			storyRepository.save(new StoryEntity(characterRepository.findByCharacterName("相良実瑠"), user, 0));
 			
 		} catch(Exception e) {
 			throw new RuntimeException("ストーリーレコードの作成は失敗しました。", e);
@@ -58,9 +58,15 @@ public class StoryService {
 		
 	}
 	
+	/**
+	 * メインストーリーEntityの取得
+	 * @param user
+	 * @return
+	 */
 	public StoryEntity findMainStoryEntity(UsersBean user) {
-    	RomanceCharacterEntity characterEntity = characterRepository.findByRomanceCharacterId("メイン");
-	    StoryEntity storyEntity = storyRepository.findByStoryId(user.getUserId(), characterEntity.getRomanceCharacterId());
+		UsersEntity userEntity = userRepository.findByUserId(user.getUserId());
+    	RomanceCharacterEntity characterEntity = characterRepository.findByCharacterName("メイン");
+	    StoryEntity storyEntity = storyRepository.findByUserIdAndRomanceCharacterId(userEntity, characterEntity);
 	    
 	    return storyEntity;
 
@@ -79,10 +85,9 @@ public class StoryService {
     	// セッション情報からユーザー情報取得
     	UsersEntity userEntity = userRepository.findByUserId((Integer)session.getAttribute("userId"));
     	// キャラクターIDの取得
-    	RomanceCharacterEntity characterEntity = characterRepository.findByRomanceCharacterId("メイン");
-    	Integer characterId = characterEntity.getRomanceCharacterId();
+    	RomanceCharacterEntity characterEntity = characterRepository.findByCharacterName("メイン");
     	// ユーザー情報からストーリーID取得
-    	StoryEntity storyEntity = storyRepository.findByStoryId(userEntity.getUserId(), characterId);
+    	StoryEntity storyEntity = storyRepository.findByUserIdAndRomanceCharacterId(userEntity, characterEntity);
     	// ストーリーSTOのメインストーリー数値をセット
     	storyEntity.setChapterNumber(storyDTO.getMainStory());
     	// メインストーリー数値の保存
