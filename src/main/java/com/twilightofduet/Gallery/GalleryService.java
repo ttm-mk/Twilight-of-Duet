@@ -10,7 +10,7 @@ import com.twilightofduet.User.UserCommon.UsersEntity;
 /*
  * GalleryService
  * 作成者 tsutsumi miki
- * 編集日 2025/3/20 tsutsumi miki
+ * 編集日 2025/5/23 tsutsumi miki
  */
 
 @Service
@@ -30,6 +30,8 @@ public class GalleryService {
 		}
 		
 		try {
+			// メインEntity取得
+			RomanceCharacterEntity mainEntity = romanceCharacterRepository.findByCharacterName("メイン");
 			// 園山巧美Entity取得
 			RomanceCharacterEntity takumiEntity = romanceCharacterRepository.findByCharacterName("園山巧美");
 			// 小早川颯真Entity取得
@@ -42,6 +44,7 @@ public class GalleryService {
 			RomanceCharacterEntity miruEntity = romanceCharacterRepository.findByCharacterName("相良実瑠");
 			
 			// 各ギャラリー保存
+			galleryRepository.save(new GalleryEntity(0, 0, user, mainEntity));
 			galleryRepository.save(new GalleryEntity(0, 0, user, takumiEntity));
 			galleryRepository.save(new GalleryEntity(0, 0, user, somaEntity));
 			galleryRepository.save(new GalleryEntity(0, 0, user, miyukiEntity));

@@ -16,7 +16,7 @@ import com.twilightofduet.User.UserCommon.UsersEntity;
 /**
  * Galleryエンティティ
  * 作成者 tsutsumi miki
- * 編集日 2025/5/10 tsutsumi miki
+ * 編集日 2025/5/23 tsutsumi miki
  */
 
 @Entity
