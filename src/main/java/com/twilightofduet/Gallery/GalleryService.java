@@ -31,15 +31,15 @@ public class GalleryService {
 		
 		try {
 			// 園山巧美Entity取得
-			RomanceCharacterEntity takumiEntity = romanceCharacterRepository.findByRomanceCharacterId("園山巧美");
+			RomanceCharacterEntity takumiEntity = romanceCharacterRepository.findByCharacterName("園山巧美");
 			// 小早川颯真Entity取得
-			RomanceCharacterEntity somaEntity = romanceCharacterRepository.findByRomanceCharacterId("小早川颯真");
+			RomanceCharacterEntity somaEntity = romanceCharacterRepository.findByCharacterName("小早川颯真");
 			// 須王御幸Entity取得
-			RomanceCharacterEntity miyukiEntity = romanceCharacterRepository.findByRomanceCharacterId("須王御幸");
+			RomanceCharacterEntity miyukiEntity = romanceCharacterRepository.findByCharacterName("須王御幸");
 			// 園山巧斗Entity取得
-			RomanceCharacterEntity takutoEntity = romanceCharacterRepository.findByRomanceCharacterId("園山巧斗");
+			RomanceCharacterEntity takutoEntity = romanceCharacterRepository.findByCharacterName("園山巧斗");
 			// 相良実瑠Entity取得
-			RomanceCharacterEntity miruEntity = romanceCharacterRepository.findByRomanceCharacterId("相良実瑠");
+			RomanceCharacterEntity miruEntity = romanceCharacterRepository.findByCharacterName("相良実瑠");
 			
 			// 各ギャラリー保存
 			galleryRepository.save(new GalleryEntity(0, 0, user, takumiEntity));
