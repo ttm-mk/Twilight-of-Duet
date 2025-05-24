@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.twilightofduet.Character.RomanceCharacterEntity;
 import com.twilightofduet.Character.RomanceCharacterRepository;
+import com.twilightofduet.User.UserCommon.UsersEntity;
 import com.twilightofduet.User.UserCommon.UsersRepository;
 
 /**
  * StoryRestController
  * 作成者 tsutsumi miki
- * 編集日 2025/5/21 tsutsumi miki
+ * 編集日 2025/5/22 tsutsumi miki
  */
 
 @RestController
@@ -35,15 +36,16 @@ public class StoryRestController {
     
     /**
      * メインストーリー数値を取得するAPI
+     * TODO：また好感度取得と保存ができてないようだから確認！
      * @param session
      * @return　メインストーリー数値
      */
     @GetMapping("/story-main")
     public ResponseEntity<Integer> getMainStoryInt(HttpSession session) {
         // ユーザーIDからUserEntityを取得、MainStoryIntの取得
-        RomanceCharacterEntity characterEntity = characterRepository.findByRomanceCharacterId("メイン");
-        Integer characterId = characterEntity.getRomanceCharacterId();
-        StoryEntity storyEntity = storyRepository.findByStoryId((Integer)session.getAttribute("userId"), characterId);
+    	UsersEntity userEntity = userRepository.findByUserId((Integer)session.getAttribute("userId"));
+        RomanceCharacterEntity characterEntity = characterRepository.findByCharacterName("メイン");
+        StoryEntity storyEntity = storyRepository.findByUserIdAndRomanceCharacterId(userEntity, characterEntity);
         Integer mainStory = (Integer)storyEntity.getChapterNumber();
         
         // メインストーリー数値が存在すれば返す
@@ -63,7 +65,7 @@ public class StoryRestController {
 	 */
     @PostMapping("/main/complete")
     public ResponseEntity<Integer> saveStoryMainInt(@RequestBody StoryDTO storyDTO, HttpSession session){
-    	if(storyNumberConditionCheck(storyDTO, session)) {
+    	if(MainStoryNumberConditionCheck(storyDTO, session)) {
     		Integer responseInt = storyService.saveStoryMain(storyDTO, session);
     		return ResponseEntity.ok(responseInt);
     
@@ -75,17 +77,17 @@ public class StoryRestController {
     }
     
     /**
-     * StoryDTOの数値がユーザーの保持するStory数値以上か確認
+     * StoryDTOの数値がユーザーの保持するMainStory数値以上か確認
      * 
      * @param storyDTO　JSから送られたMainStoryの数値
      * @param session　セッション
      * @return　Boolean
      */
-    public boolean storyNumberConditionCheck(StoryDTO storyDTO, HttpSession session) {
+    public boolean MainStoryNumberConditionCheck(StoryDTO storyDTO, HttpSession session) {
         // ユーザーIDからUserEntityを取得、MainStoryIntの取得
-        RomanceCharacterEntity characterEntity = characterRepository.findByRomanceCharacterId("メイン");
-        Integer characterId = characterEntity.getRomanceCharacterId();
-        StoryEntity storyEntity = storyRepository.findByStoryId((Integer)session.getAttribute("userId"), characterId);
+    	UsersEntity userEntity = userRepository.findByUserId((Integer)session.getAttribute("userId"));
+        RomanceCharacterEntity characterEntity = characterRepository.findByCharacterName("メイン");
+        StoryEntity storyEntity = storyRepository.findByUserIdAndRomanceCharacterId(userEntity, characterEntity);
         Integer mainStory = (Integer)storyEntity.getChapterNumber();
     	
     	if(storyDTO.getMainStory() > mainStory) {

@@ -16,7 +16,7 @@ import com.twilightofduet.User.UserCommon.UsersRepository;
 /*
  * LikeabilityService
  * 作成者 tsutsumi miki
- * 編集日 2025/5/23 tsutsumi miki
+ * 編集日 2025/5/25 tsutsumi miki
  */
 
 @Service
@@ -130,19 +130,22 @@ public class LikeabilityService {
 		LikeabilityEntity likeabilityEntity = 
 				likeabilityRepository.findByUserIdAndRomanceCharacterId(userEntity, characterEntity);
 		// 現在の好感度にDTOの値を足してセット
-		likeabilityEntity.setCharacterLikeability(likeabilityEntity.getCharacterLikeability() + likeabilityRequestDTO.getMiruLikeability());
+		likeabilityEntity.setCharacterLikeability(likeabilityEntity.getCharacterLikeability() + likeabilityRequestDTO.getTakumiLikeability());
 
-		// ストーリーIDの取得
-		StoryEntity storyEntity = storyRepository.findByUserIdAndRomanceCharacterId(userEntity, characterEntity);
-		Integer mainStoryNumber = storyEntity.getChapterNumber();
-		
-		// ユーザーのストーリーIDがJSから取得したストーリーIDより小さい場合に保存して数値を返す
-		if(likeabilityRequestDTO.getStoryNumber() > mainStoryNumber) {
-			likeabilityRepository.save(likeabilityEntity);
+		// mainとそれ以外のキャラクターで処理を分岐させる（TODO:あんまり入れ子にしたくないんだけどどうしよう）
+		// mainとそれ以外のキャラクターで処理を分岐させる
+		if(likeabilityRequestDTO.getStoryType().equals("main")){
+			this.saveLikeabilityOfMainStory(userEntity, likeabilityRequestDTO, likeabilityEntity);
+			
+			return likeabilityEntity;
+			
+		} else {
+			this.saveLikeabilityOfCharacterStory(userEntity, likeabilityRequestDTO, likeabilityEntity, characterEntity);
+			
+			return likeabilityEntity;
 
-		} // TODO:そうじゃないときは何を返したらいいっけか？
+		}
 		
-		return likeabilityEntity;
 	}
 	
 	/**
@@ -161,19 +164,21 @@ public class LikeabilityService {
 		LikeabilityEntity likeabilityEntity = 
 				likeabilityRepository.findByUserIdAndRomanceCharacterId(userEntity, characterEntity);
 		// 現在の好感度にDTOの値を足してセット
-		likeabilityEntity.setCharacterLikeability(likeabilityEntity.getCharacterLikeability() + likeabilityRequestDTO.getMiruLikeability());
-
-		// ストーリーIDの取得
-		StoryEntity storyEntity = storyRepository.findByUserIdAndRomanceCharacterId(userEntity, characterEntity);
-		Integer mainStoryNumber = storyEntity.getChapterNumber();
+		likeabilityEntity.setCharacterLikeability(likeabilityEntity.getCharacterLikeability() + likeabilityRequestDTO.getSomaLikeability());
 		
-		// ユーザーのストーリーIDがJSから取得したストーリーIDより小さい場合に保存して数値を返す
-		if(likeabilityRequestDTO.getStoryNumber() > mainStoryNumber) {
-			likeabilityRepository.save(likeabilityEntity);
+		// mainとそれ以外のキャラクターで処理を分岐させる
+		if(likeabilityRequestDTO.getStoryType().equals("main")){
+			this.saveLikeabilityOfMainStory(userEntity, likeabilityRequestDTO, likeabilityEntity);
+			
+			return likeabilityEntity;
+			
+		} else {
+			this.saveLikeabilityOfCharacterStory(userEntity, likeabilityRequestDTO, likeabilityEntity, characterEntity);
+			
+			return likeabilityEntity;
 
-		} // TODO:そうじゃないときは何を返したらいいっけか？
-		
-		return likeabilityEntity;
+		}
+
 	}
 	
 	/**
@@ -192,19 +197,21 @@ public class LikeabilityService {
 		LikeabilityEntity likeabilityEntity = 
 				likeabilityRepository.findByUserIdAndRomanceCharacterId(userEntity, characterEntity);
 		// 現在の好感度にDTOの値を足してセット
-		likeabilityEntity.setCharacterLikeability(likeabilityEntity.getCharacterLikeability() + likeabilityRequestDTO.getMiruLikeability());
+		likeabilityEntity.setCharacterLikeability(likeabilityEntity.getCharacterLikeability() + likeabilityRequestDTO.getMiyukiLikeability());
 
-		// ストーリーIDの取得
-		StoryEntity storyEntity = storyRepository.findByUserIdAndRomanceCharacterId(userEntity, characterEntity);
-		Integer mainStoryNumber = storyEntity.getChapterNumber();
-		
-		// ユーザーのストーリーIDがJSから取得したストーリーIDより小さい場合に保存して数値を返す
-		if(likeabilityRequestDTO.getStoryNumber() > mainStoryNumber) {
-			likeabilityRepository.save(likeabilityEntity);
+		// mainとそれ以外のキャラクターで処理を分岐させる
+		if(likeabilityRequestDTO.getStoryType().equals("main")){
+			this.saveLikeabilityOfMainStory(userEntity, likeabilityRequestDTO, likeabilityEntity);
+			
+			return likeabilityEntity;
+			
+		} else {
+			this.saveLikeabilityOfCharacterStory(userEntity, likeabilityRequestDTO, likeabilityEntity, characterEntity);
+			
+			return likeabilityEntity;
 
-		} // TODO:そうじゃないときは何を返したらいいっけか？
-		
-		return likeabilityEntity;
+		}
+
 	}
 	
 	/**
@@ -223,19 +230,21 @@ public class LikeabilityService {
 		LikeabilityEntity likeabilityEntity = 
 				likeabilityRepository.findByUserIdAndRomanceCharacterId(userEntity, characterEntity);
 		// 現在の好感度にDTOの値を足してセット
-		likeabilityEntity.setCharacterLikeability(likeabilityEntity.getCharacterLikeability() + likeabilityRequestDTO.getMiruLikeability());
+		likeabilityEntity.setCharacterLikeability(likeabilityEntity.getCharacterLikeability() + likeabilityRequestDTO.getTakutoLikeability());
 
-		// ストーリーIDの取得
-		StoryEntity storyEntity = storyRepository.findByUserIdAndRomanceCharacterId(userEntity, characterEntity);
-		Integer mainStoryNumber = storyEntity.getChapterNumber();
-		
-		// ユーザーのストーリーIDがJSから取得したストーリーIDより小さい場合に保存して数値を返す
-		if(likeabilityRequestDTO.getStoryNumber() > mainStoryNumber) {
-			likeabilityRepository.save(likeabilityEntity);
+		// mainとそれ以外のキャラクターで処理を分岐させる
+		if(likeabilityRequestDTO.getStoryType().equals("main")){
+			this.saveLikeabilityOfMainStory(userEntity, likeabilityRequestDTO, likeabilityEntity);
+			
+			return likeabilityEntity;
+			
+		} else {
+			this.saveLikeabilityOfCharacterStory(userEntity, likeabilityRequestDTO, likeabilityEntity, characterEntity);
+			
+			return likeabilityEntity;
 
-		} // TODO:そうじゃないときは何を返したらいいっけか？
-		
-		return likeabilityEntity;
+		}
+
 	}
 	
 	/**
@@ -256,17 +265,67 @@ public class LikeabilityService {
 		// 現在の好感度にDTOの値を足してセット
 		likeabilityEntity.setCharacterLikeability(likeabilityEntity.getCharacterLikeability() + likeabilityRequestDTO.getMiruLikeability());
 
-		// ストーリーIDの取得
-		StoryEntity storyEntity = storyRepository.findByUserIdAndRomanceCharacterId(userEntity, characterEntity);
+		// mainとそれ以外のキャラクターで処理を分岐させる
+		if(likeabilityRequestDTO.getStoryType().equals("main")){
+			this.saveLikeabilityOfMainStory(userEntity, likeabilityRequestDTO, likeabilityEntity);
+			
+			return likeabilityEntity;
+			
+		} else {
+			this.saveLikeabilityOfCharacterStory(userEntity, likeabilityRequestDTO, likeabilityEntity, characterEntity);
+			
+			return likeabilityEntity;
+
+		}
+
+	}
+	
+	/**
+	 * MainStoryの好感度をストーリー数値以下の時保存する
+	 * @param userEntity
+	 * @param likeabilityRequestDTO
+	 * @param likeabilityEntity
+	 * @return
+	 */
+	public LikeabilityEntity saveLikeabilityOfMainStory(UsersEntity userEntity,
+			LikeabilityRequestDTO likeabilityRequestDTO, LikeabilityEntity likeabilityEntity) {
+		
+		// メインストーリーIDの取得
+		RomanceCharacterEntity mainEntity = characterRepository.findByCharacterName("メイン");
+		StoryEntity storyEntity = storyRepository.findByUserIdAndRomanceCharacterId(userEntity, mainEntity);
 		Integer mainStoryNumber = storyEntity.getChapterNumber();
 		
 		// ユーザーのストーリーIDがJSから取得したストーリーIDより小さい場合に保存して数値を返す
 		if(likeabilityRequestDTO.getStoryNumber() > mainStoryNumber) {
 			likeabilityRepository.save(likeabilityEntity);
-
+			
 		} // TODO:そうじゃないときは何を返したらいいっけか？
 		
 		return likeabilityEntity;
+		
+	}
+	
+	/**
+	 * CharacterStoryの好感度をストーリー数値以下の時保存する
+	 * @param userEntity
+	 * @param likeabilityRequestDTO
+	 * @param likeabilityEntity
+	 * @param characterEntity
+	 * @return
+	 */
+	public LikeabilityEntity saveLikeabilityOfCharacterStory(UsersEntity userEntity, LikeabilityRequestDTO likeabilityRequestDTO,
+			LikeabilityEntity likeabilityEntity, RomanceCharacterEntity characterEntity) {
+		StoryEntity storyEntity = storyRepository.findByUserIdAndRomanceCharacterId(userEntity, characterEntity);
+		Integer characterStoryNumber = storyEntity.getChapterNumber();
+		
+		// ユーザーのストーリーIDがJSから取得したストーリーIDより小さい場合に保存して数値を返す
+		if(likeabilityRequestDTO.getStoryNumber() > characterStoryNumber) {
+			likeabilityRepository.save(likeabilityEntity);
+			
+		} // TODO:そうじゃないときは何を返したらいいっけか？
+		
+		return likeabilityEntity;
+
 	}
 
 }
