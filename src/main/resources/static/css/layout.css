@@ -77,7 +77,7 @@ main {
 	margin: 20px 0px 80px;
 	float: left;
 	width: 900px;
-	height: 1000px;	
+	height: 800px;	
 }
 
 /*カラー枠*/
@@ -85,14 +85,14 @@ main {
 	margin: auto;
 	padding: 10px 0px 50px;
 	width: 900px;
-	height: 1000px;
+	height: 800px;
 }
 
 /*内枠*/
 .work {
 	margin: auto;
 	width: 850px;
-	height: 1000px;
+	height: 800px;
 	background-color: #FFF9F1;
 	text-align: center;
 }
@@ -101,7 +101,7 @@ main {
 .sentence {
 	margin: auto;
 	width: 700px;
-	height: 800px;
+	height: 600px;
 }
 
 h3 {
