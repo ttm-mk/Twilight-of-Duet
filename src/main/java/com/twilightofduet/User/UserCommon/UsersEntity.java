@@ -41,6 +41,11 @@ public class UsersEntity {
 	@Column
 	private String heroineNickname;
 	
+	/* 削除フラグ */
+	@Column
+	private Integer deletedFlag;
+
+
 	/**
 	 * ユーザーIDのゲッター
 	 * @return
@@ -119,6 +124,22 @@ public class UsersEntity {
 	 */
 	public void setHeroineNickname(String heroineNickname) {
 		this.heroineNickname = heroineNickname;
+	}
+	
+	/**
+	 * 削除フラグのゲッター
+	 * @return
+	 */
+	public Integer getDeletedFlag() {
+		return deletedFlag;
+	}
+
+	/**
+	 * 削除フラグのセッター
+	 * @param deletedFlag
+	 */
+	public void setDeletedFlag(Integer deletedFlag) {
+		this.deletedFlag = deletedFlag;
 	}
 	
 }
