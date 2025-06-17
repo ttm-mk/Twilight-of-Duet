@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 /**
  * Usersリポジトリ
  * 作成者 tsutsumi miki
- * 編集日 2025/2/24 tsutsumi miki
+ * 編集日 2025/6/18 tsutsumi miki
  */
 
 @Repository
@@ -19,5 +19,7 @@ public interface UsersRepository extends JpaRepository<UsersEntity, Integer> {
 	Optional<UsersEntity> findByUserNameAndUserPassword(String userName, String userPassword);
 	// ユーザー情報取得用
 	UsersEntity findByUserId(Integer userId);
+	// 論理削除フラグの取得
+	UsersEntity findByDeletedFlag(Integer userId);
 
 }
