@@ -55,6 +55,7 @@ public class UserAuthService {
 		BeanUtils.copyProperties(userForm, user, "user_id");
 		user.setHeroineName("鳴海千晴");
 		user.setHeroineNickname("ちい");
+		user.setDeletedFlag(0);
 		// User保存
 		user = userRepository.save(user);
 		
