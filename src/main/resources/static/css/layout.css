@@ -16,12 +16,14 @@ a:hover {
 }
 
 
+
 /*header*/
 
 header {
-	margin: -10px -20px 0px;
 	background-color: #FFF9F1;
+	margin: -8px;
 	height: 90px;
+	width: stretch;
 	overflow: hidden;
 	position: relative;
 }
@@ -84,14 +86,14 @@ main {
 .frame {
 	margin: auto;
 	padding: 10px 0px 50px;
-	width: 900px;
+	width: stretch;
 	height: 800px;
 }
 
 /*内枠*/
 .work {
-	margin: auto;
-	width: 850px;
+	margin: 10px 30px;
+	width: stretch;
 	height: 800px;
 	background-color: #FFF9F1;
 	text-align: center;
