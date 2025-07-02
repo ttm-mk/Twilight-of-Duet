@@ -15,12 +15,13 @@ import com.twilightofduet.User.UserCommon.UserDTO;
 import com.twilightofduet.User.UserCommon.UserForm;
 import com.twilightofduet.User.UserCommon.UserServiceCheck;
 import com.twilightofduet.User.UserCommon.UsersBean;
+import com.twilightofduet.User.UserCommon.UsersEntity;
 import com.twilightofduet.User.UserCommon.UsersRepository;
 
 /*
  * UserAuthController
  * 作成者 tsutsumi miki
- * 編集日 2025/3/15 tsutsumi miki
+ * 編集日 2025/7/2 tsutsumi miki
  */
 
 @Controller
@@ -100,8 +101,9 @@ public class UserAuthController {
 	public String userLogin(LoginForm loginForm, HttpSession session, RedirectAttributes redirectAttributes) {
 		// ユーザーIDの取得
 		Integer userId = userAuthService.doGetUserId(loginForm);
+		UsersEntity userEntity = userRepository.findByUserId(userId);
 		// 取得したユーザーIDの確認：0の場合ログイン画面に戻す
-		if(userId == 0) {
+		if(userId == 0 || userEntity.getDeletedFlag() == 1) {
 			redirectAttributes.addFlashAttribute("error", "ログイン情報が正しくありません。");
 			
 			return "redirect:/login";
@@ -112,6 +114,39 @@ public class UserAuthController {
 		
 		return "redirect:/";
 		
+	}
+	
+	/**
+	 * 退会画面遷移
+	 * 
+	 * @param session　セッション情報
+	 * @param model　モデル
+	 * @return　退会画面
+	 */
+	@GetMapping("/user/delete")
+	public String userDeleteConfirm(HttpSession session, Model model) {
+		// ユーザーIDの取得
+		// Bean作成しセッション情報を取得して格納する
+		UsersBean userBean = userAuthService.getUserSessionInformation(session);	    
+	    model.addAttribute("userId", userBean.getUserId());
+		
+		return "user/user_delete.html";
+		
+	}
+	
+	/**
+	 * ユーザ―論理削除処理
+	 * 
+	 * @param session　セッション情報
+	 * @return　トップ画面に遷移
+	 */
+	@PostMapping("/user/delete/complete")
+	public String userDeleteComplete(HttpSession session) {
+		// セッション情報取得
+		String message =  userAuthService.userDeleted(session);
+		System.out.println(message);
+		
+		return "redirect:/";
 	}
 	
 	/**

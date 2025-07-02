@@ -24,7 +24,7 @@ import com.twilightofduet.User.UserCommon.UsersRepository;
 /*
  * UserAuthService
  * 作成者 tsutsumi miki
- * 編集日 2025/5/18 tsutsumi miki
+ * 編集日 2025/7/2 tsutsumi miki
  */
 
 @Service
@@ -81,6 +81,27 @@ public class UserAuthService {
 		
 		return userDTO;
 		
+	}
+	
+	/**
+	 * ユーザ―論理削除処理
+	 * 
+	 * @param session　セッション情報
+	 * @return　トップ画面に遷移
+	 */
+	public String userDeleted(HttpSession session) {
+		// セッション情報取得
+		Integer userId = (Integer)session.getAttribute("userId");
+		// ユーザー情報を取得し、削除フラグを１に更新して論理削除する
+		UsersEntity userEntity = userRepository.findByUserId(userId);
+		userEntity.setDeletedFlag(1);
+		userRepository.save(userEntity);
+		// セッション情報の破棄
+		session.invalidate();
+		
+		String message = "論理削除フラグが実施されました。退会扱いのユーザーです。";
+		
+		return message;
 	}
 	
 	

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout :: layout(~{::title}, ~{::body/content()})}">
+	
+<head>
+	<meta charset="UTF-8">
+	<title>退会ページ</title>
+</head>
+
+<body>
+	<aside th:replace="~{sidebar/sidebar_user :: sidebar-user}"></aside>
+
+	<main>
+		<div class="frame" style="background-color: #BEDAF5;">
+			<div class="work">
+				
+				<div class="sentence" style="width: 400px;">
+
+					<h3>◇退会すると・・・◇</h3>
+					<p>・セーブデータがなくなります</p>
+					<p>・攻略した記憶も好感度も残りません</p>
+					
+					<p>それでもよろしいですか？</p>
+					
+					<form method="post" th:action="@{/user/delete/complete}" th:object="${user}">
+						<p>
+							<input type="submit" value="退会する"/>
+						</p>
+					</form>
+					
+				</div>
+			
+				
+			</div>
+		</div>
+		
+	</main>
+
+</body>
+
+</html>
