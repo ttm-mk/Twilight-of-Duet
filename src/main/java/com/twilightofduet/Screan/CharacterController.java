@@ -18,7 +18,7 @@ public class CharacterController {
 	 */
 	@GetMapping("/character")
 	public String characterTopDisplay() {
-		return "character/narumi_chiharu";
+		return "character/heroine";
 	}
 	
 	/**
