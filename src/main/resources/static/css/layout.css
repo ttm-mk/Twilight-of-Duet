@@ -118,16 +118,43 @@ p {
 	padding: 20px 0px;
 }
 
-.text {
+.story {
+	padding-top: 10px;
+	height: 400px;
+	width: stretch;
+	position: relative;
+}
+
+.soryBackground {
+	height: stretch;
+	width: stretch;
+	position: absolute;
+	z-index: 0;
+}
+
+.storyObject {
 	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 300;
+}
+
+.text {
+/*	margin: auto;*/
 	padding: 10px;
 	width: 750px;
 	min-height: 100px;
 	border-radius: 5px;
-	background-color: aqua;
+	background-color: white;
 	text-align: left;
+	position: absolute;
+	z-index: 800;
 	overflow-y: auto; /* はみ出たらスクロール */
 }
+
+
 
 /* 選択肢用 */
 /*.choice-option {*/

@@ -10,6 +10,7 @@ let count = 0;
 let texts = [];
 let imagesLeft = [];
 let imagesRight = [];
+let background = [];
 
 // 名前、あだ名、StoryId、MainStoryIntの取得
 Promise.all([
@@ -405,17 +406,161 @@ Promise.all([
 
 	];
 	
+	background = [
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
 
-    // 初回表示（任意）
-    document.getElementById('textMain1').textContent = texts[0];
-	document.getElementById('imagesLeft').src = imagesLeft[0];
-	document.getElementById('imagesRight').src = imagesRight[0];
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png",
+		"http://localhost:2102/TwilightOfDuet/assets/images/background/facility.png"
+
+	    ];
+	
+	// 初回表示（任意）
+	document.getElementById('textMain1').textContent = texts[0];
+	// 画像読み取り用（初回）
+	window.addEventListener("DOMContentLoaded", () => {
+		document.getElementById('imagesLeft').src = imagesLeft[0];
+		document.getElementById('imagesLeft').src = imagesRight[0];
+		document.getElementById('background').src = background[0];
+	});
 	
 	
     // イベント設定（この中でやってもいい）
-    document.getElementById('clickArea_main1').addEventListener('click', changeText);
-	document.getElementById('clickArea_main1').addEventListener('click', changeImagesLeft);	
-	document.getElementById('clickArea_main1').addEventListener('click', changeImagesRight);
+    document.getElementById('clickArea_main1').addEventListener('click', changeObject);
 
   })
   .catch(error => {
@@ -556,15 +701,12 @@ Promise.all([
 	window.addEventListener("DOMContentLoaded", () => {
 		document.getElementById('imagesLeft').src = imagesLeft[0];
 		document.getElementById('imagesLeft').src = imagesRight[0];
+		document.getElementById('background').src = background[0];
 	});
 	
 
 	// イベント設定（この中でやってもいい）
-//	document.getElementById('clickArea_main1').addEventListener('click', loadImages);
-	document.getElementById('clickArea_main1').addEventListener('click', changeText);
-	document.getElementById('clickArea_main1').addEventListener('click', changeImagesLeft);	
-	document.getElementById('clickArea_main1').addEventListener('click', changeImagesRight);
-	
+	document.getElementById('clickArea_main1').addEventListener('click', changeObject);
 
 	
   });
@@ -572,10 +714,11 @@ Promise.all([
 
 
 // テキスト切り替え処理
-function changeText() {
+function changeObject() {
   const textElement = document.getElementById('textMain1');
   const imagesLeftElement = document.getElementById('imagesLeft');
   const imagesRightElement = document.getElementById('imagesRight');
+  const backgroundElement = document.getElementById('background');
   const clickAreaElement = document.getElementById('clickArea_main1');
 
   count++;
@@ -583,6 +726,7 @@ function changeText() {
     textElement.textContent = texts[count];
 	imagesLeftElement.src = imagesLeft[count];
 	imagesRightElement.src = imagesRight[count];
+	backgroundElement.src = background[count];
 	
   } else {
     clickAreaElement.style.pointerEvents = 'none'; // 全部終わったら無効化
