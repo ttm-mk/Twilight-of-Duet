@@ -148,5 +148,18 @@ public class UserAuthService {
 		return userBean;
 		
 	}
+	
+	public String changePassword(UserDTO userDTO) {
+		
+		String password = userDTO.getUserPassword();
+		String changePassword ="";
+		
+		for(int i = 0; i < password.length(); i++) {
+			changePassword = changePassword + "*";
+			
+		}
+		
+		return changePassword;
+	}
 
 }

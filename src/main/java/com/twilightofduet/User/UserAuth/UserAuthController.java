@@ -58,7 +58,10 @@ public class UserAuthController {
 		
 		// チェックに引っかからなかったものをBeanに格納
 		UsersBean userBean = new UsersBean();
+		UserDTO userDTO = userAuthService.userNewCreate(userForm);
+		String password = userAuthService.changePassword(userDTO);
 		BeanUtils.copyProperties(userForm, userBean);
+		userBean.setUserPassword(password);
 		model.addAttribute("user", userBean);
 		
 		return "user/user_confirm.html";
