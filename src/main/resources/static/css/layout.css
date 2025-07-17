@@ -122,36 +122,47 @@ p {
 	padding-top: 10px;
 	height: 400px;
 	width: stretch;
-	position: relative;
 }
 
 .soryBackground {
 	height: stretch;
 	width: stretch;
-	position: absolute;
-	z-index: 0;
+	background-image: url(../assets/images/background/facility.png);
+/*	一旦固定設定で確認*/
+
+	position: relative;
+
 }
 
 .storyObject {
 	margin: auto;
 	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
+	top: 130px;
+	left: 530px;
+	bottom: 0px;
 	z-index: 300;
 }
 
 .text {
-/*	margin: auto;*/
-	padding: 10px;
+	margin: 0px 0px 0px 40px;
+	padding: 5px 15px;
 	width: 750px;
 	min-height: 100px;
-	border-radius: 5px;
-	background-color: white;
+	border-radius: 3px;
+	opacity: 0.9;
+	border: 2px solid #F7A978;
+	background-color: #FAD482;
 	text-align: left;
-	position: absolute;
-	z-index: 800;
 	overflow-y: auto; /* はみ出たらスクロール */
+	
+	font-family: "Klee One", cursive;
+ 	font-style: normal;
+	  	
+	position: absolute;
+	top: 450px;
+	left: 320px;
+	z-index: 800;
+	
 }
 
 
