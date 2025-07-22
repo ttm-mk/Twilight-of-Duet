@@ -551,8 +551,8 @@ Promise.all([
 	
 	// 初回表示（任意）
 	document.getElementById('textMain1').textContent = texts[0];
-	document.getElementById('imagesLeft').src = `/TwilightOfDuet/assets/images/${imagesLeft[0]}`;
-	document.getElementById('imagesLeft').src = imagesRight[0];
+	document.getElementById('imagesLeft').src = imagesLeft[0];
+	document.getElementById('imagesRight').src = imagesRight[0];
 	document.getElementById('background').src = background[0];
 	
 	
