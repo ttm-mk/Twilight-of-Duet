@@ -12,13 +12,16 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import com.twilightofduet.Character.RomanceCharacterEntity;
 import com.twilightofduet.SaveLoad.SaveFunction.SaveEntity;
 
 /**
  * SavedCharacterStoryエンティティ
  * 作成者 tsutsumi miki
- * 編集日 2025/5/12 tsutsumi miki
+ * 編集日 2025/7/30 tsutsumi miki
  */
 
 @Entity
@@ -34,9 +37,11 @@ public class SavedCharacterStoryEntity {
 	@Column
 	private Integer chapterNumber;
 //	作成日
+	@CreatedDate
 	@Column
 	private Date createdDate;
 //	更新日
+	@LastModifiedDate
 	@Column
 	private Date updatedDate;
 //	セーブIDの外部キー
@@ -47,6 +52,19 @@ public class SavedCharacterStoryEntity {
 	@ManyToOne
 	@JoinColumn(name="romance_character_id")
 	private  RomanceCharacterEntity romanceCharacterId;
+	
+	// 引数なしのコンストラクタ
+	public SavedCharacterStoryEntity(){
+		
+	}
+	
+	// 引数ありのコンストラクタ
+	public SavedCharacterStoryEntity(Integer chapterNumber, SaveEntity saveId, RomanceCharacterEntity romanceCharacterId) {
+		this.chapterNumber = chapterNumber;
+		this.saveId = saveId;
+		this.romanceCharacterId = romanceCharacterId;
+		
+	}
 	
 	/**
 	 * キャラクターストーリーセーブ用IDのゲッター

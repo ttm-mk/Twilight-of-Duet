@@ -12,12 +12,15 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import com.twilightofduet.SaveLoad.SaveFunction.SaveEntity;
 
 /**
  * SavedMainStoryエンティティ
  * 作成者 tsutsumi miki
- * 編集日 2025/5/12 tsutsumi miki
+ * 編集日 2025/7/30 tsutsumi miki
  */
 
 @Entity
@@ -35,10 +38,12 @@ public class SavedMainStoryEntity {
 	private Integer chapterNumber;
 	
 	// 作成日
+	@CreatedDate
 	@Column
 	private Date createdDate;
 	
 	// 更新日
+	@LastModifiedDate
 	@Column
 	private Date updatedDate;
 	
@@ -46,6 +51,18 @@ public class SavedMainStoryEntity {
 	@ManyToOne
 	@JoinColumn(name="save_id")
 	private SaveEntity saveId;
+	
+	// 引数なしのコンストラクタ
+	public SavedMainStoryEntity() {
+		
+	}
+	
+	// 引数ありのコンストラクタ
+	public SavedMainStoryEntity(Integer chapterNumber, SaveEntity saveId) {
+		this.chapterNumber = chapterNumber;
+		this.saveId = saveId;
+		
+	}
 
 	
 	/**

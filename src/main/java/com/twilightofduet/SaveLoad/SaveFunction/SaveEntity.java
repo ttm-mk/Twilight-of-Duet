@@ -12,12 +12,15 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import com.twilightofduet.User.UserCommon.UsersEntity;
 
 /**
  * Saveエンティティ
  * 作成者 tsutsumi miki
- * 編集日 2025/5/10 tsutsumi miki
+ * 編集日 2025/7/30 tsutsumi miki
  */
 
 @Entity
@@ -35,10 +38,12 @@ public class SaveEntity {
 	private Integer slotNumber;
 	
 	/* 作成日時 */
+	@CreatedDate
 	@Column
 	private Date createdDate;
 	
 	/* 更新日時 */
+	@LastModifiedDate
 	@Column
 	private Date updatedDate;
 	

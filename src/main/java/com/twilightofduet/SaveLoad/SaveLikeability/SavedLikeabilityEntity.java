@@ -13,13 +13,16 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import com.twilightofduet.Character.RomanceCharacterEntity;
 import com.twilightofduet.SaveLoad.SaveFunction.SaveEntity;
 
 /**
  * SavedLikeabilityエンティティ
  * 作成者 tsutsumi miki
- * 編集日 2025/5/12 tsutsumi miki
+ * 編集日 2025/7/30 tsutsumi miki
  */
 
 @Entity
@@ -35,9 +38,11 @@ public class SavedLikeabilityEntity {
 	@Column
 	private Integer likeabilityNumber;
 //	作成日
+	@CreatedDate
 	@Column
 	private Date createdDate;
 //	更新日
+	@LastModifiedDate
 	@Column
 	private Date updateDate;
 //	セーブIDの外部キー
@@ -48,6 +53,25 @@ public class SavedLikeabilityEntity {
 	@OneToOne
 	@JoinColumn(name="romance_character_id")
 	private RomanceCharacterEntity romanceCharacterId;
+	
+	
+	// 引数なしのコンストラクタ
+	public SavedLikeabilityEntity(){
+		
+	}
+	
+	/**
+	 * 引数ありのコンストラクタ
+	 * @param likeabilityNumber
+	 * @param saveEntity
+	 * @param romanceCharacterEntity
+	 */
+	public SavedLikeabilityEntity(Integer likeabilityNumber, SaveEntity saveEntity, RomanceCharacterEntity romanceCharacterEntity) {
+		this.likeabilityNumber = likeabilityNumber;
+		this.saveId = saveEntity;
+		this.romanceCharacterId = romanceCharacterEntity;
+		
+	}
 	
 	
 	/**
