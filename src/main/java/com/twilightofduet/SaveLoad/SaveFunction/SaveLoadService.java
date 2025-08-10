@@ -16,7 +16,7 @@ import com.twilightofduet.User.UserCommon.UsersRepository;
 /**
  * SaveLoadServiceコントローラ
  * 作成者 tsutsumi miki
- * 編集日 2025/7/31 tsutsumi miki
+ * 編集日 2025/8/11 tsutsumi miki
  */
 
 @Service
@@ -97,6 +97,31 @@ public class SaveLoadService {
 			// ついでに投げて受け取る場所つくらないといけないね：TODO
 		}
 
+	}
+	
+	/**
+	 * ロード機能
+	 * @param saveEntity
+	 * @return
+	 */
+	public SaveEntity uploadSlot(SaveEntity saveEntity) {
+		
+		// 好感度を更新
+		String resultLikeability = savedLikeabilityService.uploadLikeability(saveEntity);
+		// ストーリーを更新　TODO:ロード機能作成
+		String resultCharacterStory = savedStoryService.uploadCharacterStory(saveEntity);
+		String resultMainStory = savedStoryService.uploadMainStory(saveEntity);
+		
+		if(resultLikeability.equals("ok") && resultCharacterStory.equals("ok") && resultMainStory.equals("ok")) {
+			
+			return saveEntity;
+			
+		} else {
+			throw new RuntimeException("ロードに失敗しました。:resultEntity");
+			// ここ、うまく処理させる。失敗したので各所セーブしたものを削除するとか処理させたい
+			// ついでに投げて受け取る場所つくらないといけないね：TODO
+		}
+		
 	}
 	
 	/**

@@ -15,11 +15,59 @@
 			<div class="work">
 				
 				<div class="sentence" style="width: 400px;">
-					<h3>◇ロード◇</h3>
-					<p>リストで2つくらい初期枠自動作成しよう</p>
 					
-					<p>要はセーブと同じ枠だけど処理が違うということだよね？</p>
+					<!--内容送信後に出てくるメッセージ-->
+					<div th:if="${message}">
+						<p th:text="${message}"></p>
+					</div>
+				</div>
+				
+				<h3>◇ロード◇</h3>
+				<div class="saveLoad">
+					
+					<div class="saveLoadFrame">
+						<p>スロット：１</p>
 
+						<div th:if="${saveOne == null}"></div>
+						
+						<div th:if="${saveOne != null && saveOne.slotNumber == 1}">
+							<div th:object="${saveOne}">
+								<p>セーブ日時：<span th:text="*{createDate}"></span></p>
+								<p>メインストーリー：<span th:text="*{mainStoryChapter}"></span>話</p>
+							</div>
+						</div>
+							
+<!--						本当はポップアップにしたいけどいったん文字にします！-->
+						<form  method="post" th:action="@{/load/ok}">
+							<p>ロードしますか？</p>
+							<input type="hidden" name="slotNumber" value="1"/>
+							<input type="submit" value="はい"/>
+							
+						</form>
+						
+					</div>
+					
+					<div class="saveLoadFrame">
+						<p>スロット：２</p>
+
+						<div th:if="${saveTwo == null}"></div>
+						
+						<div th:if="${saveTwo != null && saveTwo.slotNumber ==2}">
+							<div th:object="${saveTwo}">
+								<p>セーブ日時：<span th:text="*{createDate}"></span></p>
+								<p>メインストーリー：<span th:text="*{mainStoryChapter}"></span>話</p>
+							</div>
+							<form  method="post" th:action="@{/load/ok}">
+	<!--						本当はポップアップにしたいけどいったん文字にします！-->
+								<p>ロードしますか？</p>
+								<input type="hidden" name="slotNumber" value="2"/>
+								<input type="submit" value="はい"/>
+								
+							</form>
+						</div>
+							
+						
+					</div>
 					
 				</div>
 				

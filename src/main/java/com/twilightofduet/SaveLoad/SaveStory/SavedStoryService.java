@@ -18,7 +18,7 @@ import com.twilightofduet.User.UserCommon.UsersRepository;
 /**
  * SaveLoadServiceコントローラ
  * 作成者 tsutsumi miki
- * 編集日 2025/7/31 tsutsumi miki
+ * 編集日 2025/8/11 tsutsumi miki
  */
 
 @Service
@@ -215,6 +215,111 @@ public class SavedStoryService {
 		}
 		
 		return "ok";
+		
+	}
+	
+	/**
+	 * キャラクターストーリーロード機能
+	 * @param saveEntity
+	 * @return
+	 */
+	public String uploadCharacterStory(SaveEntity saveEntity) {
+		// 各所で使うユーザー情報取得
+		UsersEntity userEntity = saveEntity.getUserId();
+		
+		if(saveEntity == null || saveEntity.getSaveId() == null) {
+			throw new RuntimeException("saveEntityが空なのでストーリーを保存できません");
+			
+		}
+		
+		try {
+			// キャラクターEntity取得
+			RomanceCharacterEntity takumiEntity = romanceCharacterRepository.findByCharacterName("園山巧美");
+			// userEntityが紐づいているキャラクターのStoryEntityを取得
+			StoryEntity takumiStoryEntity = storyRepository.findByUserIdAndRomanceCharacterId(userEntity, takumiEntity);
+			// セーブEntityから各キャラクターのseveEntity取得し、セーブEntityのチャプター番号取得
+			SavedCharacterStoryEntity takumiSaveEntity = savedCharacterStoryRepository.findBySaveIdAndRomanceCharacterId(saveEntity, takumiEntity);
+			Integer takumiChapter = takumiSaveEntity.getChapterNumber();
+			// savedCharacterStoryEntityがもっているチャプター番号をセット
+			takumiStoryEntity.setChapterNumber(takumiChapter);
+			
+			RomanceCharacterEntity somaEntity = romanceCharacterRepository.findByCharacterName("小早川颯真");
+			StoryEntity somaStoryEntity = storyRepository.findByUserIdAndRomanceCharacterId(userEntity, somaEntity);
+			SavedCharacterStoryEntity somaSaveEntity = savedCharacterStoryRepository.findBySaveIdAndRomanceCharacterId(saveEntity, somaEntity);
+			Integer somaChapter = somaSaveEntity.getChapterNumber();
+			somaStoryEntity.setChapterNumber(somaChapter);
+			
+			RomanceCharacterEntity miyukiEntity = romanceCharacterRepository.findByCharacterName("須王御幸");
+			StoryEntity miyukiStoryEntity = storyRepository.findByUserIdAndRomanceCharacterId(userEntity, miyukiEntity);
+			SavedCharacterStoryEntity miyukiSaveEntity = savedCharacterStoryRepository.findBySaveIdAndRomanceCharacterId(saveEntity, miyukiEntity);
+			Integer miyukiChapter = miyukiSaveEntity.getChapterNumber();
+			miyukiStoryEntity.setChapterNumber(miyukiChapter);
+			
+			RomanceCharacterEntity takutoEntity = romanceCharacterRepository.findByCharacterName("園山巧斗");
+			StoryEntity takutoStoryEntity = storyRepository.findByUserIdAndRomanceCharacterId(userEntity, takutoEntity);
+			SavedCharacterStoryEntity takutoSaveEntity = savedCharacterStoryRepository.findBySaveIdAndRomanceCharacterId(saveEntity, takutoEntity);
+			Integer takutoChapter = takutoSaveEntity.getChapterNumber();
+			takutoStoryEntity.setChapterNumber(takutoChapter);
+			
+			RomanceCharacterEntity miruEntity = romanceCharacterRepository.findByCharacterName("相良実瑠");
+			StoryEntity miruStoryEntity = storyRepository.findByUserIdAndRomanceCharacterId(userEntity, miruEntity);
+			SavedCharacterStoryEntity miruSaveEntity = savedCharacterStoryRepository.findBySaveIdAndRomanceCharacterId(saveEntity, miruEntity);
+			Integer miruChapter = miruSaveEntity.getChapterNumber();
+			miruStoryEntity.setChapterNumber(miruChapter);
+			
+			// 保存
+			storyRepository.save(takumiStoryEntity);
+			storyRepository.save(somaStoryEntity);
+			storyRepository.save(miyukiStoryEntity);
+			storyRepository.save(takutoStoryEntity);
+			storyRepository.save(miruStoryEntity);
+			
+		} catch(Exception e) {
+			throw new RuntimeException("キャラクターストーリーのセーブに失敗しました", e);
+			
+		}
+		
+		return "ok";
+		
+	}
+	
+
+	/**
+	 * メインストーリーロード機能
+	 * @param saveEntity
+	 * @return
+	 */
+	public String uploadMainStory(SaveEntity saveEntity) {
+		
+		if(saveEntity == null || saveEntity.getUserId() == null) {
+			throw new RuntimeException("saveEntityが空のためメインストーリーが保存できませんでした。");
+			
+		}
+		
+		
+		try {
+			// 各種情報取得
+			RomanceCharacterEntity mainEntity = romanceCharacterRepository.findByCharacterName("メイン");
+			UsersEntity userEntity = saveEntity.getUserId();
+			StoryEntity mainStoryEntity = storyRepository.findByUserIdAndRomanceCharacterId(userEntity, mainEntity);
+			
+			// セーブEntityからメインストーリー用のseveEntity取得
+			SavedMainStoryEntity mainSaveEntity = savedMainStoryRepository.findBySaveId(saveEntity);
+			// userEntityが紐づいているキャラクターのSaveEntityからチャプター番号を取得
+			Integer mainChapter = mainSaveEntity.getChapterNumber();
+			// saveEntityがもっているチャプター番号をセット
+			mainStoryEntity.setChapterNumber(mainChapter);
+			// 格納後保存
+			storyRepository.save(mainStoryEntity);
+			
+			return "ok";
+			
+		} catch(Exception e) {
+			
+			throw new RuntimeException("メインストーリーのセーブに失敗しました。", e);
+			
+		}
+		
 		
 	}
 
