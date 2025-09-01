@@ -1,5 +1,7 @@
 package com.twilightofduet.SaveLoad.SaveFunction;
 
+import java.util.Date;
+
 import jakarta.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,7 @@ import com.twilightofduet.User.UserCommon.UsersRepository;
 /**
  * SaveLoadServiceコントローラ
  * 作成者 tsutsumi miki
- * 編集日 2025/8/11 tsutsumi miki
+ * 編集日 2025/9/2 tsutsumi miki
  */
 
 @Service
@@ -87,7 +89,7 @@ public class SaveLoadService {
 
 
 		if(resultLikeability.equals("ok") && resultCharacterStory.equals("ok") && resultMainStory.equals("ok")) {
-			// たぶん保存だけすることで更新日のみ更新保存してくれるはず…
+			saveEntity.setUpdatedDate(new Date());
 			saveEntity = saveRepository.save(saveEntity);
 			return saveEntity;
 			

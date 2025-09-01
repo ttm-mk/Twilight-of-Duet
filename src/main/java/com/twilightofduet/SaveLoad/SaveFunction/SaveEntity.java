@@ -4,6 +4,7 @@ import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,16 +15,18 @@ import jakarta.persistence.Table;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.twilightofduet.User.UserCommon.UsersEntity;
 
 /**
  * Saveエンティティ
  * 作成者 tsutsumi miki
- * 編集日 2025/7/30 tsutsumi miki
+ * 編集日 2025/9/2 tsutsumi miki
  */
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "Save")
 public class SaveEntity {
 	
@@ -39,12 +42,12 @@ public class SaveEntity {
 	
 	/* 作成日時 */
 	@CreatedDate
-	@Column
+	@Column(name="created_date", updatable = false)
 	private Date createdDate;
 	
 	/* 更新日時 */
 	@LastModifiedDate
-	@Column
+	@Column(name="updated_date")
 	private Date updatedDate;
 	
 	/* ユーザーIDの外部キー */

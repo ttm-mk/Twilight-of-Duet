@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.twilightofduet.SaveLoad.SaveFunction.SaveEntity;
 import com.twilightofduet.SaveLoad.SaveFunction.SaveLoadService;
@@ -20,7 +21,7 @@ import com.twilightofduet.User.UserCommon.UsersRepository;
 /*
  * SaveLoadController
  * 作成者 tsutsumi miki
- * 編集日 2025/8/6 tsutsumi miki
+ * 編集日 2025/9/2 tsutsumi miki
  */
 
 @Controller
@@ -61,6 +62,7 @@ public class SaveLoadController {
 			SavedMainStoryEntity saveMainOneEntity = savedMainStoryRepository.findBySaveId(saveEntityOne);
 			saveBeanOne.setMainStoryChapter(saveMainOneEntity.getChapterNumber() + 1);
 			saveBeanOne.setCreateDate(saveEntityOne.getCreatedDate());
+			saveBeanOne.setUpdateDate(saveEntityOne.getUpdatedDate());
 			model.addAttribute("saveOne", saveBeanOne);
 			
 		} else {
@@ -74,6 +76,7 @@ public class SaveLoadController {
 			SavedMainStoryEntity saveMainTwoEntity = savedMainStoryRepository.findBySaveId(saveEntityTwo);
 			saveBeanTwo.setMainStoryChapter(saveMainTwoEntity.getChapterNumber() + 1);
 			saveBeanTwo.setCreateDate(saveEntityTwo.getCreatedDate());
+			saveBeanTwo.setUpdateDate(saveEntityTwo.getUpdatedDate());
 			model.addAttribute("saveTwo", saveBeanTwo);
 
 		} else {
@@ -109,6 +112,7 @@ public class SaveLoadController {
 			SavedMainStoryEntity saveMainOneEntity = savedMainStoryRepository.findBySaveId(saveEntityOne);
 			saveBeanOne.setMainStoryChapter(saveMainOneEntity.getChapterNumber() + 1);
 			saveBeanOne.setCreateDate(saveEntityOne.getCreatedDate());
+			saveBeanOne.setUpdateDate(saveEntityOne.getUpdatedDate());
 			model.addAttribute("saveOne", saveBeanOne);
 			
 		} else {
@@ -122,6 +126,7 @@ public class SaveLoadController {
 			SavedMainStoryEntity saveMainTwoEntity = savedMainStoryRepository.findBySaveId(saveEntityTwo);
 			saveBeanTwo.setMainStoryChapter(saveMainTwoEntity.getChapterNumber() + 1);
 			saveBeanTwo.setCreateDate(saveEntityTwo.getCreatedDate());
+			saveBeanTwo.setUpdateDate(saveEntityTwo.getUpdatedDate());
 			model.addAttribute("saveTwo", saveBeanTwo);
 
 		} else {
@@ -139,16 +144,18 @@ public class SaveLoadController {
 	 * @return
 	 */
 	@PostMapping("/save/ok")
-	public String saveAction(@RequestParam("slotNumber") Integer slotNumber, HttpSession session, Model model) {
+	public String saveAction(@RequestParam("slotNumber") Integer slotNumber, HttpSession session, Model model,
+			RedirectAttributes redirectAttributes) {
 
 		String result = saveLoadCheck.saveCheck(session, slotNumber);
 		
 		// で、最後にセーブしたメッセージを格納し表示させるように設定
-		model.addAttribute("message", result);
+//		model.addAttribute("message", result);
+		redirectAttributes.addFlashAttribute("message", result);
 		// で、以下画面に返したらいいのかなと思う
 		// TODO:画面に変わったときにデータも更新して画面表示させたい。リダイレクトでいいのかどうなのか一回調べること
 		
-		return "saveLoad/save.html";
+		return "redirect:/save";
 		
 	}
 	
@@ -158,16 +165,19 @@ public class SaveLoadController {
 	 * @return
 	 */
 	@PostMapping("/load/ok")
-	public String loadAction(@RequestParam("slotNumber") Integer slotNumber, HttpSession session, Model model) {
+	public String loadAction(@RequestParam("slotNumber") Integer slotNumber, HttpSession session, Model model,
+			RedirectAttributes redirectAttributes) {
 
 		String result = saveLoadCheck.loadCheck(session, slotNumber);
 		
 		// で、最後にセーブしたメッセージを格納し表示させるように設定
-		model.addAttribute("message", result);
+//		model.addAttribute("message", result);
+		redirectAttributes.addFlashAttribute("message", result);
+
 		// で、以下画面に返したらいいのかなと思う
 		// TODO:画面に変わったときにデータも更新して画面表示させたい。リダイレクトでいいのかどうなのか一回調べること
 		
-		return "saveLoad/load.html";
+		return "redirect:/load";
 		
 	}
 

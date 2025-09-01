@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * UsersBeanクラス
  * 作成者 tsutsumi miki
- * 編集日 2025/7/25 tsutsumi miki
+ * 編集日 2025/9/2 tsutsumi miki
  */
 
 public class SaveBean {
@@ -17,7 +17,10 @@ public class SaveBean {
 	private Integer mainStoryChapter;
 	//作成日
 	private Date createDate;
+	//更新日
+	private Date updateDate;
 	
+
 
 	/**
 	 * セーブIDのゲッター
@@ -81,6 +84,22 @@ public class SaveBean {
 	 */
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
+	}
+	
+	/**
+	 * 更新日時のゲッター
+	 * @return
+	 */
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	/**
+	 * 更新日時のセッター
+	 * @param updateDate
+	 */
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 
 

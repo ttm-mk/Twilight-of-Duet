@@ -32,7 +32,15 @@
 						
 						<div th:if="${saveOne != null && saveOne.slotNumber == 1}">
 							<div th:object="${saveOne}">
-								<p>セーブ日時：<span th:text="*{createDate}"></span></p>
+								<p>
+									<div th:if="*{updateDate}==null">
+										セーブ日時：<span th:text="*{#dates.format(createDate,'yyyy/MM/dd HH:mm')}"></span>
+									</div>
+									<div th:if="*{updateDate}!=null">
+										セーブ日時：<span th:text="*{#dates.format(updateDate,'yyyy/MM/dd HH:mm')}"></span>
+									</div>
+									
+								</p>
 								<p>メインストーリー：<span th:text="*{mainStoryChapter}"></span>話</p>
 							</div>
 						</div>
@@ -54,7 +62,15 @@
 						
 						<div th:if="${saveTwo != null && saveTwo.slotNumber ==2}">
 							<div th:object="${saveTwo}">
-								<p>セーブ日時：<span th:text="*{createDate}"></span></p>
+								<p>
+									<div th:if="*{updateDate}==null">
+										セーブ日時：<span th:text="*{#dates.format(createDate,'yyyy/MM/dd HH:mm')}"></span>
+									</div>
+									<div th:if="*{updateDate}!=null">
+										セーブ日時：<span th:text="*{#dates.format(updateDate,'yyyy/MM/dd HH:mm')}"></span>
+									</div>
+									
+								</p>
 								<p>メインストーリー：<span th:text="*{mainStoryChapter}"></span>話</p>
 							</div>
 							<form  method="post" th:action="@{/load/ok}">

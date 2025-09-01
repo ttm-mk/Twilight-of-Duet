@@ -12,7 +12,7 @@ import com.twilightofduet.User.UserCommon.UsersEntity;
 import com.twilightofduet.User.UserCommon.UsersRepository;
 
 /*
- * SaveLoadController
+ * SaveLoadCheck
  * 作成者 tsutsumi miki
  * 編集日 2025/8/6 tsutsumi miki
  */
