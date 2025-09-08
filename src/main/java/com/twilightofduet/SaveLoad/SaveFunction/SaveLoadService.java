@@ -16,7 +16,7 @@ import com.twilightofduet.User.UserCommon.UsersEntity;
 import com.twilightofduet.User.UserCommon.UsersRepository;
 
 /**
- * SaveLoadServiceコントローラ
+ * SaveLoadService
  * 作成者 tsutsumi miki
  * 編集日 2025/9/2 tsutsumi miki
  */
