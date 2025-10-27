@@ -152,6 +152,12 @@ public class SavedLikeabilityService {
 		
 	}
 	
+	/**
+	 * 好感度ロード機能
+	 * 
+	 * @param saveEntity
+	 * @return
+	 */
 	public String uploadLikeability(SaveEntity saveEntity) {
 		// UserEntityの取得
 		UsersEntity userEntity = saveEntity.getUserId();

@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class IndexController {
 	
+	/**
+	 * TOP画面表示
+	 * @return
+	 */
 	@GetMapping("/")
 	public String topDisplay() {
 		return "top";

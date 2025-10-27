@@ -42,7 +42,7 @@ public class StoryController {
 	    // UserIDとCharacterIdからストーリーIDの取得と格納
 	    // TODO:ここ、各キャラクターのIDとチャプター番号取得してJSに渡さないといけないから色々変えないと。
 	    // StoryServiceに各キャラクター格納したEntityを返すメソッド作らないといけない。
-	    // キャラクターのチャプター番号取得してモデルに格納
+	    // キャラクターのチャプター番号取得してモデルに格納（これ自体はStoryBeanに格納して展開でいい気がしてるな
 	    StoryEntity mainStoryEntity = storyService.findMainStoryEntity(userBean);
 	    model.addAttribute("mainStory", mainStoryEntity.getChapterNumber());
 	    

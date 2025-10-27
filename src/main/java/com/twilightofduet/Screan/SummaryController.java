@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
  * 編集日 2025/1/19 tsutsumi miki
  */
 
+/**
+ * あらすじ画面表示
+ */
 @Controller
 public class SummaryController {
 	

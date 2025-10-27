@@ -149,6 +149,11 @@ public class UserAuthService {
 		
 	}
 	
+	/**
+	 * パスワードを隠す処理
+	 * @param userDTO
+	 * @return
+	 */
 	public String changePassword(UserDTO userDTO) {
 		
 		String password = userDTO.getUserPassword();

@@ -315,6 +315,7 @@ public class LikeabilityService {
 	 */
 	public LikeabilityEntity saveLikeabilityOfCharacterStory(UsersEntity userEntity, LikeabilityRequestDTO likeabilityRequestDTO,
 			LikeabilityEntity likeabilityEntity, RomanceCharacterEntity characterEntity) {
+		
 		StoryEntity storyEntity = storyRepository.findByUserIdAndRomanceCharacterId(userEntity, characterEntity);
 		Integer characterStoryNumber = storyEntity.getChapterNumber();
 		

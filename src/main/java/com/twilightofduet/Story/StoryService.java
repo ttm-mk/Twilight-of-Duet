@@ -102,5 +102,13 @@ public class StoryService {
       
       
     }
+    
+//    public StoryBean getStoryInformation(HttpSession session) {
+//    	// ユーザーIDの取得
+//    	Integer userId = (Integer)session.getAttribute("userId");
+//    	// キャラクターIDの取得とユーザーIDとでBeanに各種格納する
+//    	
+//    	return storyBean;
+//    }
 
 }
